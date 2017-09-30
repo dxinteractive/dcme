@@ -1,12 +1,14 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import {Paragraph, Text, Wrapper} from 'dcme-style';
 
-const IndexPage = () =>
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
+const IndexPage = () => {
+    return <Wrapper>
+        <Text element="h1" modifier="sizeGiga marginBottomGiga">A Heading Am I</Text>
+        <Paragraph>Paragraph</Paragraph>
+        <Paragraph>Paragraph</Paragraph>
+        <Link className="Link" to="/page-2/">Go to paffge 2</Link>
+    </Wrapper>;
+}
 
-export default IndexPage
+export default IndexPage;

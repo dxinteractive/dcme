@@ -4,9 +4,12 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "bruce": "^0.13.0",
+    "dcme-style": "^0.1.0",
     "gatsby": "^1.6.5",
     "gatsby-link": "^1.6.5",
-    "gatsby-plugin-react-helmet": "^1.0.1"
+    "gatsby-plugin-react-helmet": "^1.0.1",
+    "gatsby-plugin-sass": "^1.0.12"
   },
   "keywords": [
     "gatsby"
