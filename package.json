@@ -1,26 +1,26 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dcme",
   "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "0.0.0",
+  "author": "Damien Clarke",
   "dependencies": {
-    "bruce": "^0.13.0",
+    "bruce": "^3.0.0",
     "dcme-style": "^0.1.0",
-    "gatsby": "^1.6.5",
-    "gatsby-link": "^1.6.5",
+    "gatsby": "^1.6.32",
+    "gatsby-link": "^1.6.32",
     "gatsby-plugin-react-helmet": "^1.0.1",
-    "gatsby-plugin-sass": "^1.0.12"
+    "gatsby-plugin-sass": "^1.0.12",
+    "stampy": "^0.34.0",
+    "three": "v0.73.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build && mv public docs",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "gatsby develop"
   },
   "devDependencies": {
     "prettier": "^1.5.2"

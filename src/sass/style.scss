@@ -1,9 +1,10 @@
 @import '~bruce/bruce';
-@include bruce-reset();
-@include bruce-box-sizing();
+@include BruceReset();
+@include BruceBoxSizing();
 
-$bruce-zindexList: (
+$bruce-zindex: (
     'Select',
+    'Dropdown',
     'Overlay'
 );
 
@@ -14,7 +15,7 @@ $bruce-zindexList: (
 @include DcmeAnimation;
 @include DcmeBadge;
 @include DcmeBox;
-@include DcmeBreadcrumbs;
+@include DcmeBreadcrumb;
 @include DcmeButton;
 @include DcmeCheckbox;
 @include DcmeChoice;
@@ -38,9 +39,5 @@ $bruce-zindexList: (
 @include DcmeTabSet;
 @include DcmeTerminal;
 @include DcmeText;
+@include DcmeWindow;
 @include DcmeWrapper;
-
-@include bruce-component-media;
-@include bruce-classes;
-@include bruce-float;
-@include bruce-widths;
