@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/parcels
+    working_directory: ~/dcme
     docker:
       - image: circleci/node:8
 
@@ -19,10 +19,10 @@ jobs:
             - example/node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-      # run tests!
-      - run: git diff | cat
-      - run: test -z "$(git status --porcelain)"
-      - run: yarn test-all
+      # # run tests!
+      # - run: git diff | cat
+      # - run: test -z "$(git status --porcelain)"
+      # - run: yarn test-all
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
