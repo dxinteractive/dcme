@@ -1,14 +1,8 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import {Paragraph, Text, Wrapper} from 'dcme-style';
+//@flow
+import React from "react";
 
-const IndexPage = () => {
-    return <Wrapper>
-        <Text element="h1" modifier="sizeGiga marginBottomGiga">A Heading Am I</Text>
-        <Paragraph>Paragraph</Paragraph>
-        <Paragraph>Paragraph</Paragraph>
-        <Link className="Link" to="/page-2/">Go to paffge 2</Link>
-    </Wrapper>;
-}
-
-export default IndexPage;
+export default () => (
+    <div>
+    	Good
+    </div>
+);
