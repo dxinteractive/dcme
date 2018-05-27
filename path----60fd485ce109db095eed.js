@@ -1,0 +1,2 @@
+webpackJsonp([60335399758886],{95:function(e,t){e.exports={data:{allSitePage:{edges:[{node:{id:"SitePage /dev-404-page/",path:"/dev-404-page/"}},{node:{id:"SitePage /404/",path:"/404/"}},{node:{id:"SitePage /",path:"/"}},{node:{id:"SitePage /404.html",path:"/404.html"}}]}},layoutContext:{}}}});
+//# sourceMappingURL=path----60fd485ce109db095eed.js.map
