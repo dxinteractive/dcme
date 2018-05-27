@@ -46,14 +46,3 @@ const fs = require('fs');
 //         .then(createMarkdown)
 //     ;
 // };
-
-const circleYml = `
-general:
-  branches:
-    ignore:
-      - gh-pages
-`;
-
-exports.onPostBuild = () => {
-    fs.writeFileSync(`${__dirname}/public/circle.yml`, circleYml);
-}
