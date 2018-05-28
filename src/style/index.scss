@@ -1,0 +1,14 @@
+@import '~bruce/bruce';
+@include BruceReset();
+@include BruceBoxSizing();
+
+$bruce-zindex: (
+    'Select',
+    'Dropdown',
+    'Overlay'
+);
+
+@import './all.scss';
+
+@include DcmeConfig;
+@include DcmeBase;

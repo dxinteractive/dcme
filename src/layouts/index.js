@@ -1,46 +1,25 @@
 // @flow
-import React from "react";
-import type {Node} from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
+import React from 'react';
+import type {Node} from 'react';
+import Helmet from 'react-helmet';
 
-import "./index.scss";
+import '../style/index.scss';
 
-function TemplateWrapper(props: Object): Node {
-    const {
-        children,
-        wrapper = true
-    } = props;
-
-    const {allSitePage} = props.data;
-    return <div>
-        <Helmet
-            title="Damien Clarke"
-            meta={[
-                //{name: "description", content: "Sample"},
-                //{name: "keywords", content: "sample, something"}
-            ]}
-        />
-       {children()}
-    </div>;
-}
-
+export default ({children, data}: Object): Node => <div>
+    <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+        <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Lato|Roboto+Mono|Ubuntu+Mono" rel="stylesheet" />
+        <meta name="description" content="Website" />
+    </Helmet>
+    {children()}
+</div>;
 
 export const query = graphql`
-    query NavigationQuery {
-      allSitePage {
-        edges {
-          node {
-            id
-            path
-          }
-        }
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
       }
     }
+  }
 `;
-
-TemplateWrapper.propTypes = {
-    children: PropTypes.func
-};
-
-export default TemplateWrapper;
