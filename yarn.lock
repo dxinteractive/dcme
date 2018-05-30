@@ -6453,6 +6453,10 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
+numeral@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+
 nyc@^11.7.2:
   version "11.8.0"
   resolved "https://registry.yarnpkg.com/nyc/-/nyc-11.8.0.tgz#1e8453b0644f8fea4d829b1a6636663157cd3b00"
@@ -8926,6 +8930,17 @@ stampy@^0.34.0:
     is-plain-object "^2.0.3"
     url-search-params "^0.9.0"
 
+stampy@^0.39.0:
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/stampy/-/stampy-0.39.0.tgz#b37c2ca0c6d8af0ff97a05adf9b163871375bf96"
+  dependencies:
+    blueflag-test "^0.18.1"
+    classnames "^2.2.5"
+    element-resize-detector "^1.1.12"
+    is-plain-object "^2.0.3"
+    unmutable "^0.23.0"
+    url-search-params "^0.9.0"
+
 static-extend@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
@@ -9490,6 +9505,13 @@ units-css@^0.4.0:
 universalify@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.1.tgz#fa71badd4437af4c148841e3b3b165f9e9e590b7"
+
+unmutable@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/unmutable/-/unmutable-0.23.0.tgz#ad6f01e19a1a1f72b5f45ab6da856d38fb3e9121"
+  dependencies:
+    fast-deep-equal "^1.0.0"
+    is-plain-object "^2.0.4"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
