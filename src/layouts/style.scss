@@ -1,0 +1,58 @@
+@import '~bruce/bruce';
+@include BruceReset;
+@include BruceBoxSizing;
+@import '~dcme-style/lib/all';
+@include DcmeConfig;
+@include DcmeBase;
+
+@include DcmeAnimation;
+@include DcmeBadge;
+@include DcmeBox;
+@include DcmeBreadcrumbs;
+@include DcmeButton;
+@include DcmeCheckbox;
+@include DcmeChoice;
+@include DcmeDropdown;
+@include DcmeGrid;
+@include DcmeIcon;
+@include DcmeImage;
+@include DcmeInput;
+@include DcmeLabel;
+@include DcmeLink;
+@include DcmeList;
+@include DcmeLoader;
+@include DcmeSelect;
+@include DcmeTab;
+@include DcmeTabSet;
+@include DcmeTable;
+@include DcmeTerminal;
+@include DcmeText;
+@include DcmeTypography;
+@include DcmeWrapper;
+
+/*
+Code Highlighting
+blue        #6CA6CE
+green       #86C797
+yellow      #E1AE69
+orange      #E1865A
+white       #e6e6e6
+comment     #6D6D6D
+red         #C55B4E
+ */
+
+/* Red */
+.token.keyword {color: #C55B4E;}
+
+/* Yellow */
+.token.tag {color: #E1AE69;}
+
+/* Green */
+.token.string {color: #86C797;}
+
+/* Blue */
+.token.number {color: #6CA6CE;}
+.token.boolean {color: #6CA6CE;}
+
+
+.token.comment {color: #6D6D6D;}

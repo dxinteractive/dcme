@@ -2,15 +2,17 @@
 import React from 'react';
 import type {Node} from 'react';
 import Helmet from 'react-helmet';
+import {Head} from 'dcme-style';
 
-import '../style/index.scss';
+import './style.scss';
 
 export default ({children, data}: Object): Node => <div>
     <Helmet>
         <title>{data.site.siteMetadata.title}</title>
-        <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Lato|Roboto+Mono|Ubuntu+Mono" rel="stylesheet" />
+        <Head />
         <meta name="description" content="Website" />
     </Helmet>
+    <Head />
     {children()}
 </div>;
 
