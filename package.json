@@ -1,29 +1,41 @@
 {
   "name": "dcme",
-  "private": true,
   "description": "Website time",
   "version": "0.0.0",
   "author": "Damien Clarke <dxinteractive@gmail.com>",
   "dependencies": {
-    "dcme-style": "^0.3.0",
-    "gatsby": "^1.9.247",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.10",
-    "gatsby-plugin-sass": "^1.0.26",
-    "mdx-loader": "^1.1.0",
-    "mdxc": "^1.1.1",
+    "babel-preset-blueflag": "^1.0.0",
+    "bruce": "5.0.0",
+    "dcme-style": "^0.19.0",
+    "flow-bin": "0.76.0",
+    "gatsby": "^2.0.19",
+    "gatsby-image": "^2.0.15",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.1",
+    "gatsby-plugin-sass": "^2.0.0-rc.2",
+    "gatsby-source-filesystem": "^2.0.4",
+    "gh-pages": "^1.1.0",
+    "mdx-loader": "^1.0.0-beta.3",
+    "mdxc": "1.1.1",
+    "node-sass": "^4.9.4",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
-    "stampy": "^0.39.0"
+    "react-runkit": "^0.9.0",
+    "react-spruce": "^0.1.0"
   },
+  "keywords": [
+    "unmutable"
+  ],
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "watch": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "blueflag-test": "^0.18.1",
-    "bruce": "^5.0.0",
-    "gh-pages": "^1.1.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blueflag/unmutable"
   }
 }
