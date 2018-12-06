@@ -4,5 +4,6 @@
     ],
     "ignore": [
         "lib/*"
-    ]
+    ],
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
 }

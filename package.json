@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "author": "Damien Clarke <dxinteractive@gmail.com>",
   "dependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-preset-blueflag": "^1.0.0",
     "bruce": "5.0.0",
     "dcme-style": "^0.19.0",
