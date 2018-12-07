@@ -5,9 +5,12 @@ import Link from './Link';
 
 export default () => <NavigationList modifier="margin">
     <NavigationListItem>
-        <Link to="/">Unmutable</Link>
+        <Link to="/">damienclarke.me</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <a className="Link" href="https://github.com/blueflag/unmutable">Github</a>
+        <a className="Link" href="https://github.com/dxinteractive">github</a>
+    </NavigationListItem>
+    <NavigationListItem>
+        <a className="Link" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a>
     </NavigationListItem>
 </NavigationList>;

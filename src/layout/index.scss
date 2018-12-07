@@ -4,11 +4,15 @@
 @import '~dcme-style/lib/all';
 
 $primary: #ff0048;
-// back #0d0f17
-
+$secondary: #527fd7;
 
 @include DcmeConfig;
 @include DcmeBase;
+
+html, body {
+    background-color: #0e151b;
+}
+
 @include DcmeBox {
     &-example {
         margin-left: -2rem;
