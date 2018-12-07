@@ -17,7 +17,7 @@ export default () => <Layout>
                 modifier="heightThird"
                 top={() => <Text element="h1" modifier="sizeTera superDuper">damienclarke.me</Text>}
                 bottom={() => <Box>
-                    <Text element="p" modifier="monospace margin">Software engineer living in Melbourne, Australia.</Text>
+                    <Text element="p" modifier="monospace margin">Software engineer + musician + effect pedal builder + animator living in Melbourne, Australia.</Text>
                 </Box>}
             />
             <PageLayout
