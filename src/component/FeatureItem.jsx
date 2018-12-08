@@ -9,6 +9,7 @@ import {Image} from 'dcme-style';
 import {Link} from 'dcme-style';
 import {Text} from 'dcme-style';
 import SiteNavigation from './SiteNavigation';
+import GithubVersion from './GithubVersion';
 
 import filter from 'unmutable/lib/filter';
 import identity from 'unmutable/lib/identity';
@@ -28,9 +29,9 @@ export default ({description, github, image, name, npm, url}: Props): Node => {
 
     let links = pipeWith(
         [
-            <Link href={url}><Text modifier="sizeMega">{name}</Text></Link>,
-            github && <Link modifier="secondary" href={`https://github.com/${github}`}>github</Link>,
-            npm && <Link modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}>v0.17.0</Link>
+            <Link key="1" href={url}><Text modifier="sizeMega">{name}</Text></Link>,
+            github && <Link key="2" modifier="secondary" href={`https://github.com/${github}`}>github</Link>,
+            github && npm && <Link key="3" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></Link>
         ],
         filter(identity()),
         interpose(" | ")

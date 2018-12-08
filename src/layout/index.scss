@@ -50,6 +50,7 @@ html, body {
 @include DcmeInput;
 @include DcmeLink;
 @include DcmeLabel;
+@include DcmeLoader;
 @include DcmeMessage;
 @include DcmeNavigationList {
     padding-top: 0;
