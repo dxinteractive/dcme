@@ -6,9 +6,9 @@
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-preset-blueflag": "^1.0.0",
+    "blueflag-test": "^0.22.0",
     "bruce": "5.0.0",
     "dcme-style": "^0.19.0",
-    "flow-bin": "0.76.0",
     "gatsby": "^2.0.19",
     "gatsby-image": "^2.0.15",
     "gatsby-plugin-offline": "^2.0.5",

@@ -15,6 +15,7 @@ export default ({children}: Props): Node => <div>
     <Helmet>
         <title>damienclarke.me</title>
         <meta name="description" content="Software engineer from Melbourne, Australia" />
+        <script async src="//www.instagram.com/embed.js" />
     </Helmet>
     <Head />
     {children}
