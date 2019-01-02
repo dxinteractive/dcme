@@ -13,6 +13,10 @@ html, body {
     background-color: #0e151b;
 }
 
+html.defaultBackground, body.defaultBackground {
+    background-color: #ffffff;
+}
+
 @include DcmeBox {
     &-example {
         margin-left: -2rem;

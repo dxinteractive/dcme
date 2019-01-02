@@ -8,15 +8,20 @@ import {Head} from 'dcme-style';
 import "./index.scss";
 
 type Props = {
-    children: *
+    children: *,
+    title?: string
 };
 
-export default ({children}: Props): Node => <div>
-    <Helmet>
-        <title>damienclarke.me</title>
-        <meta name="description" content="Software engineer from Melbourne, Australia" />
-        <script async src="//www.instagram.com/embed.js" />
-    </Helmet>
-    <Head />
-    {children}
-</div>;
+export default ({children, title = ""}: Props): Node => {
+    let site = `damienclarke.me`;
+    title = title ? `${title} | ${site}` : site;
+
+    return <div>
+        <Helmet>
+            <title>{title}</title>
+            <meta name="description" content="Software engineer from Melbourne, Australia" />
+        </Helmet>
+        <Head />
+        {children}
+    </div>;
+};

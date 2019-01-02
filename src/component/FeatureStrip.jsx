@@ -41,14 +41,16 @@ const ThumbnailLink = ({imageLink}: any): Node => {
 type Props = {
     description?: Node,
     images: Array<{image: string, link?: string, to?: string}>,
+    link?: string,
     name: string,
     url?: string
 };
 
-export default ({description, images, name, url}: Props): Node => {
+export default ({description, images, link, name, url}: Props): Node => {
     return <Box modifier="paddingBottomGiga">
         <Text element="div" modifier="margin monospace">
             {url ? <HtmlLink href={url}><Text modifier="sizeMega">{name}</Text></HtmlLink> : <Text modifier="sizeMega primary">{name}</Text>}
+            {link && <Text> | <HtmlLink href={url} modifier="secondary">{link}</HtmlLink></Text>}
         </Text>
         {description && <Text element="div" modifier="margin monospace">{description}</Text>}
         <Grid>
