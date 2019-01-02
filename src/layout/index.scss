@@ -67,3 +67,12 @@ html, body {
 @include DcmeWrapper;
 
 // #d75252
+
+.Thumbnail {
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-size: contain;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}

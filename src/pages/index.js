@@ -5,40 +5,47 @@ import {CenteredLanding} from 'dcme-style';
 import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
 import {Wrapper} from 'dcme-style';
-import Link from '../component/Link';
 import PageLayout from '../component/PageLayout';
 import FeatureItem from '../component/FeatureItem';
 import FeatureStrip from '../component/FeatureStrip';
 import Layout from '../layout/Layout';
 import IconParcel from '../content/parcelinverted.gif';
 
+import DogThumbnail from '../content/dog-thumbnail.gif';
+import FunThumbnail from '../content/fun.gif';
+import HowToAssembleLegoRobotThumbnail from '../content/how-to-assemble-lego-robot-thumbnail.jpg';
+import SkateTricksThumbnail from '../content/skate-tricks-thumbnail.jpg';
+import SleepyGuyThumbnail from '../content/sleepy-guy-thumbnail.jpg';
+import SmallPlasticFigurineThumbnail from '../content/small-plastic-figurine-thumbnail.jpg';
+
 export default () => {
 
+    let javascriptLibraries = () => <Box modifier="paddingBottomTera">
+        <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
+        <FeatureItem
+            name="dataparcels"
+            url="https://dataparcels.blueflag.codes/"
+            github="blueflag/dataparcels"
+            npm="react-dataparcels"
+            description="A library for editing data structures that works really well with React."
+            image={IconParcel}
+        />
+        <FeatureItem
+            name="unmutable"
+            url="https://github.com/blueflag/unmutable"
+            github="blueflag/unmutable"
+            npm="unmutable"
+            description="An immutable, point-free, functional data collection library for plain old Javascript."
+            image={IconParcel}
+        />
+    </Box>;
+
     let content = () => <Box>
-        <Box modifier="paddingBottomTera">
-            <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
-            <FeatureItem
-                name="dataparcels"
-                url="https://dataparcels.blueflag.codes/"
-                github="blueflag/dataparcels"
-                npm="react-dataparcels"
-                description="A library for editing data structures that works really well with React."
-                image={IconParcel}
-            />
-            <FeatureItem
-                name="unmutable"
-                url="https://github.com/blueflag/unmutable"
-                github="blueflag/unmutable"
-                npm="unmutable"
-                description="An immutable, point-free, functional data collection library for plain old Javascript."
-                image={IconParcel}
-            />
-        </Box>
         <Box modifier="paddingBottomTera">
             <Text element="h2" modifier="sizeKilo marginKilo">Animation</Text>
             <FeatureStrip
                 name="12gon"
-                description={<Text>Hypnontic animated geometry | <HtmlLink modifier="secondary" href="http://12gon.tumblr.com">more</HtmlLink></Text>}
+                description={<Text>Hypnotic animated geometry, <HtmlLink modifier="secondary" href="http://12gon.tumblr.com">see more</HtmlLink></Text>}
                 url="https://12gon.tumblr.com"
                 images={[
                     {
@@ -61,27 +68,52 @@ export default () => {
             />
             <FeatureStrip
                 name="Loopdeloop submissions"
-                description={<Text>Loops for <HtmlLink modifier="secondary" href="http://www.loopdeloop.org/">loopdeloop.org</HtmlLink>.</Text>}
+                description={<Text>Loops for <HtmlLink modifier="secondary" href="http://www.loopdeloop.org/">loopdeloop.org</HtmlLink></Text>}
                 images={[
                     {
-                        image: "https://i.vimeocdn.com/video/716159216_780x439.jpg",
+                        image: DogThumbnail,
                         link: "https://vimeo.com/282191207",
-                        description: "dog"
+                        description: "dog (0:37)"
                     },
                     {
                         image: "https://66.media.tumblr.com/tumblr_m9ie2jhzm11r269aho1_500.gif",
                         link: "https://vimeo.com/48289893",
-                        description: "mad"
+                        description: "mad (0:38)"
                     },
                     {
                         image: "https://66.media.tumblr.com/92690f8dd1480ed9b88d05f66c3cb0a5/tumblr_mwjus9IjCA1r269aho1_500.gif",
                         link: "https://vimeo.com/165720790",
-                        description: "dance"
+                        description: "dance (0:18)"
                     },
                     {
-                        image: "https://66.media.tumblr.com/92690f8dd1480ed9b88d05f66c3cb0a5/tumblr_mwjus9IjCA1r269aho1_500.gif",
-                        link: "https://vimeo.com/165720790",
-                        description: "dance"
+                        image: FunThumbnail,
+                        description: "fun",
+                        to: "/animation/fun"
+                    }
+                ]}
+            />
+            <FeatureStrip
+                name="Shorts and infographics"
+                images={[
+                    {
+                        image: SmallPlasticFigurineThumbnail,
+                        link: "https://vimeo.com/28944522",
+                        description: "small plastic figurine (2:10)"
+                    },
+                    {
+                        image: SleepyGuyThumbnail,
+                        link: "https://vimeo.com/29716833",
+                        description: "some sleepy guy (1:00)"
+                    },
+                    {
+                        image: HowToAssembleLegoRobotThumbnail,
+                        link: "https://www.youtube.com/watch?v=Ojrx-BK22wg",
+                        description: "how to assemble lego robot (1:39)"
+                    },
+                    {
+                        image: SkateTricksThumbnail,
+                        to: "/animation/skate-tricks",
+                        description: "skate tricks infographics"
                     }
                 ]}
             />
@@ -98,7 +130,8 @@ export default () => {
                         <Text element="p" modifier="monospace margin">Software engineer + musician + effect pedal builder + animator living in Melbourne, Australia.</Text>
                     </Box>}
                 />
-                <PageLayout content={content} />
+                <PageLayout content={javascriptLibraries} />
+                {content()}
             </Wrapper>
         </Box>
     </Layout>;
