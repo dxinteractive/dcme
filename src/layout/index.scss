@@ -51,6 +51,7 @@ html.defaultBackground, body.defaultBackground {
         }
     }
 }
+@include DcmeImageThumbnail;
 @include DcmeInput;
 @include DcmeLink;
 @include DcmeLabel;
@@ -60,6 +61,7 @@ html.defaultBackground, body.defaultBackground {
     padding-top: 0;
 }
 @include DcmeOrderedList;
+@include DcmeResponsiveBox;
 @include DcmeTable;
 @include DcmeTerminal;
 @include DcmeText {

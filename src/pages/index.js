@@ -10,9 +10,11 @@ import FeatureItem from '../component/FeatureItem';
 import FeatureStrip from '../component/FeatureStrip';
 import Link from '../component/Link';
 import Layout from '../layout/Layout';
-import IconParcel from '../content/parcelinverted.gif';
+import DataparcelsThumbnail from '../content/dataparcels-thumbnail.gif';
+import UnmutableThumbnail from '../content/unmutable-thumbnail.gif';
 
 import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
+//import Blend2Thumbnail from '../content/dxlfo-thumbnail.jpg';
 import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
 import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
 
@@ -45,7 +47,7 @@ export default () => {
             github="blueflag/dataparcels"
             npm="react-dataparcels"
             description="A library for editing data structures that works really well with React."
-            image={IconParcel}
+            image={DataparcelsThumbnail}
         />
         <FeatureItem
             name="unmutable"
@@ -53,7 +55,44 @@ export default () => {
             github="blueflag/unmutable"
             npm="unmutable"
             description="An immutable, point-free, functional data collection library for plain old Javascript."
-            image={IconParcel}
+            image={UnmutableThumbnail}
+        />
+    </Box>;
+
+    let effectsPedals = <Box modifier="paddingBottomTera">
+        <a id="effects-pedals" />
+        <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
+        {/*<FeatureItem
+            name="Blend2"
+            to="/effects-pedals/blend2"
+            link="more info"
+            description={<Text>A microprocessor-controlled parallel effects loop blender. Original design, prototype complete.</Text>}
+            image={Blend2Thumbnail}
+            alt
+        />*/}
+        <FeatureItem
+            name="Shoosh"
+            to="/effects-pedals/shoosh"
+            link="more info"
+            description={<Text>A vactrol-based voltage controlled amplifier. Original design, prototype complete. See also <Link to="/effects-pedals/posts/building-a-vactrol-vca" modifier="secondary">how to build one</Link>.</Text>}
+            image={ShooshThumbnail}
+            alt
+        />
+        <FeatureItem
+            name="Bazz Fuzz Face"
+            to="/effects-pedals/bazz-fuzz-face"
+            link="more info"
+            description="A modified clone, a silicon Fuzz Face and a Bazz Fuzz in the same box. Goes from mild grit to synthy fuzz, aggressive crunch and choked-up sputter."
+            image={BazzFuzzFaceThumbnail}
+            alt
+        />
+        <FeatureItem
+            name="DXLFO"
+            to="/effects-pedals/dxlfo"
+            link="more info"
+            description="An Arduino-controlled harmonic tremolo and dual LFO with CV outputs. Original design based partially on the Twin Peaks tremolo. Prototype abandoned."
+            image={DxlfoThumbnail}
+            alt
         />
     </Box>;
 
@@ -85,35 +124,6 @@ export default () => {
             github="dxinteractive/ArduinoTapTempo"
             description="An Arduino library that times consecutive button presses to calculate tempo / BPM. Corrects for missed beats and can reset phase with single taps. "
             image="https://camo.githubusercontent.com/2e7c36035ce8aae7ac0f7f145c0024192e93c76a/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f312d61726475696e6f2d7461702d74656d706f2f7468756d626e61696c2e6a7067"
-            alt
-        />
-    </Box>;
-
-    let effectsPedals = <Box modifier="paddingBottomTera">
-        <a id="effects-pedals" />
-        <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
-        <FeatureItem
-            name="Shoosh"
-            to="/effects-pedals/shoosh"
-            link="more info"
-            description={<Text>A vactrol-based voltage controlled amplifier. Original design, prototype complete. See also <Link to="/effects-pedals/posts/building-a-vactrol-vca" modifier="secondary">how to build one</Link>.</Text>}
-            image={ShooshThumbnail}
-            alt
-        />
-        <FeatureItem
-            name="Bazz Fuzz Face"
-            to="/effects-pedals/bazz-fuzz-face"
-            link="more info"
-            description="A modified clone, a silicon Fuzz Face and a Bazz Fuzz in the same box. Goes from mild grit to synthy fuzz, aggressive crunch and choked-up sputter."
-            image={BazzFuzzFaceThumbnail}
-            alt
-        />
-        <FeatureItem
-            name="DXLFO"
-            to="/effects-pedals/dxlfo"
-            link="more info"
-            description="An Arduino-controlled harmonic tremolo and dual LFO with CV outputs. Original design based partially on the Twin Peaks tremolo. Prototype abandoned"
-            image={DxlfoThumbnail}
             alt
         />
     </Box>;
@@ -243,8 +253,8 @@ export default () => {
             <Wrapper>
                 {top}
                 <PageLayout content={() => javascriptLibraries} />
-                {arduinoLibraries}
                 {effectsPedals}
+                {arduinoLibraries}
                 {animation}
                 {flashGames}
             </Wrapper>

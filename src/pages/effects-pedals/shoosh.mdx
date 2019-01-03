@@ -1,1 +1,41 @@
+import {Link as HtmlLink} from 'dcme-style';
+import {Image} from 'dcme-style';
+import Disqus from '../../component/Disqus';
+import Link from '../../component/Link';
+import Youtube from '../../component/Youtube';
+import ShooshAngle from '../../content/shoosh-angle.jpg';
+import ShooshInside from '../../content/shoosh-inside.jpg';
+import ShooshLayout from '../../content/shoosh-layout.png';
+import ShooshSchematic from '../../content/shoosh-schematic.png';
+
 # Shoosh
+
+The Shoosh is a vactrol-based voltage controlled amplifier (VCA). It's basically a volume control that can be set using a reference voltage from 0 to 5 volts, so this pedal can effectively fill the role of a tremolo, compressor, sidechain or volume pedal depending on what's controlling it.
+
+<Youtube id="6V_dxQa8ePo" />
+
+The single knob controls the total amount of gain.
+
+<Image src={ShooshAngle} alt="Shoosh prototype." />
+
+The board was quite small and only a single knob was required to control it, so I built it into a 1590A sized enclosure. Even then it was a tight squeeze that required the vero layout to be planned out with a little care.
+
+<Image src={ShooshInside} alt="Inside the Shoosh." />
+
+The circuit is an original design, although not an original concept by any means. A vactrol is used to turn an externally provided control voltage (CV) into a resistance, which then controls the gain of the output. For much more information on how the circuit works and how to build it see my post on <Link to="/effects-pedals/posts/building-a-vactrol-vca">how to build a vactrol-based VCA</Link>.
+
+## Shoosh schematic
+
+<HtmlLink href={ShooshSchematic} target="_blank">
+    <Image src={ShooshSchematic} />
+</HtmlLink>
+
+## Shoosh veroboard layout
+
+<HtmlLink href={ShooshLayout} target="_blank">
+    <Image src={ShooshLayout} />
+</HtmlLink>
+
+Is expanded upon this basic circuit to create <Link to="/effects-pedals/blend2">an Arduino-controlled splitter / blender, the Blend2</Link>.
+
+<Disqus />

@@ -12,7 +12,7 @@ type Props = {
 export default ({id}: Props): Node => {
     return <ResponsiveBox modifier="16-9">
         <iframe
-            src={`https://player.vimeo.com/video/${id}`}
+            src={`https://www.youtube.com/embed/${id}?rel=0`}
             frameBorder="0"
             allowFullScreen
         />

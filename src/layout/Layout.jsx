@@ -20,6 +20,7 @@ export default ({children, title = ""}: Props): Node => {
         <Helmet>
             <title>{title}</title>
             <meta name="description" content="Software engineer from Melbourne, Australia" />
+            <script src="//damienclarkeme.disqus.com/embed.js" data-timestamp={new Date()} />
         </Helmet>
         <Head />
         {children}

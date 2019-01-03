@@ -8,8 +8,8 @@ import {Grid} from 'dcme-style';
 import {GridItem} from 'dcme-style';
 import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
+import {ImageThumbnail} from 'dcme-style';
 
-import Thumbnail from '../component/Thumbnail';
 import Link from 'gatsby-link';
 
 const ThumbnailLink = ({imageLink}: any): Node => {
@@ -22,7 +22,7 @@ const ThumbnailLink = ({imageLink}: any): Node => {
 
     let content = <Fragment>
         <Box modifier="marginBottom">
-            <Thumbnail src={image}/>
+            <ImageThumbnail src={image} modifier="16-9" />
         </Box>
         {description && <Text element="div" modifier="monospace link secondary">{description}</Text>}
     </Fragment>;

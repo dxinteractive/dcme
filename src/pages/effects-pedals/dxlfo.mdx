@@ -1,1 +1,27 @@
+import {Image} from 'dcme-style';
+import Disqus from '../../component/Disqus';
+import Link from '../../component/Link';
+import Dxlfo from '../../content/dxlfo.jpg';
+import DxlfoApart from '../../content/dxlfo-apart.jpg';
+
 # DXLFO
+
+The DXLFO was a programmable, Arduino-controlled harmonic tremolo* with control voltage outputs. Originally while browsing the [diystompboxes.com forums](http://www.diystompboxes.com/smfforum/) I found a thread about the [Twin Peaks Tap Tremolo](http://www.diystompboxes.com/smfforum/index.php?topic=103714.0). I really liked the idea behind this pedal, especially the tap tempo function and the different tremolo shapes it could provide. In designing the DXLFO I built the audio signal path in a reasonably similar way, but I wanted to control the tempo and LFO(s) using an Arduino to allow for much more flexibility in modifying LFO patterns. And threw in a screen to display the waveform.
+
+<Image src={Dxlfo} />
+
+The DXLFO's audio circuit differed from the Twin Peaks Tremolo in that it had:
+* A relay to switch between the "harmonic tremolo" and a regular tremolo / volume control mode, so that there was the option to preserve the frequency response through the circuit.
+* A different tone control that worked more like a band pass filter blended with the original signal.
+
+The LFO circuit was completely different. The DXLFO was able to accept a 0-5V CV signal or an expression pedal as an input, which could be used to control any parameter of either of the two internal LFOs. Subdivision of beats was possible, so you could tap quarter notes with your foot and the tremolo would operate on 16ths, and attack and release curves could be played with to modify the shape of the modulation signals. The LFOs could also be optionally set to output a 0-5V control voltage through the two CV outputs, to control other pedals in more complex ways or to control the volume of the audio signal like in a normal tremolo effect or harmonic tremolo.
+
+<Image src={DxlfoApart} />
+
+It was fully designed, working on a breadboard and I'd begun building the DXLFO's enclosure when I had bigger ideas for my pedalboard as a whole, and it made more sense to split the DXLFO's core functions apart. Instead of a single box I wanted to use a <Link to="/effects-pedals/shoosh">dedicated VCA</Link> to modulate the volume of the signal, and leave the signal generation, LFO and routing of CV signals to another pedal, which became the idea behind the <Link to="/effects-pedals/ctrl">CTRL signal controller</Link>.
+
+### *Footnote: the harmonic tremolo
+
+The original harmonic tremolo was a Fender creation that took two tremolo effects and applied one to the low frequencies and one to the high frequencies, so that instead of modulating the volume ("soft-loud-soft-loud") it would instead alternate between the lower frequencies and the higher ones ("lows-highs-lows-highs").
+
+<Disqus />

@@ -1,1 +1,38 @@
+import {Link as HtmlLink} from 'dcme-style';
+import {Image} from 'dcme-style';
+import Disqus from '../../component/Disqus';
+import BazzFuzzFaceBottom from '../../content/bazz-fuzz-face-bottom.jpg';
+import BazzFuzzFaceSchematic from '../../content/bazz-fuzz-face-schematic.png';
+import BazzFuzzFaceTop from '../../content/bazz-fuzz-face-top.jpg';
+
 # Bazz Fuzz Face
+
+The Bazz Fuzz Face is basically a silicon Fuzz Face and a Bazz Fuss in the same box. A switch in the middle allows either effect to be selected. Both circuits have been modified a little from their original schematics. The volume, tone and dirt controls are shared by both circuits. The choke knob only affects the Fuzz Face.
+
+The Bazz Fuss has a much more aggressive, modern heavy sound to it, while the Fuzz Face in comparison is more of a noisy, chaotic fuzz that's both very versatile and responsive to playing style.
+
+<Image src={BazzFuzzFaceTop} alt="Top view" />
+
+<Image src={BazzFuzzFaceBottom} alt="Inside view" />
+
+## Bazz Fuzz Face Schematic
+
+<HtmlLink href={BazzFuzzFaceSchematic}>
+    <Image src={BazzFuzzFaceSchematic} alt="Bazz Fuzz Face schematic" />
+</HtmlLink>
+
+## Bazz Fuss
+
+The Bazz Fuss is a great beginner fuzz circuit because it contains so few parts and still sounds great. The original design can be found on [home-wrecker.com](http://home-wrecker.com/bazz.html). After testing a few of the versions I went with version 3, using an MPSA13 transistor and a 1N914 diode. Here's a [video I found](https://www.youtube.com/watch?v=L0PDQ6zMU4g) on how to make these.
+* Added a tone control at the input to dial back low frequencies
+* Added a trimpot volume control so the output of the Bazz Fuss can be made quieter to match the Fuzz Face's average output volume
+
+## Fuzz Face
+
+The Fuzz Face is a classic fuzz pedal whose design is very suitable for making modifications. The NPN silicon design on [this page](http://fuzzcentral.ssguitar.com/fuzzface.php) was my starting point. I made a few changes.
+* Added a tone control at the input to dial back low frequencies
+* Added a trimpot in series at the input to increase the input impedance, smoothing out the sound
+* Chose a 2N3903 and 2N3904 as replacement transistors for a moderate amount of gain.
+* Replaced the 8.2K resistor with a potentiometer to be able to adjust the "choke". Ranges from woofy and loud, through a classic Fuzz Face sound and then becomes more choked and splatty. Putting a clean boost and boosting the signal before this pedal also lets you use the choke as a noise gate.
+* Changed the output cap value and volume potentiometer
+<Disqus />
