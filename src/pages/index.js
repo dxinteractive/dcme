@@ -12,9 +12,14 @@ import Link from '../component/Link';
 import Layout from '../layout/Layout';
 import IconParcel from '../content/parcelinverted.gif';
 
+import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
+import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
+import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
+
 import FunThumbnail from '../content/fun-thumbnail.jpg';
 import HowToAssembleLegoRobotThumbnail from '../content/how-to-assemble-lego-robot-thumbnail.jpg';
 import SkateTricksThumbnail from '../content/skate-tricks-thumbnail.jpg';
+
 import BloxorzThumbnail from '../content/bloxorz-thumbnail.jpg';
 import SilversphereThumbnail from '../content/silversphere-thumbnail.jpg';
 import Electricman2Thumbnail from '../content/electricman-2-thumbnail.jpg';
@@ -25,7 +30,7 @@ export default () => {
         modifier="heightThird"
         top={() => <Text element="h1" modifier="sizeTera superDuper">damienclarke.me</Text>}
         bottom={() => <Box>
-            <Text element="p" modifier="monospace margin">Software engineer + musician + effect pedal builder + animator living in Melbourne, Australia.</Text>
+            <Text element="p" modifier="monospace margin">Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia.</Text>
             <Text element="p" modifier="monospace margin"><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>
         </Box>}
     />;
@@ -35,7 +40,7 @@ export default () => {
         <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
         <FeatureItem
             name="dataparcels"
-            url="https://dataparcels.blueflag.codes/"
+            href="https://dataparcels.blueflag.codes/"
             docs="https://dataparcels.blueflag.codes/"
             github="blueflag/dataparcels"
             npm="react-dataparcels"
@@ -44,7 +49,7 @@ export default () => {
         />
         <FeatureItem
             name="unmutable"
-            url="https://github.com/blueflag/unmutable"
+            href="https://github.com/blueflag/unmutable"
             github="blueflag/unmutable"
             npm="unmutable"
             description="An immutable, point-free, functional data collection library for plain old Javascript."
@@ -57,7 +62,7 @@ export default () => {
         <Text element="h2" modifier="sizeKilo marginKilo">Arduino libraries</Text>
         <FeatureItem
             name="ResponsiveAnalogRead"
-            url="https://github.com/dxinteractive/ResponsiveAnalogRead"
+            href="https://github.com/dxinteractive/ResponsiveAnalogRead"
             github="dxinteractive/ResponsiveAnalogRead"
             description={<Box>
                 <Text element="p" modifier="margin">Arduino library for eliminating noise in analogRead inputs without decreasing responsiveness.</Text>
@@ -68,7 +73,7 @@ export default () => {
         />
         <FeatureItem
             name="AnalogMultiButton"
-            url="https://github.com/dxinteractive/AnalogMultiButton"
+            href="https://github.com/dxinteractive/AnalogMultiButton"
             github="dxinteractive/AnalogMultiButton"
             description="Arduino library to capture multiple button presses through a single analog pin, as well as onPress and onRelease events and button press times."
             image="https://camo.githubusercontent.com/db8996b0c79daf386bbc9f6b2a99989e79d59002/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f352d616e616c6f672d6d756c74692d627574746f6e2f7468756d626e61696c2e6a7067"
@@ -76,10 +81,39 @@ export default () => {
         />
         <FeatureItem
             name="ArduinoTapTempo"
-            url="https://github.com/dxinteractive/ArduinoTapTempo"
+            href="https://github.com/dxinteractive/ArduinoTapTempo"
             github="dxinteractive/ArduinoTapTempo"
             description="An Arduino library that times consecutive button presses to calculate tempo / BPM. Corrects for missed beats and can reset phase with single taps. "
             image="https://camo.githubusercontent.com/2e7c36035ce8aae7ac0f7f145c0024192e93c76a/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f312d61726475696e6f2d7461702d74656d706f2f7468756d626e61696c2e6a7067"
+            alt
+        />
+    </Box>;
+
+    let effectsPedals = <Box modifier="paddingBottomTera">
+        <a id="effects-pedals" />
+        <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
+        <FeatureItem
+            name="Shoosh"
+            to="/effects-pedals/shoosh"
+            link="more info"
+            description={<Text>A vactrol-based voltage controlled amplifier. Original design, prototype complete. See also <Link to="/effects-pedals/posts/building-a-vactrol-vca" modifier="secondary">how to build one</Link>.</Text>}
+            image={ShooshThumbnail}
+            alt
+        />
+        <FeatureItem
+            name="Bazz Fuzz Face"
+            to="/effects-pedals/bazz-fuzz-face"
+            link="more info"
+            description="A modified clone, a silicon Fuzz Face and a Bazz Fuzz in the same box. Goes from mild grit to synthy fuzz, aggressive crunch and choked-up sputter."
+            image={BazzFuzzFaceThumbnail}
+            alt
+        />
+        <FeatureItem
+            name="DXLFO"
+            to="/effects-pedals/dxlfo"
+            link="more info"
+            description="An Arduino-controlled harmonic tremolo and dual LFO with CV outputs. Original design based partially on the Twin Peaks tremolo. Prototype abandoned"
+            image={DxlfoThumbnail}
             alt
         />
     </Box>;
@@ -141,7 +175,7 @@ export default () => {
         <FeatureStrip
             name="12gon"
             description={<Text>Hypnotic animated geometry. <HtmlLink modifier="secondary" href="http://12gon.tumblr.com">See more.</HtmlLink></Text>}
-            url="https://12gon.tumblr.com"
+            href="https://12gon.tumblr.com"
             link="12gon.tumblr.com"
             images={[
                 {
@@ -169,7 +203,7 @@ export default () => {
         <Text element="h2" modifier="sizeKilo marginKilo">Old Flash games that probably don't work anymore</Text>
         <FeatureItem
             name="Bloxorz"
-            url="https://www.albinoblacksheep.com/games/bloxorz"
+            href="https://www.albinoblacksheep.com/games/bloxorz"
             link="albinoblacksheep.com"
             description={<Box>
                 <Text element="p" modifier="margin">Bloxorz is a brain twisting puzzle game of rolling blocks and switching bridges. You'll be rolling round in circles over the course of the 33 levels.</Text>
@@ -180,7 +214,7 @@ export default () => {
         />
         <FeatureItem
             name="Silversphere"
-            url="https://www.miniclip.com/games/silversphere/en/"
+            href="https://www.miniclip.com/games/silversphere/en/"
             link="miniclip.com"
             description={<Box>
                 <Text element="p" modifier="margin">This is a puzzle game with a simple objective - get the silver sphere into the vortex in each level. However, you must make it through some fiendishly puzzling situations to get there. Finishing the game is not as easy as it may seem.</Text>
@@ -191,7 +225,7 @@ export default () => {
         />
         <FeatureItem
             name="Electricman 2"
-            url="https://www.newgrounds.com/portal/view/363447"
+            href="https://www.newgrounds.com/portal/view/363447"
             link="newgrounds.com"
             description={<Box>
                 <Text element="p" modifier="margin">Electricman is back, and is now entering one of the fiercest fist-fighting competitions in the stick man universe.</Text>
@@ -199,6 +233,9 @@ export default () => {
             image={Electricman2Thumbnail}
             alt
         />
+        <Box modifier="paddingTopKilo">
+            <Text element="p" modifier="monospace">Other more-stupid and / or less-good games include <HtmlLink href="https://www.albinoblacksheep.com/games/mindlessviolence">More Mindless Violence</HtmlLink>, <HtmlLink href="https://www.albinoblacksheep.com/games/broken-arms">Perfect Future Under Attack: Broken Arms</HtmlLink>, <HtmlLink href="https://www.albinoblacksheep.com/games/jetspeed">Jetspeed</HtmlLink> and <HtmlLink href="https://www.albinoblacksheep.com/games/missilegame3d">Missile Game 3D</HtmlLink>.</Text>
+        </Box>
     </Box>;
 
     return <Layout>
@@ -207,6 +244,7 @@ export default () => {
                 {top}
                 <PageLayout content={() => javascriptLibraries} />
                 {arduinoLibraries}
+                {effectsPedals}
                 {animation}
                 {flashGames}
             </Wrapper>

@@ -2,11 +2,12 @@
 import type {Node} from "react";
 
 import React from "react";
+import Link from './Link';
 import {Box} from 'dcme-style';
 import {Grid} from 'dcme-style';
 import {GridItem} from 'dcme-style';
 import {Image} from 'dcme-style';
-import {Link} from 'dcme-style';
+import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
 import GithubVersion from './GithubVersion';
 
@@ -20,22 +21,33 @@ type Props = {
     description?: Node,
     docs?: string,
     github?: string,
+    href?: string,
     image?: any,
     link?: string,
     name: string,
     npm?: string,
-    url: string
+    to?: string
 };
 
-export default ({alt, description, docs, github, image, link, name, npm, url}: Props): Node => {
+export default ({alt, description, docs, github, href, image, link, name, npm, to}: Props): Node => {
+
+    let ThisLink = (props) => {
+        if(href) {
+            return <HtmlLink href={href} {...props} />;
+        }
+        if(to) {
+            return <Link to={to} {...props} />;
+        }
+        return <span {...props} />;
+    };
 
     let links = pipeWith(
         [
-            <Link key="1" href={url}><Text modifier="sizeMega">{name}</Text></Link>,
-            link && <Link key="2" modifier="secondary" href={url}>{link}</Link>,
-            github && <Link key="3" modifier="secondary" href={`https://github.com/${github}`}>github</Link>,
-            docs && <Link key="4" modifier="secondary" href={docs}>docs</Link>,
-            github && npm && false && <Link key="5" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></Link>
+            <ThisLink key="1"><Text modifier="sizeMega">{name}</Text></ThisLink>,
+            link && <ThisLink key="2" modifier="secondary">{link}</ThisLink>,
+            github && <HtmlLink key="3" modifier="secondary" href={`https://github.com/${github}`}>github</HtmlLink>,
+            docs && <HtmlLink key="4" modifier="secondary" href={docs}>docs</HtmlLink>,
+            github && npm && false && <HtmlLink key="5" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></HtmlLink>
         ],
         filter(identity()),
         interpose(" | ")
@@ -51,9 +63,9 @@ export default ({alt, description, docs, github, image, link, name, npm, url}: P
                 {image &&
                     <GridItem modifier="3 padding">
                         <Box modifier="paddingTopKilo">
-                            <Link href={url}>
+                            <ThisLink>
                                 <Image src={image} />
-                            </Link>
+                            </ThisLink>
                         </Box>
                     </GridItem>
                 }
@@ -65,9 +77,9 @@ export default ({alt, description, docs, github, image, link, name, npm, url}: P
         <Grid>
             {image &&
                 <GridItem modifier="3 padding">
-                    <Link href={url}>
+                    <ThisLink>
                         <Image src={image} />
-                    </Link>
+                    </ThisLink>
                 </GridItem>
             }
             <GridItem modifier="padding">
