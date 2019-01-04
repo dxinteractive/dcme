@@ -18,6 +18,8 @@ import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
 import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
 import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
 
+import CurrawongThumbnail from '../content/currawong-thumbnail.jpg';
+
 import FunThumbnail from '../content/fun-thumbnail.jpg';
 import HowToAssembleLegoRobotThumbnail from '../content/how-to-assemble-lego-robot-thumbnail.jpg';
 import SkateTricksThumbnail from '../content/skate-tricks-thumbnail.jpg';
@@ -96,20 +98,34 @@ export default () => {
         />
     </Box>;
 
-    let mosfezBandcamp = <iframe style={{border: 0, width: '100%', height: '373px'}} src="https://bandcamp.com/EmbeddedPlayer/album=1375457729/size=large/bgcol=ffffff/linkcol=0f91ff/artwork=small/transparent=true/" seamless>
+    let mosfezEmbed = <iframe style={{border: 0, width: '100%', height: '373px'}} src="https://bandcamp.com/EmbeddedPlayer/album=1375457729/size=large/bgcol=ffffff/linkcol=0f91ff/artwork=small/transparent=true/" seamless>
         <a href="http://mosfez.bandcamp.com/album/biomes-work-in-progress">Biomes (work in progress) by mosfez</a>
     </iframe>;
+
+    let secheronPeakEmbed = <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/14070031&color=%23ff0048&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" />;
 
     let music = <Box modifier="paddingBottomTera">
         <a id="music" />
         <Text element="h2" modifier="sizeKilo marginKilo">Music</Text>
         <FeatureItem
-            name="mosfez"
+            name="Mosfez"
             href="https://instagram.com/mosfez"
             link="instagram"
+            bandcamp="http://mosfez.bandcamp.com/"
             description={<Box>
-                <Text>???</Text>
-                {mosfezBandcamp}
+                <Text element="p" modifier="margin">Mosfez is where I post new musical ideas and effects pedal updates.</Text>
+                <Text element="p" modifier="margin">Here are some preview clips from an upcoming album of songs for a game that doesn't exist, if that game were less of a game and more of an album.</Text>
+                {mosfezEmbed}
+            </Box>}
+            alt
+        />
+        <FeatureItem
+            name="Secheron Peak"
+            href="http://secheronpeak.bandcamp.com/"
+            link="bandcamp"
+            description={<Box>
+                <Text element="p" modifier="margin">Secheron Peak is an older music project. It's kind of something like dark electronic with some pretty strong post-rock tendencies.</Text>
+                {secheronPeakEmbed}
             </Box>}
             alt
         />

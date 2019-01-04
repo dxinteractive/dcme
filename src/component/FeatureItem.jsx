@@ -18,6 +18,7 @@ import pipeWith from 'unmutable/lib/pipeWith';
 
 type Props = {
     alt?: boolean,
+    bandcamp?: string,
     description?: Node,
     docs?: string,
     github?: string,
@@ -29,7 +30,7 @@ type Props = {
     to?: string
 };
 
-export default ({alt, description, docs, github, href, image, link, name, npm, to}: Props): Node => {
+export default ({alt, bandcamp, description, docs, github, href, image, link, name, npm, to}: Props): Node => {
 
     let ThisLink = (props) => {
         if(href) {
@@ -47,7 +48,8 @@ export default ({alt, description, docs, github, href, image, link, name, npm, t
             link && <ThisLink key="2" modifier="secondary">{link}</ThisLink>,
             github && <HtmlLink key="3" modifier="secondary" href={`https://github.com/${github}`}>github</HtmlLink>,
             docs && <HtmlLink key="4" modifier="secondary" href={docs}>docs</HtmlLink>,
-            github && npm && false && <HtmlLink key="5" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></HtmlLink>
+            bandcamp && <HtmlLink key="5" modifier="secondary" href={bandcamp}>bandcamp</HtmlLink>,
+            github && npm && false && <HtmlLink key="6" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></HtmlLink>
         ],
         filter(identity()),
         interpose(" | ")
@@ -60,15 +62,15 @@ export default ({alt, description, docs, github, href, image, link, name, npm, t
                     <Text element="div" modifier="margin monospace">{links}</Text>
                     {description && <Text element="div" modifier="margin monospace">{description}</Text>}
                 </GridItem>
-                {image &&
-                    <GridItem modifier="3 padding">
+                <GridItem modifier="3 padding">
+                    {image &&
                         <Box modifier="paddingTopKilo">
                             <ThisLink>
                                 <Image src={image} />
                             </ThisLink>
                         </Box>
-                    </GridItem>
-                }
+                    }
+                </GridItem>
             </Grid>
         </Box>;
     }

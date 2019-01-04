@@ -25,6 +25,9 @@ export default () => <Box modifier="paddingTopMega">
             <Link to="/#effects-pedals">Effects pedals</Link>
         </NavigationListItem>
         <NavigationListItem>
+            <Link to="/#music">Music</Link>
+        </NavigationListItem>
+        <NavigationListItem>
             <Link to="/#arduino-libraries">Arduino libs</Link>
         </NavigationListItem>
         <NavigationListItem>
