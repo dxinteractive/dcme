@@ -14,7 +14,7 @@ import DataparcelsThumbnail from '../content/dataparcels-thumbnail.gif';
 import UnmutableThumbnail from '../content/unmutable-thumbnail.gif';
 
 import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
-//import Blend2Thumbnail from '../content/dxlfo-thumbnail.jpg';
+import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
 import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
 import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
 
@@ -62,14 +62,14 @@ export default () => {
     let effectsPedals = <Box modifier="paddingBottomTera">
         <a id="effects-pedals" />
         <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
-        {/*<FeatureItem
+        <FeatureItem
             name="Blend2"
             to="/effects-pedals/blend2"
             link="more info"
-            description={<Text>A microprocessor-controlled parallel effects loop blender. Original design, prototype complete.</Text>}
+            description="A microprocessor-controlled parallel effects loop blender. Original design, prototype complete."
             image={Blend2Thumbnail}
             alt
-        />*/}
+        />
         <FeatureItem
             name="Shoosh"
             to="/effects-pedals/shoosh"
@@ -92,6 +92,25 @@ export default () => {
             link="more info"
             description="An Arduino-controlled harmonic tremolo and dual LFO with CV outputs. Original design based partially on the Twin Peaks tremolo. Prototype abandoned."
             image={DxlfoThumbnail}
+            alt
+        />
+    </Box>;
+
+    let mosfezBandcamp = <iframe style={{border: 0, width: '100%', height: '373px'}} src="https://bandcamp.com/EmbeddedPlayer/album=1375457729/size=large/bgcol=ffffff/linkcol=0f91ff/artwork=small/transparent=true/" seamless>
+        <a href="http://mosfez.bandcamp.com/album/biomes-work-in-progress">Biomes (work in progress) by mosfez</a>
+    </iframe>;
+
+    let music = <Box modifier="paddingBottomTera">
+        <a id="music" />
+        <Text element="h2" modifier="sizeKilo marginKilo">Music</Text>
+        <FeatureItem
+            name="mosfez"
+            href="https://instagram.com/mosfez"
+            link="instagram"
+            description={<Box>
+                <Text>???</Text>
+                {mosfezBandcamp}
+            </Box>}
             alt
         />
     </Box>;
@@ -254,6 +273,7 @@ export default () => {
                 {top}
                 <PageLayout content={() => javascriptLibraries} />
                 {effectsPedals}
+                {music}
                 {arduinoLibraries}
                 {animation}
                 {flashGames}
