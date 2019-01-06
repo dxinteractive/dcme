@@ -287,7 +287,7 @@ export default () => {
         <Box modifier="invertedCopy invertedBackground">
             <Wrapper>
                 {top}
-                <PageLayout content={() => javascriptLibraries} />
+                <PageLayout content={() => javascriptLibraries} navFirst />
                 {effectsPedals}
                 {music}
                 {arduinoLibraries}

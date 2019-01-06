@@ -50,6 +50,12 @@ html.defaultBackground, body.defaultBackground {
             display: block !important;
         }
     }
+    &-icon {
+        max-height: 12rem;
+        @include BruceBreakpoint('large') {
+            max-height: 999rem;
+        }
+    }
 }
 @include DcmeImageThumbnail;
 @include DcmeInput;
@@ -66,7 +72,13 @@ html.defaultBackground, body.defaultBackground {
 @include DcmeTerminal;
 @include DcmeText {
     &-superDuper {
-        text-shadow: -6px 6px 0px #2f529b, -12px 12px 0px #11273f;
+        text-shadow: -3px 3px 0px #2f529b, -6px 6px 0px #11273f;
+    }
+
+    @include BruceBreakpoint('small') {
+        &-superDuper {
+            text-shadow: -6px 6px 0px #2f529b, -12px 12px 0px #11273f;
+        }
     }
 }
 @include DcmeTypography;

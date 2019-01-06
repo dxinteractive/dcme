@@ -52,7 +52,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
             github && npm && false && <HtmlLink key="6" modifier="secondary" href={`https://www.npmjs.com/package/${npm}`}><GithubVersion repo={github} /></HtmlLink>
         ],
         filter(identity()),
-        interpose(" | ")
+        interpose(<span> |{'\u00A0'}</span>)
     );
 
     if(alt) {
@@ -66,7 +66,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
                     {image &&
                         <Box modifier="paddingTopKilo">
                             <ThisLink>
-                                <Image src={image} />
+                                <Image src={image} modifier="center" />
                             </ThisLink>
                         </Box>
                     }
@@ -80,7 +80,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
             {image &&
                 <GridItem modifier="3 padding">
                     <ThisLink>
-                        <Image src={image} />
+                        <Image src={image} modifier="center icon" />
                     </ThisLink>
                 </GridItem>
             }

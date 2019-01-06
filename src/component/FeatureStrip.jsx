@@ -50,7 +50,7 @@ export default ({description, href, images, link, name}: Props): Node => {
     return <Box modifier="paddingBottomGiga">
         <Text element="div" modifier="margin monospace">
             {href ? <HtmlLink href={href}><Text modifier="sizeMega">{name}</Text></HtmlLink> : <Text modifier="sizeMega primary">{name}</Text>}
-            {link && <Text> | <HtmlLink href={href} modifier="secondary">{link}</HtmlLink></Text>}
+            {link && <Text> |{'\u00A0'}<HtmlLink href={href} modifier="secondary">{link}</HtmlLink></Text>}
         </Text>
         {description && <Text element="div" modifier="margin monospace">{description}</Text>}
         <Grid>
