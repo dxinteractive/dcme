@@ -18,7 +18,9 @@ import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
 import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
 import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
 
-import CurrawongThumbnail from '../content/currawong-thumbnail.jpg';
+import ResponsiveAnalogReadThumbnail from '../content/responsive-analog-read-thumbnail.jpg';
+import AnalogMultiButtonThumbnail from '../content/analog-multi-button-thumbnail.jpg';
+import ArduinoTapTempoThumbnail from '../content/arduino-tap-tempo-thumbnail.jpg';
 
 import FunThumbnail from '../content/fun-thumbnail.jpg';
 import HowToAssembleLegoRobotThumbnail from '../content/how-to-assemble-lego-robot-thumbnail.jpg';
@@ -142,7 +144,7 @@ export default () => {
                 <Text element="p" modifier="margin">Arduino library for eliminating noise in analogRead inputs without decreasing responsiveness.</Text>
                 <Text element="p" modifier="emphasis primary">Version 2 is almost ready!</Text>
             </Box>}
-            image="https://camo.githubusercontent.com/a140bd72365ddfd53a7ba52ff947d09e5d7ac29f/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f332d726573706f6e736976652d616e616c6f672d726561642f7468756d626e61696c2e6a7067"
+            image={ResponsiveAnalogReadThumbnail}
             alt
         />
         <FeatureItem
@@ -150,7 +152,7 @@ export default () => {
             href="https://github.com/dxinteractive/AnalogMultiButton"
             github="dxinteractive/AnalogMultiButton"
             description="Arduino library to capture multiple button presses through a single analog pin, as well as onPress and onRelease events and button press times."
-            image="https://camo.githubusercontent.com/db8996b0c79daf386bbc9f6b2a99989e79d59002/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f352d616e616c6f672d6d756c74692d627574746f6e2f7468756d626e61696c2e6a7067"
+            image={AnalogMultiButtonThumbnail}
             alt
         />
         <FeatureItem
@@ -158,7 +160,7 @@ export default () => {
             href="https://github.com/dxinteractive/ArduinoTapTempo"
             github="dxinteractive/ArduinoTapTempo"
             description="An Arduino library that times consecutive button presses to calculate tempo / BPM. Corrects for missed beats and can reset phase with single taps. "
-            image="https://camo.githubusercontent.com/2e7c36035ce8aae7ac0f7f145c0024192e93c76a/687474703a2f2f64616d69656e636c61726b652e6d652f636f6e74656e742f312d636f64652f312d61726475696e6f2d7461702d74656d706f2f7468756d626e61696c2e6a7067"
+            image={ArduinoTapTempoThumbnail}
             alt
         />
     </Box>;
