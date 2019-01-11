@@ -19,7 +19,7 @@ export default () => <Box modifier="paddingTopMega">
     </NavigationList>
     <NavigationList modifier="margin">
         <NavigationListItem>
-            <Link to="/#javascript-libraries">Javascript libs</Link>
+            <Link to="/#javascript-libraries">Javascript libraries</Link>
         </NavigationListItem>
         <NavigationListItem>
             <Link to="/#effects-pedals">Effects pedals</Link>
@@ -28,7 +28,7 @@ export default () => <Box modifier="paddingTopMega">
             <Link to="/#music">Music</Link>
         </NavigationListItem>
         <NavigationListItem>
-            <Link to="/#arduino-libraries">Arduino libs</Link>
+            <Link to="/#arduino-libraries">Arduino libraries</Link>
         </NavigationListItem>
         <NavigationListItem>
             <Link to="/#animation">Animation</Link>

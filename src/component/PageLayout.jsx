@@ -14,13 +14,15 @@ type Props = {
 export default ({content, nav, navFirst}: Props): Node => {
     if(navFirst) {
         return <Grid>
-            <GridItem modifier="3 padding push9">
-                <Box modifier="paddingBottomMega">
-                    <SiteNavigation />
+            <GridItem modifier="3 push9">
+                <Box modifier="paddingLeft">
+                    <Box modifier="paddingBottomMega">
+                        <SiteNavigation />
+                    </Box>
                 </Box>
                 {nav && nav()}
             </GridItem>
-            <GridItem modifier="9 padding pull3">
+            <GridItem modifier="9 pull3">
                 {content()}
             </GridItem>
         </Grid>;

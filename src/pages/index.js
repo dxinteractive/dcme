@@ -2,6 +2,8 @@
 import React from 'react';
 import {Box} from 'dcme-style';
 import {CenteredLanding} from 'dcme-style';
+import {Grid} from 'dcme-style';
+import {GridItem} from 'dcme-style';
 import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
 import {Wrapper} from 'dcme-style';
@@ -36,7 +38,12 @@ export default () => {
         modifier="heightThird"
         top={() => <Text element="h1" modifier="sizeTera superDuper">damienclarke.me</Text>}
         bottom={() => <Box>
-            <Text element="p" modifier="monospace margin">Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia.</Text>
+            <Grid>
+                <GridItem modifier="10">
+                    <Text element="p" modifier="monospace margin ">Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia.</Text>
+                </GridItem>
+                <GridItem modifier="2"/>
+            </Grid>
             <Text element="p" modifier="monospace margin"><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>
         </Box>}
     />;
