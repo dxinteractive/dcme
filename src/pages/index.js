@@ -62,7 +62,8 @@ export default () => {
         />
         <FeatureItem
             name="unmutable"
-            href="https://github.com/blueflag/unmutable"
+            href="https://unmutable.blueflag.codes/"
+            docs="https://unmutable.blueflag.codes/"
             github="blueflag/unmutable"
             npm="unmutable"
             description="An immutable, point-free, functional data collection library for plain old Javascript."
