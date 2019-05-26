@@ -1,9 +1,22 @@
 // @flow
 import React from 'react';
-import MarkdownPage from '../../../component/MarkdownPage';
+import Layout from 'layout/Layout';
 import Markdown from './building-a-vactrol-vca.mdx';
+import ContentNav from 'shape/ContentNav';
 
-export default () => <MarkdownPage
+export default () => <Layout
     title="Building a Vactrol VCA"
-    markdown={Markdown}
-/>;
+    modifier="defaultBackground"
+>
+    <ContentNav
+        content={() => <Markdown />}
+        pageNav={[
+            '# Building a Vactrol VCA',
+            'The amplifier',
+            'The vactrol',
+            'The transconductance amplifier',
+            'Other notes',
+            'A finished build'
+        ]}
+    />
+</Layout>;

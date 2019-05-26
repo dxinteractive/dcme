@@ -1,19 +1,19 @@
 // @flow
 import React from 'react';
+import {Anchor} from 'dcme-style';
 import {Box} from 'dcme-style';
-import {CenteredLanding} from 'dcme-style';
-import {Grid} from 'dcme-style';
-import {GridItem} from 'dcme-style';
+import {DocsHeader} from 'dcme-style';
 import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
-import {Wrapper} from 'dcme-style';
-import PageLayout from '../component/PageLayout';
+
+import ContentNav from 'shape/ContentNav';
 import FeatureItem from '../component/FeatureItem';
 import FeatureStrip from '../component/FeatureStrip';
 import Link from '../component/Link';
 import Layout from '../layout/Layout';
 import DataparcelsThumbnail from '../content/dataparcels-thumbnail.gif';
 import UnmutableThumbnail from '../content/unmutable-thumbnail.gif';
+import ReactCoolStorageThumbnail from '../content/react-cool-storage-thumbnail.gif';
 
 import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
 import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
@@ -34,22 +34,8 @@ import Electricman2Thumbnail from '../content/electricman-2-thumbnail.jpg';
 
 export default () => {
 
-    let top = <CenteredLanding
-        modifier="heightThird"
-        top={() => <Text element="h1" modifier="sizeTera superDuper">damienclarke.me</Text>}
-        bottom={() => <Box>
-            <Grid>
-                <GridItem modifier="10">
-                    <Text element="p" modifier="monospace margin ">Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia.</Text>
-                </GridItem>
-                <GridItem modifier="2"/>
-            </Grid>
-            <Text element="p" modifier="monospace margin"><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>
-        </Box>}
-    />;
-
     let javascriptLibraries = <Box modifier="paddingBottomTera">
-        <a id="javascript-libraries" />
+        <Anchor name="Javascript libraries" />
         <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
         <FeatureItem
             name="dataparcels"
@@ -69,10 +55,19 @@ export default () => {
             description="An immutable, point-free, functional data collection library for plain old Javascript."
             image={UnmutableThumbnail}
         />
+        <FeatureItem
+            name="react-cool-storage"
+            href="https://react-cool-storage.blueflag.codes/"
+            docs="https://react-cool-storage.blueflag.codes/"
+            github="blueflag/react-cool-storage"
+            npm="react-cool-storage"
+            description="React hooks and hocs with a common API for storing state outside of React. Query string, local storage etc."
+            image={ReactCoolStorageThumbnail}
+        />
     </Box>;
 
     let effectsPedals = <Box modifier="paddingBottomTera">
-        <a id="effects-pedals" />
+        <Anchor name="Effects pedals" />
         <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
         <FeatureItem
             name="Blend2"
@@ -115,7 +110,7 @@ export default () => {
     let secheronPeakEmbed = <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/14070031&color=%23ff0048&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" />;
 
     let music = <Box modifier="paddingBottomTera">
-        <a id="music" />
+        <Anchor name="Music" />
         <Text element="h2" modifier="sizeKilo marginKilo">Music</Text>
         <FeatureItem
             name="Mosfez"
@@ -142,7 +137,7 @@ export default () => {
     </Box>;
 
     let arduinoLibraries = <Box modifier="paddingBottomTera">
-        <a id="arduino-libraries" />
+        <Anchor name="Arduino libraries" />
         <Text element="h2" modifier="sizeKilo marginKilo">Arduino libraries</Text>
         <FeatureItem
             name="ResponsiveAnalogRead"
@@ -174,7 +169,7 @@ export default () => {
     </Box>;
 
     let animation = <Box modifier="paddingBottomTera">
-        <a id="animation" />
+        <Anchor name="Animation" />
         <Text element="h2" modifier="sizeKilo marginKilo">Animation</Text>
         <FeatureStrip
             name="Loopdeloop submissions"
@@ -254,7 +249,7 @@ export default () => {
     </Box>;
 
     let flashGames = <Box modifier="paddingBottomTera">
-        <a id="flash-games" />
+        <Anchor name="Old Flash Games" />
         <Text element="h2" modifier="sizeKilo marginKilo">Old Flash games that probably don't work anymore</Text>
         <FeatureItem
             name="Bloxorz"
@@ -294,16 +289,47 @@ export default () => {
     </Box>;
 
     return <Layout>
-        <Box modifier="invertedCopy invertedBackground">
-            <Wrapper>
-                {top}
-                <PageLayout content={() => javascriptLibraries} navFirst />
+        <DocsHeader
+            title={() => <Text element="h1" modifier="sizeTera superDuper margin">damienclarke.me</Text>}
+            description={() => "Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia."}
+            links={() => <Text><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>}
+        />
+        <ContentNav
+            modifier="inverted"
+            content={() => <>
+                {javascriptLibraries}
                 {effectsPedals}
                 {music}
                 {arduinoLibraries}
                 {animation}
                 {flashGames}
-            </Wrapper>
-        </Box>
+            </>}
+            pageNav={[
+                '# Javascript libraries',
+                'dataparcels',
+                'unmutable',
+                'react-cool-storage',
+                '# Effects pedals',
+                'Blend2',
+                'Shoosh',
+                'Bazz Fuzz Face',
+                'DXLFO',
+                '# Music',
+                'Mosfez',
+                'Secheron Peak',
+                '# Arduino libraries',
+                'ResponsiveAnalogRead',
+                'AnalogMultiButton',
+                'ArduinoTapTempo',
+                '# Animation',
+                'Loopdeloop Submissions',
+                'Shorts and infographics',
+                '12gon',
+                '# Old Flash Games',
+                'Bloxorz',
+                'Silversphere',
+                'Electricman 2'
+            ]}
+        />
     </Layout>;
 };

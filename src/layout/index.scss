@@ -17,39 +17,15 @@ html.defaultBackground, body.defaultBackground {
     background-color: #ffffff;
 }
 
-@include DcmeBox {
-    &-example {
-        margin-left: -2rem;
-        margin-right: -2rem;
-    }
-    &-exampleInner {
-        border: 2px dashed grey(90);
-        padding: 2rem;
-    }
-}
+@include DcmeBox;
 @include DcmeBulletList;
 @include DcmeButton;
 @include DcmeCenteredLanding;
+@include DcmeContentNav;
 @include DcmeDivider;
+@include DcmeDocsHeader;
 @include DcmeGrid;
 @include DcmeImage {
-    &-logo {
-        @include BruceBreakpoint('small') {
-            margin-top: -50%;
-        }
-    }
-    &-apiPageIcon {
-        display: none !important;
-        float: right;
-        width: 30%;
-        margin-top: -2rem;
-        margin-bottom: 0;
-        margin-left: 1rem;
-
-        @include BruceBreakpoint('large') {
-            display: block !important;
-        }
-    }
     &-icon {
         max-height: 12rem;
         @include BruceBreakpoint('large') {
@@ -63,9 +39,7 @@ html.defaultBackground, body.defaultBackground {
 @include DcmeLabel;
 @include DcmeLoader;
 @include DcmeMessage;
-@include DcmeNavigationList {
-    padding-top: 0;
-}
+@include DcmeNavigationList;
 @include DcmeOrderedList;
 @include DcmeResponsiveBox;
 @include DcmeTable;

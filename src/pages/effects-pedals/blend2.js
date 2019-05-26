@@ -1,9 +1,20 @@
 // @flow
 import React from 'react';
-import MarkdownPage from '../../component/MarkdownPage';
+import Layout from 'layout/Layout';
 import Markdown from './blend2.mdx';
+import ContentNav from 'shape/ContentNav';
 
-export default () => <MarkdownPage
+export default () => <Layout
     title="Blend2"
-    markdown={Markdown}
-/>;
+    modifier="defaultBackground"
+>
+    <ContentNav
+        content={() => <Markdown />}
+        pageNav={[
+            '# Blend2',
+            'Blend2 schematic',
+            'Blend2 veroboard layout',
+            'Blend2 control schematic'
+        ]}
+    />
+</Layout>;
