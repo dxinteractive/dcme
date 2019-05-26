@@ -1,9 +1,20 @@
 // @flow
 import React from 'react';
-import MarkdownPage from '../../component/MarkdownPage';
+import Layout from 'layout/Layout';
 import Markdown from './bazz-fuzz-face.mdx';
+import ContentNav from 'shape/ContentNav';
 
-export default () => <MarkdownPage
+export default () => <Layout
     title="Bazz Fuzz Face"
-    markdown={Markdown}
-/>;
+    modifier="defaultBackground"
+>
+    <ContentNav
+        content={() => <Markdown />}
+        pageNav={[
+            '# Bazz Fuzz Face',
+            'Bazz Fuzz Face Schematic',
+            'Bazz Fuss',
+            'Fuzz Face'
+        ]}
+    />
+</Layout>;

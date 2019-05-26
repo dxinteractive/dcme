@@ -3,6 +3,7 @@ import type {Node} from "react";
 
 import React from "react";
 import Link from './Link';
+import {Anchor} from 'dcme-style';
 import {Box} from 'dcme-style';
 import {Grid} from 'dcme-style';
 import {GridItem} from 'dcme-style';
@@ -57,6 +58,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
 
     if(alt) {
         return <Box modifier="paddingBottom">
+            <Anchor name={name} />
             <Grid>
                 <GridItem modifier="padding">
                     <Text element="div" modifier="margin monospace">{links}</Text>
@@ -76,6 +78,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
     }
 
     return <Box modifier="paddingBottom">
+        <Anchor name={name} />
         <Grid>
             {image &&
                 <GridItem modifier="3 padding">

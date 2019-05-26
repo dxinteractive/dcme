@@ -1,9 +1,19 @@
 // @flow
 import React from 'react';
-import MarkdownPage from '../../component/MarkdownPage';
+import Layout from 'layout/Layout';
 import Markdown from './shoosh.mdx';
+import ContentNav from 'shape/ContentNav';
 
-export default () => <MarkdownPage
+export default () => <Layout
     title="Shoosh"
-    markdown={Markdown}
-/>;
+    modifier="defaultBackground"
+>
+    <ContentNav
+        content={() => <Markdown />}
+        pageNav={[
+            '# Shoosh',
+            'Shoosh schematic',
+            'Shoosh veroboard layout'
+        ]}
+    />
+</Layout>;
