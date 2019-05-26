@@ -3917,10 +3917,10 @@ dcme-style@^0.27.1:
     stampy "^0.43.3"
     unmutable "^0.29.2"
 
-dcme-style@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.yarnpkg.com/dcme-style/-/dcme-style-0.27.2.tgz#e980a45ca6915d537f6d92105129dbde30e9f89f"
-  integrity sha512-urwB8RHSQ4jDO+8N6WmM+7dkRBzQUvpKkAU/a9DKKYdJOuJypyrBWe7GDXZ9jWE/wQgpnHr2TlueawpACRHQ2Q==
+dcme-style@^0.27.3:
+  version "0.27.3"
+  resolved "https://registry.yarnpkg.com/dcme-style/-/dcme-style-0.27.3.tgz#fbb8deb0a7ed3e1cef9dff482abfdf5bc23d68bc"
+  integrity sha512-oOOsYx/6X9RjOfOg7orJ7xJD8nysxUl11d9ODKWagekp2Pjwb+2lKzk84Zowm5Er+znnJm+s6NbUxi39pgAQug==
   dependencies:
     prismjs "1.15.0"
     react "^16.8.6"

@@ -5,7 +5,7 @@
   "author": "Damien Clarke <dxinteractive@gmail.com>",
   "dependencies": {
     "dcme-gatsby": "^0.4.2",
-    "dcme-style": "^0.27.2",
+    "dcme-style": "^0.27.3",
     "gatsby": "^2.0.19",
     "gh-pages": "^1.1.0",
     "unmutable": "^0.45.1"

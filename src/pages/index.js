@@ -3,10 +3,10 @@ import React from 'react';
 import {Anchor} from 'dcme-style';
 import {Box} from 'dcme-style';
 import {DocsHeader} from 'dcme-style';
+import {ContentNav} from 'dcme-style';
 import {Link as HtmlLink} from 'dcme-style';
 import {Text} from 'dcme-style';
 
-import ContentNav from 'shape/ContentNav';
 import FeatureItem from '../component/FeatureItem';
 import FeatureStrip from '../component/FeatureStrip';
 import Link from '../component/Link';
@@ -290,6 +290,7 @@ export default () => {
 
     return <Layout>
         <DocsHeader
+            height="heightThird"
             title={() => <Text element="h1" modifier="sizeTera superDuper margin">damienclarke.me</Text>}
             description={() => "Software engineer + musician + effects pedal builder + animator living in Melbourne, Australia."}
             links={() => <Text><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>}
