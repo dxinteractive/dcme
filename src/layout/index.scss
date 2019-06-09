@@ -17,6 +17,7 @@ html.defaultBackground, body.defaultBackground {
     background-color: #ffffff;
 }
 
+@include DcmeAppFrame;
 @include DcmeBox;
 @include DcmeBulletList;
 @include DcmeButton;
