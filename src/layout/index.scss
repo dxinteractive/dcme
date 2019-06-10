@@ -3,6 +3,12 @@
 @include BruceBoxSizing;
 @import '~dcme-style/lib/all';
 
+$bruce-zindex: (
+    'Select',
+    'Dropdown',
+    'Overlay'
+);
+
 $primary: #ff0048;
 $secondary: #527fd7;
 
