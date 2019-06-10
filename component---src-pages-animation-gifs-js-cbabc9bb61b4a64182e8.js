@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{72:function(e,n,t){"use strict";var u=t(1);Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var a=u(t(0));n.default=function(){return a.default.createElement("p",null,"...")}}}]);
-//# sourceMappingURL=component---src-pages-animation-gifs-js-cbabc9bb61b4a64182e8.js.map
