@@ -3,6 +3,12 @@
 @include BruceBoxSizing;
 @import '~dcme-style/lib/all';
 
+$bruce-zindex: (
+    'Select',
+    'Dropdown',
+    'Overlay'
+);
+
 $primary: #ff0048;
 $secondary: #527fd7;
 
@@ -17,6 +23,7 @@ html.defaultBackground, body.defaultBackground {
     background-color: #ffffff;
 }
 
+@include DcmeAppFrame;
 @include DcmeBox;
 @include DcmeBulletList;
 @include DcmeButton;

@@ -3,6 +3,7 @@ import type {Node} from "react";
 
 import React from "react";
 import {Fragment} from "react";
+import {Anchor} from 'dcme-style';
 import {Box} from 'dcme-style';
 import {Grid} from 'dcme-style';
 import {GridItem} from 'dcme-style';
@@ -48,6 +49,7 @@ type Props = {
 
 export default ({description, href, images, link, name}: Props): Node => {
     return <Box modifier="paddingBottomGiga">
+        <Anchor name={name} />
         <Text element="div" modifier="margin monospace">
             {href ? <HtmlLink href={href}><Text modifier="sizeMega">{name}</Text></HtmlLink> : <Text modifier="sizeMega primary">{name}</Text>}
             {link && <Text> |{'\u00A0'}<HtmlLink href={href} modifier="secondary">{link}</HtmlLink></Text>}

@@ -1,9 +1,23 @@
 // @flow
 import React from 'react';
-import MarkdownPage from '../../component/MarkdownPage';
+import Layout from 'layout/Layout';
 import Markdown from './loopdeloop.mdx';
+import ContentNav from 'shape/ContentNav';
 
-export default () => <MarkdownPage
-    title="Gravel is fun"
-    markdown={Markdown}
-/>;
+export default () => <Layout
+    title="Loopdeloop submissions"
+    modifier="defaultBackground"
+>
+    <ContentNav
+        content={() => <Markdown />}
+        pageNav={[
+            '# Loopdeloop submissions',
+            'Dog',
+            'Mad',
+            'Dance',
+            'Fun',
+            'Idiots',
+            'Light'
+        ]}
+    />
+</Layout>;

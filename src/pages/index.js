@@ -323,7 +323,7 @@ export default () => {
                 'AnalogMultiButton',
                 'ArduinoTapTempo',
                 '# Animation',
-                'Loopdeloop Submissions',
+                'Loopdeloop submissions',
                 'Shorts and infographics',
                 '12gon',
                 '# Old Flash Games',
