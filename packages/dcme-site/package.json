@@ -1,7 +1,7 @@
 {
   "name": "dcme-site",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Website time",
   "author": "Damien Clarke",
   "license": "MIT",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "bruce": "^5.0.2",
-    "dcme-gatsby": "^1.0.3",
-    "dcme-style": "^1.1.2",
+    "dcme-gatsby": "^1.0.4",
+    "dcme-style": "^1.1.3",
     "gatsby": "^2.16.5",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "gatsby-plugin-resolve-src": "^2.0.0",
