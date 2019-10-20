@@ -1,0 +1,56 @@
+@mixin DcmeCenteredLanding($name: 'CenteredLanding') {
+    .#{$name} {
+        width: 100%;
+
+        &_topContainer {
+            min-height: 12rem;
+            position: relative;
+            width: 100%;
+
+            @include BruceBreakpoint('medium') {
+                height: 50vh;
+
+                &-heightHalf {
+                    height: 30vh;
+                }
+
+                &-heightThird {
+                    height: 30vh;
+                }
+            }
+        }
+
+        &_top {
+            left: 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        &_bottom {
+            min-height: 75vh;
+
+            &-heightHalf {
+                min-height: 25vh;
+            }
+
+            &-heightThird {
+                min-height: 20vh;
+            }
+
+            @include BruceBreakpoint('medium') {
+                min-height: 40vh;
+
+                &-heightHalf {
+                    min-height: 30vh;
+                }
+
+                &-heightThird {
+                    min-height: 20vh;
+                }
+            }
+        }
+
+        @content;
+    }
+}

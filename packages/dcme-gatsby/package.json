@@ -1,0 +1,44 @@
+{
+  "name": "dcme-gatsby",
+  "version": "1.0.3",
+  "description": "A gatsby setup for my websites",
+  "main": "src/index.js",
+  "license": "MIT",
+  "author": "Damien Clarke",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxinteractive/dcme-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dxinteractive/dcme-kit/issues"
+  },
+  "private": false,
+  "scripts": {
+    "flow": "blueflag-test flow",
+    "flow-coverage": "blueflag-test flow-coverage",
+    "lint": "blueflag-test lint",
+    "test-all": "yarn flow && yarn lint && yarn flow-coverage"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^1.5.0",
+    "@mdx-js/mdx": "^1.1.0",
+    "@mdx-js/react": "^1.0.27",
+    "blueflag-test": "^0.22.0",
+    "gatsby": "^2.16.5",
+    "gatsby-plugin-compile-es6-packages": "^2.1.0",
+    "gatsby-plugin-flow": "^1.1.2",
+    "gatsby-plugin-mdx": "^1.0.52",
+    "gatsby-plugin-resolve-src": "^2.0.0",
+    "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-remark-prismjs": "^3.3.4",
+    "gatsby-source-filesystem": "^2.1.6",
+    "gatsby-transformer-remark": "^2.6.6",
+    "prismjs": "^1.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-spruce": "^0.1.0",
+    "rehype-slug": "^2.0.3",
+    "remark-external-links": "^5.0.0"
+  }
+}

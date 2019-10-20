@@ -1,0 +1,208 @@
+@mixin DcmeSelectButton() {
+    @include BruceSize(2rem);
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: color('copy');
+    padding: 0 .5rem;
+    line-height: 2.1rem;
+}
+
+@mixin DcmeSelect($name: 'Select') {
+    .#{$name} {
+        position: relative;
+        display: inline-block;
+        color: color('copy');
+        font-family: font('monospace');
+        font-size: .9rem;
+        vertical-align: middle;
+        line-height: 1.9rem;
+        padding-bottom: .2rem;
+        text-align: left;
+
+        &-control {
+            background-color: color('background');
+            border: 1px solid color('line');
+            overflow: hidden;
+            padding: .125rem .5rem;
+            padding-right: 1.9rem;
+            position: relative;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &-value {
+            display: inline;
+            width: 100%;
+        }
+
+        &-value-label {
+            width: 100%;
+        }
+
+        &-input {
+            display: inline;
+            padding: 0 .5rem;
+
+            > input {
+                -webkit-appearance: none;
+                background: none transparent;
+                border: 0 none;
+                cursor: default;
+                display: inline-block;
+                font-family: inherit;
+                font-size: inherit;
+                margin: 0;
+                outline: none;
+                padding: 0;
+            }
+        }
+
+        &-placeholder {
+            color: color('placeholder');
+            left: .75rem;
+            max-width: 100%;
+            overflow: hidden;
+            position: absolute;
+            right: 1rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &-multi-value-wrapper {
+            width: 100%;
+            display: block;
+        }
+
+        &--multi {
+            .Select-control {
+                padding: .125rem .25rem;
+                white-space: normal;
+            }
+
+            .Select-value {
+                background-color: color('primary');
+                color: color('white');
+                display: inline-block;
+                font-weight: 700;
+                margin: .125rem;
+                padding: 0 .5rem;
+                width: auto;
+            }
+
+
+            .Select-value-label {
+                width: auto;
+            }
+        }
+
+        &-value-icon {
+            color: transparent;
+            @include BruceSize(12px);
+            float: right;
+            margin-left: 0.5rem;
+
+            &:before {
+                color: color('background');
+                content: '\d7';
+            }
+        }
+
+        &.has-value {
+            .Select-placeholder {
+                color: grey(40);
+            }
+        }
+
+        &.is-focused:not(.is-open) {
+            > .Select-control {
+                border-color: color('primary');
+            }
+        }
+
+        &-arrow:before {
+            content: '\2304';
+        }
+
+        &-arrow-zone {
+            position: absolute;
+            right: .6rem;
+            top: -.1rem;
+        }
+
+        &-menu-outer {
+            background-color: color('background');
+            border: 1px solid color('line');
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+            box-sizing: border-box;
+            margin-top: -4px;
+            max-height: 200px;
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            z-index: zindex('Select');
+            -webkit-overflow-scrolling: touch;
+        }
+
+        &-menu {
+            max-height: 198px;
+            overflow-y: auto;
+        }
+
+        &-short {
+            .Select-menu-outer {
+                max-height: 100px;
+            }
+
+            .Select-menu {
+                max-height: 98px;
+            }
+        }
+
+
+        &-noresults,
+        &-option {
+            cursor: pointer;
+            display: block;
+            padding: .25rem .5rem;
+
+            &.is-focused {
+                background-color: color('primaryBackground');
+            }
+
+            &.is-disabled {
+                color: color('placeholder');
+            }
+        }
+
+        &_arrow {
+            @include DcmeSelectButton;
+            color: color('copy');
+            padding: 0 .5rem;
+            line-height: 2.1rem;
+        }
+
+        &_clear {
+            @include DcmeSelectButton;
+            color: color('copy');
+            padding: 0 .5rem;
+            line-height: 2.1rem;
+            right: 1.5rem;
+        }
+
+        &-aria-only {
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            width: 1px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @content;
+    }
+}

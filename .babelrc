@@ -1,9 +1,0 @@
-{
-    "presets": [
-        ["blueflag", {"browser": true, "library": true}]
-    ],
-    "ignore": [
-        "lib/*"
-    ],
-    "plugins": ["@babel/plugin-syntax-dynamic-import"]
-}

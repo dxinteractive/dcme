@@ -1,0 +1,50 @@
+@mixin DcmeToggle($name: 'Toggle') {
+    .#{$name} {
+        border: 1px solid color('line');
+        color: currentColor;
+        cursor: pointer;
+        font-family: font('monospace');
+        font-size: .9rem;
+        padding: .3rem .8rem;
+
+        &-onOff {
+            min-width: 3.5rem;
+
+            &:after {
+               content: "off";
+               outline: 0;
+            }
+
+            &.#{$name}-active {
+                &:after {
+                   content: "on";
+                }
+            }
+        }
+
+        &-checkbox {
+            &:after {
+               content: " [ ]";
+               outline: 0;
+            }
+
+            &.#{$name}-active {
+                &:after {
+                   content: " [x]";
+                }
+            }
+        }
+
+        &:focus,
+        &:active {
+            border-color: color('primary');
+            outline: 0;
+        }
+
+        &::-moz-focus-inner {
+            border: 0;
+        }
+
+        @content;
+    }
+}

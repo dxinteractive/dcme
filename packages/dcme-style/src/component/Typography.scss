@@ -1,0 +1,187 @@
+
+
+@mixin DcmeTypography($name: 'Typography') {
+    .#{$name} {
+        a {
+            @extend .Link;
+        }
+
+        blockquote {
+            @extend .Text;
+            @extend .Text-blockquote;
+        }
+
+        code {
+            @extend .Text;
+            @extend .Text-code;
+
+            &.language-js,
+            &.language-jsx {
+                background: none;
+            }
+        }
+
+        em {
+            @extend .Text;
+            @extend .Text-emphasis;
+        }
+
+        h1 {
+            @extend .Text;
+            @extend .Text-sizeGiga;
+            @extend .Text-marginGiga;
+        }
+
+        h2 {
+            @extend .Text;
+            @extend .Text-sizeMega;
+            @extend .Text-marginMega;
+        }
+
+        * + h2 {
+            margin-top: 4rem;
+        }
+
+        h1 + h2 {
+            margin-top: 0;
+        }
+
+        h3 {
+            @extend .Text;
+            @extend .Text-sizeKilo;
+            @extend .Text-marginKilo;
+        }
+
+        * + h3 {
+            margin-top: 4rem;
+        }
+
+        h2 + h3 {
+            margin-top: 0;
+        }
+
+        h4 {
+            @extend .Text;
+            @extend .Text-sizeHecto;
+            @extend .Text-marginHecto;
+        }
+
+        img {
+            @extend .Image;
+            @extend .Image-margin;
+        }
+
+        input {
+            @extend .Input;
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        label {
+            @extend .Label;
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        button {
+            @extend .Button;
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        ol {
+            @extend .OrderedList;
+            @extend .OrderedList-margin;
+
+            li {
+                @extend .OrderedList_item;
+            }
+        }
+
+        p {
+            @extend .Text;
+            @extend .Text-margin;
+            margin-top: 1.5rem;
+        }
+
+        pre {
+            @extend .Text;
+            @extend .Text-marginKilo;
+            @extend .Text-codeblock;
+
+            &.language-js,
+            &.language-jsx,
+            &.language-flow,
+            &.language-bash {
+                white-space: pre;
+
+                code {
+                    background: none;
+                    padding: 0;
+                }
+            }
+
+            &.language-js,
+            &.language-jsx {
+                @extend .Terminal;
+                @extend .Terminal-prism-jsx;
+            }
+
+            &.language-cpp {
+                @extend .Terminal;
+                @extend .Terminal-prism-cpp;
+            }
+
+            &.language-flow {
+                @extend .Terminal;
+                @extend .Terminal-prism-flow;
+            }
+
+            &.language-bash {
+                @extend .Terminal;
+                @extend .Terminal-inverted;
+                @extend .Terminal-prism-bash;
+            }
+        }
+
+        strong {
+            @extend .Text;
+            @extend .Text-weightKilo;
+        }
+
+        table {
+            @extend .Table;
+        }
+
+        thead {
+        }
+
+        tbody {
+        }
+
+        tfoot {
+        }
+
+        tr {
+        }
+
+        td {
+            @extend .Table_cell;
+        }
+
+        th {
+            @extend .Table_headCell;
+        }
+
+        ul {
+            @extend .BulletList;
+            @extend .BulletList-margin;
+
+            li {
+                @extend .BulletList_item;
+            }
+        }
+
+        @content;
+    }
+}

@@ -1,0 +1,17 @@
+@mixin DcmeImage($name: 'Image') {
+    .#{$name} {
+        display: block;
+        max-width: 100%;
+
+        &-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &-margin {
+            margin-bottom: 1rem;
+        }
+
+        @content;
+    }
+}

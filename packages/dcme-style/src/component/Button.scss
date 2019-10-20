@@ -1,0 +1,32 @@
+@mixin DcmeButton($name: 'Button') {
+    .#{$name} {
+        background-color: color('primaryBackground');
+        cursor: pointer;
+        font-family: font('monospace');
+        font-size: .9rem;
+        line-height: 1.2;
+        padding: .5rem 1rem;
+
+        &-tall {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: color('primaryBackgroundDarker');
+        }
+
+        &-invert {
+            background-color: color('invertedBackground');
+            color: color('invertedCopy');
+
+            &:hover,
+            &:focus {
+                background-color: lighten(color('invertedBackground'), 10);
+            }
+        }
+
+        @content;
+    }
+}

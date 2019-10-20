@@ -1,0 +1,10 @@
+@mixin DcmeLabel($name: 'Label') {
+    .#{$name} {
+        display: block;
+        font-family: font('monospace');
+        font-size: .9rem;
+        line-height: 1.2;
+
+        @content;
+    }
+}

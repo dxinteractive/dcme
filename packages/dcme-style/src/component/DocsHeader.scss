@@ -1,0 +1,15 @@
+@mixin DcmeDocsHeader($name: 'DocsHeader') {
+    .#{$name} {
+
+        &_logo {
+            margin-left: auto;
+            margin-right: auto;
+
+            @include BruceBreakpoint('small') {
+                margin-top: -50%;
+            }
+        }
+
+        @content;
+    }
+}

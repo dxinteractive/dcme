@@ -1,29 +1,26 @@
 {
-  "name": "dcme",
-  "description": "Website time",
-  "version": "0.0.0",
-  "author": "Damien Clarke <dxinteractive@gmail.com>",
-  "dependencies": {
-    "dcme-gatsby": "^0.5.0",
-    "dcme-style": "^0.28.0",
-    "gatsby": "^2.0.19",
-    "gh-pages": "^1.1.0",
-    "react-three-fiber": "^2.2.4",
-    "three": "^0.105.2",
-    "unmutable": "^0.45.1"
-  },
-  "keywords": [
-    "dcme"
-  ],
-  "license": "MIT",
+  "private": true,
   "scripts": {
-    "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "watch": "gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prep": "yarn && yarn lerna bootstrap",
+    "build": "yarn lerna run build",
+    "bump": "yarn lerna publish -m \"build: add tags\"",
+    "preversion": "yarn build",
+    "reinstall": "rm -rf node_modules && yarn prep",
+    "test-all": "yarn lerna run test-all",
+    "watch": "yarn lerna run watch --parallel",
+    "deploy": "yarn lerna run deploy",
+    "reinstall": "rm -rf node_modules && rm -rf packages/*/node_modules && yarn prep"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dxinteractive/dcme"
+  "dependencies": {
+    "lerna": "^3.10.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "husky": "^1.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

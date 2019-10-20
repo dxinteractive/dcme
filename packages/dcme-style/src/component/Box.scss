@@ -1,0 +1,95 @@
+@mixin DcmeBox($name: 'Box') {
+    .#{$name} {
+
+        @include BruceDirectionModifiers('margin' 'Micro', 'margin', .25rem);
+        @include BruceDirectionModifiers('margin' 'Milli', 'margin', .5rem);
+        @include BruceDirectionModifiers('margin', 'margin', 1rem);
+        @include BruceDirectionModifiers('margin' 'Kilo', 'margin', 2rem);
+        @include BruceDirectionModifiers('margin' 'Mega', 'margin', 3rem);
+        @include BruceDirectionModifiers('margin' 'Giga', 'margin', 4rem);
+        @include BruceDirectionModifiers('margin' 'Tera', 'margin', 6rem);
+
+        @include BruceDirectionModifiers('padding' 'Micro', 'padding', .25rem);
+        @include BruceDirectionModifiers('padding' 'Milli', 'padding', .5rem);
+        @include BruceDirectionModifiers('padding', 'padding', 1rem);
+        @include BruceDirectionModifiers('padding' 'Kilo', 'padding', 2rem);
+        @include BruceDirectionModifiers('padding' 'Mega', 'padding', 3rem);
+        @include BruceDirectionModifiers('padding' 'Giga', 'padding', 4rem);
+        @include BruceDirectionModifiers('padding' 'Tera', 'padding', 6rem);
+
+        @each $name, $width in $bruce-breakpoints {
+            &-width#{to-upper-case(str-slice($name, 1, 1)) + str-slice($name, 2)} {
+                max-width: $width;
+            }
+        }
+
+        &-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &-code {
+            background-color: color('primaryBackground');
+            padding: 1rem;
+            line-height: 1.2rem;
+        }
+
+        &-flood {
+            height: 100%;
+            width: 100%;
+        }
+
+        &-defaultCopy {
+            color: color('copy');
+        }
+
+        &-defaultBackground {
+            background-color: color('background');
+        }
+
+        &-invertedCopy {
+            color: color('invertedCopy');
+        }
+
+        &-invertedBackground {
+            background-color: color('invertedBackground');
+        }
+
+        &-primary {
+            background-color: color('primaryBackground');
+        }
+
+        &-secondary {
+            background-color: color('secondaryBackground');
+        }
+
+        &-tertiary {
+            background-color: color('tertiaryBackground');
+        }
+
+        &-draggable {
+            cursor: move;
+            padding-left: 1rem;
+            position: relative;
+
+            &:after {
+                color: grey(70);
+                content: '.. .. .. ..';
+                display: block;
+                font-size: 1.2rem;
+                left: 0;
+                line-height: 5px;
+                position: absolute;
+                top: 0;
+                width: 1rem;
+                white-space: normal;
+            }
+        }
+
+        &-bounded {
+            border: 1px solid grey(80);
+        }
+
+        @content;
+    }
+}

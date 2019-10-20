@@ -1,0 +1,235 @@
+@import './Prism';
+
+@mixin DcmeText($name: 'Text') {
+
+    @include DcmePrism($name);
+
+    .#{$name} {
+
+        line-height: 1.8em;
+        outline: none;
+
+        // Size
+
+        &-sizeTera {
+            color: color('heading');
+            font-family: font('heading');
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            overflow-wrap: break-word;
+
+            @include BruceBreakpoint('small') {
+                font-size: 3rem;
+            }
+
+            @include BruceBreakpoint('medium') {
+                font-size: 5rem;
+            }
+        }
+
+        &-sizeGiga {
+            color: color('heading');
+            font-family: font('heading');
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            overflow-wrap: break-word;
+
+            @include BruceBreakpoint('medium') {
+                font-size: 3rem;
+            }
+        }
+
+        &-sizeMega {
+            color: color('heading');
+            font-family: font('heading');
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            overflow-wrap: break-word;
+
+            @include BruceBreakpoint('medium') {
+                font-size: 2.2rem;
+            }
+        }
+
+        &-sizeKilo {
+            color: color('heading');
+            font-family: font('heading');
+            font-size: 1.4rem;
+            font-weight: 700;
+            overflow-wrap: break-word;
+
+            @include BruceBreakpoint('medium') {
+                font-size: 1.5rem;
+            }
+        }
+
+        &-sizeHecto {
+            color: color('heading');
+            font-family: font('heading');
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+        }
+
+        &-sizeMilli {
+            font-size: .8rem;
+        }
+
+        // Margin
+
+        &-marginGiga {
+            margin-bottom: 2rem;
+        }
+
+        &-marginMega {
+            margin-bottom: 1.5rem;
+        }
+
+        &-marginKilo {
+            margin-bottom: 1.5rem;
+        }
+
+        &-margin {
+            margin-bottom: 1.5rem;
+        }
+
+        &-marginHecto {
+            margin-bottom: 1.5rem;
+        }
+
+        &-marginMilli {
+            margin-bottom: .5rem;
+        }
+
+        &-marginLeft {
+            margin-left: 1rem;
+        }
+
+        &-marginLeftMilli {
+            margin-left: .5rem;
+        }
+
+        &-marginRight {
+            margin-right: 1rem;
+        }
+
+        &-marginRightMilli {
+            margin-right: .5rem;
+        }
+
+
+
+        // Goose
+
+        &-weightKilo {
+            font-weight: 700;
+        }
+
+        &-weightMilli {
+            color: color('weightMilli');
+        }
+
+        &-weight {
+            font-weight: 400;
+        }
+
+        &-weightMicro {
+            color: color('weightMicro');
+        }
+
+        &-emphasis {
+            font-style: italic;
+        }
+
+        // Other modifiers
+
+        &-link {
+            color: color('link');
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &-capitalize {
+            text-transform: capitalize;
+        }
+
+        &-monospace {
+            font-family: font('monospace');
+        }
+
+        &-code {
+            font-family: font('monospace');
+            font-size: .8rem;
+            padding: .25rem;
+            background-color: color('primaryBackground');
+        }
+
+        &-codeClear {
+            font-family: font('monospace');
+            font-size: .8rem;
+            padding: .25rem;
+        }
+
+        &-codeblock {
+            font-family: font('monospace');
+            font-size: .8rem;
+            padding: 1rem;
+            background-color: color('primaryBackground');
+            white-space: pre;
+        }
+
+        &-relative {
+            position: relative;
+        }
+
+        &-block {
+            display: block;
+        }
+
+        &-active {
+            text-decoration: underline;
+        }
+
+        &-left {
+            text-align: left;
+        }
+
+        &-center {
+            text-align: center;
+        }
+
+        &-right {
+            text-align: right;
+        }
+
+        &-blockquote {
+            padding: 1rem 2rem;
+            font-family: font('monospace');
+            font-size: .8rem;
+            background-color: color('primaryBackground');
+            border-left: 4px solid color('primaryBackgroundLine');
+        }
+
+        &-primary {
+            color: color('primary');
+        }
+
+        &-secondary {
+            color: color('secondary');
+        }
+
+        &-tertiary {
+            color: color('tertiary');
+        }
+
+        @content;
+    }
+
+}

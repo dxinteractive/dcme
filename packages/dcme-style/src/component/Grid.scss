@@ -1,0 +1,107 @@
+@mixin BruceGridWidths($number, $name, $modifier: '') {
+    $widthSuffix: if($modifier != "", "#{$modifier}#{$name}", "");
+
+    &#{$modifier} {
+      display: table-cell;
+      margin: 0;
+    }
+
+    // column widths
+    @for $i from 1 through $number {
+        &#{$widthSuffix}-#{$i} {
+            width: (100% / $number) * $i;
+
+            // quash borders on correct sides of swapped 2 column grids
+            #{$name}-push#{$number - $i} {
+                border-right: 0;
+            }
+
+            #{$name}-pull#{$number - $i} {
+                border-left: 0;
+            }
+        }
+
+        // pushing and pulling columns
+        &#{$widthSuffix}-push#{$i} {
+            left: (100% / $number) * $i;
+            position: relative;
+        }
+
+        &#{$widthSuffix}-pull#{$i} {
+            position: relative;
+            right: (100% / $number) * $i;
+        }
+    }
+}
+
+///
+/// Create a table grid
+/// @group mixin
+/// @param {number} $number
+///
+
+@mixin BruceGridFixed($name: 'Grid', $number: 12) {
+  .#{$name} {
+    box-sizing: border-box;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+
+    &-auto {
+        table-layout: auto;
+    }
+
+    &_item {
+        box-sizing: border-box;
+        display: block;
+        vertical-align: top;
+
+        &:first-child {
+            border-left: 0;
+        }
+
+        &:last-child {
+            border-right: 0;
+        }
+
+        @include BruceGridWidths($number, ".#{$name}_item", "-always");
+        @include BruceBreakpoint('small') {
+          @include BruceGridWidths($number, ".#{$name}_item");
+        }
+
+        &-shrink {
+            white-space: nowrap;
+            width: 1px;
+        }
+    }
+
+    @content;
+  }
+}
+
+
+@mixin DcmeGrid($name: 'Grid') {
+    @include BruceGridFixed {
+        &_item {
+            &-stackedMargin {
+                margin-bottom: 1rem;
+            }
+
+            @include BruceBreakpoint('small') {
+                &-padding {
+                    border-left: 1rem solid transparent;
+                    border-right: 1rem solid transparent;
+                }
+
+                &-paddingMilli {
+                    border-left: .5rem solid transparent;
+                    border-right: .5rem solid transparent;
+                }
+
+                &-stackedMargin {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@if not global-variable-exists('bruce-fonts') {
+    $bruce-fonts: () !global;
+};
+@if not global-variable-exists('bruce-colors') {
+    $bruce-colors: () !global;
+};
+@if not global-variable-exists('bruce-breakpoints') {
+    $bruce-breakpoints: () !global;
+};
+
+@if not global-variable-exists('primary') {
+    $primary: #527fd7 !global;
+};
+@if not global-variable-exists('secondary') {
+    $secondary: #e17564 !global;
+};
+@if not global-variable-exists('tertiary') {
+    $tertiary: #f1dd8b !global;
+};
+@if not global-variable-exists('primaryBackground') {
+    $primaryBackground: #f4f6fb !global;
+};
+@if not global-variable-exists('secondaryBackground') {
+    $secondaryBackground: lighten($secondary, 30) !global;
+};
+@if not global-variable-exists('tertiaryBackground') {
+    $tertiaryBackground: lighten($tertiary, 10) !global;
+};
+
+@mixin DcmeConfig() {
+
+    //
+    // Colors
+
+    $colors: (
+        'background': #ffffff,
+        'copy': #233544,
+        'invertedBackground': #0e151b,
+        'invertedBackgroundLighter': #0e151b,
+        'invertedCopy': #ffffff,
+        'line': #DDDDDD,
+        'link': $primary,
+        'primary': $primary,
+        'primaryBackground': $primaryBackground,
+        'primaryBackgroundDarker': darken($primaryBackground, 5),
+        'primaryBackgroundLine': $primary,
+        'secondary': $secondary,
+        'secondaryBackground': $secondaryBackground,
+        'secondaryBackgroundDarker': darken($secondaryBackground, 5),
+        'secondaryBackgroundLine': $secondary,
+        'tertiary': $tertiary,
+        'tertiaryBackground': $tertiaryBackground,
+        'tertiaryBackgroundDarker': darken($tertiaryBackground, 5),
+        'tertiaryBackgroundLine': $tertiary,
+        'positive': #38C169,
+        'negative': #e85656,
+        'warning': #F5A623,
+        'weightMilli': #7b8d9c,
+        'weightMicro': #c5ccdb,
+        'terminalPrimary': #319dcd,
+        'terminalSecondary': #ce4133,
+        'terminalTertiary': #fee380,
+        'terminalComment': #bfadcc
+    );
+
+    $bruce-colors: map-merge($bruce-colors, $colors) !global;
+
+    //
+    // Fonts
+    //
+
+    $fonts: (
+        'heading': ('Roboto Mono', monospace),
+        'copy': ('Merriweather', serif),
+        'monospace': ('Roboto Mono', monospace),
+    );
+
+    $bruce-fonts: map-merge($bruce-fonts, $fonts) !global;
+
+
+    //
+    // Breakpoints
+
+    $breakpoints: (
+        'huge':  85rem,
+        'large':  65rem,
+        'medium': 55rem,
+        'small': 44rem
+    );
+
+    $bruce-breakpoints: map-merge($bruce-breakpoints, $breakpoints) !global;
+}

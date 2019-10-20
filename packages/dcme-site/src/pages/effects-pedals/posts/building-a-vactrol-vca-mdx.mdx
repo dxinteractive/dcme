@@ -1,0 +1,100 @@
+import {Link as HtmlLink} from 'dcme-style/src/deprecated';
+import {Image} from 'dcme-style/src/deprecated';
+import Disqus from '../../../component/Disqus';
+import Link from '../../../component/Link';
+import Youtube from '../../../component/Youtube';
+import ShooshBreadboard from '../../../content/shoosh-breadboard.jpg';
+import ShooshVero from '../../../content/shoosh-vero.jpg';
+import ShooshDone from '../../../content/shoosh-done.jpg';
+import ShooshLayout from '../../../content/shoosh-layout.png';
+import ShooshSchematic from '../../../content/shoosh-schematic.png';
+
+# Building a Vactrol VCA
+
+Voltage Controlled Amplifiers (or "VCAs") are a common component in modular synthesizers. They're basically a volume control that can be set using a reference voltage. In a modular synth their primary job is make notes start and end, the volume is to raise when a key is pressed, and it's told to lower again when a key is released. The VCA simply reads the control voltage provided to it (often from 0V to 10V), and makes the audio signal quieter the closer the control voltage is to zero.
+
+<Image src={ShooshBreadboard} alt="Shoosh on a breadboard" />
+
+In the world of guitars you might not see much point in one of these, but altering the volume of a signal is the basis for tremolo pedals, the feedback and blend controls in delay pedals, and it provides compressors with their ability to squeeze. Control voltages ("CVs") can open up some crazy possibilities; plug a low frequency oscillator ("LFO") into one of these VCAs and you've got a tremolo effect that can cut your guitar sound in *any shape that the LFO can come up with*. I've found VCAs most useful as components within other effects.
+
+Why vactrols? They're known to introduce minimum levels of noise compared to other types of VCA and they're easy to set up. You wouldn't use them for everything - their response is very non-linear, they differ from one another, and they are a little slow to turn on and off. But they are very well suited for volume controls, tremolo pedals and compressors.
+
+##The "Shoosh" vactrol VCA circuit
+Here's the circuit I came up with and used in the <Link to="/effects-pedals">Shoosh</Link>. A CV from 0-5V will attenuate the audio signal from silent to a level determined by the gain pot. 0-5V is a standard control voltage range for guitar pedals.
+
+### Shoosh schematic
+
+<HtmlLink href={ShooshSchematic} target="_blank">
+    <Image src={ShooshSchematic} />
+</HtmlLink>
+
+### Shoosh veroboard layout
+
+<HtmlLink href={ShooshLayout} target="_blank">
+    <Image src={ShooshLayout} />
+</HtmlLink>
+
+## The amplifier
+Let's first follow the signal through the amplifier section. It's basically an op-amp buffer followed by an inverting op-amp to change the audio volume.
+
+* The audio signal moves through the input capacitor C1 and enters op-amp 1 (IC1).
+* Op-amp 1 is a simple buffer, a non-inverting amplifier with unity gain. It doesn't change the volume. This will keep the input impedance of the pedal high, and ensure that op-amp 2 sees a predictable low impedance source.
+* The signal leaves op-amp 1 and goes through the resistor end of the vactrol, encountering some resistance.
+* The signal enters op-amp 2. This op amp, the resistor end of the vactrol and the gain pot collectively form an inverting amplifier with variable gain. The gain level is controlled both by the resistance through the vactrol, and the amount of resistance provided by the gain pot. Amount of gain = gain pot resistance / vactrol resistance.
+* The signal leaves op-amp 2, flows though the output capacitor C2 and away.
+
+A single TL072 is a perfect choice for these two op-amps. They're good for audio applications and cheap.
+
+So **less vactrol resistance = more volume**.
+
+## The vactrol
+Vactrols (or optocouplers, or a dozen other names) are made from an LED pointing straight into a light-dependent resistor ("LDR"), encased in plastic. In fact you can make them yourself by getting an LED, pointing it at an LDR and engulfing them in heat shrink tubing or electrical tape so no external light can get in. I prefer buying them because their properties are more predictable, you can choose the ones that have the right turn on and turn off times, and when they're off they have *very* high resistance which is essential for the amplifier to make a signal completely silent. I usually go with VTL5C1s, they're quite quick and go very dark.
+
+The brighter the LED glows, the less resistance the LDR has. That gives us a variable resistor. That's just what we need for op-amp 2 to have variable gain.
+
+So **more LED brightness = less vactrol resistance**.
+
+Now you might be thinking:
+
+More voltage into the vactrol = more LED brightness, right?
+
+Well not exactly. It's possible but it's difficult. LEDs have a minimum voltage before they turn on. Usually anything less than about 1.2V makes no light, and beyond that LEDs brighten up quickly with additional voltage and then get only marginally brighter with added voltage. It's far better to control LED brightness using variations in current, not voltage.
+
+We also don't want the CV to be responsible for actually providing power to any parts of this pedal. It's merely a voltage *reference*. Things that generate CVs such as envelope generators or low frequency oscillators would typically not be designed to be used as a current source.
+
+Also remember that the LEDs in a vactrols follow all the same rules as normal LEDs. Give them too much current and they might die, and remember to plug them in the right way around.
+
+So let's go with **more LED current = more LED brightness**.
+
+But now we need to turn voltage into current. Voltage-to-current signal conversion.
+
+## The transconductance amplifier
+Certainly sounds impressive. It's a simple op-amp circuit that essentially turns a reference voltage into a corresponding current. Put the vactrol's LED in the loop (anode to the op-amp's output and cathode to the op-amp's negative input), add the R4 resistor to ground and you can then control the LED brightness with a control voltage delivered to the op-amp's positive input.
+
+Allaboutcircuits.com has a [great article on these](http://www.allaboutcircuits.com/textbook/semiconductors/chpt-8/voltage-to-current-signal-conversion/).
+
+So finally, **more control voltage = more LED current**.
+
+You will need a rail-to-rail op-amp. Normal op-amps can't output a voltage too close to either rail, but our CV will go all the way down to ground, so your op-amp will have to as well. I use TLC2272s, many others are available.
+
+The resistor R4 determines how much current will be generated for a given voltage at the op-amp's positive input. Smaller values make more current for a given voltage. This lets you scale your vactrol's non-linear response curve against your CV. But keep in mind that smaller values make you lose headroom. Watch out for clipping in the output audio.
+
+## Other notes
+* R5 and R6 provide us with a 4.5V voltage reference (Vref) so op amp 1 and 2 are biased correctly. This uses op amp 4 (IC4) which is set up as a simple buffer. On many other circuits this buffer isn't really required, but on this circuit if you turn the CV all the way down, the vactrol gets so dark (over 2M) in comparison to R2 that audio begins to leak back through the Vref path and through the output. The buffer prevents this from happening.
+* R1 and R3 are in place to ensure that both the input and outputs don't float if this effect is being bypassed. Floating inputs and outputs often create a big pop when turning an effect back on by pressing the bypass footswitch.
+* C1 and C2 can be increased to let through more bass frequencies if desired.
+* R7 is just there to ensure that a CV of 0 will be detected if there's nothing plugged into the CV input.
+
+## A finished build
+
+See an example over on the <Link to="/effects-pedals/shoosh">Shoosh pedal page</Link>.
+
+<Image src={ShooshVero} />
+
+Completed prototype on vero.
+
+<Image src={ShooshDone} />
+
+Boxed up and added to the pedal board. Please excuse the paint job.
+
+<Disqus />

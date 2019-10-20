@@ -1,0 +1,22 @@
+@mixin DcmeWrapper($name: 'Wrapper') {
+    .#{$name} {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: map-get($bruce-breakpoints, 'large');
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        @each $name, $width in $bruce-breakpoints {
+            &-#{$name} {
+                max-width: $width;
+            }
+        }
+
+        &-marginBottom {
+            margin-bottom: 5rem;
+        }
+
+        @content;
+    }
+}

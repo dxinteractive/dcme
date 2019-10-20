@@ -1,8 +1,18 @@
-# Project dependencies
-.cache
-node_modules
-yarn-error.log
-
-# Build directory
-public
+# Config Files
+**/.idea/tasks.xml
+**/.idea/workspace.xml
 .DS_Store
+.env
+.nyc_output
+.cache
+*.orig
+*.log
+
+
+# Folders
+coverage
+flow-coverage
+dist
+lib
+**/node_modules
+public

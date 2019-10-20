@@ -1,0 +1,25 @@
+@mixin DcmeResponsiveBox($name: 'ResponsiveBox') {
+    .#{$name} {
+        position: relative;
+        display: block;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+
+        &-16-9 {
+            padding-bottom: 56.25%;
+        }
+
+        > * {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            border: 0;
+        }
+
+        @content;
+    }
+}

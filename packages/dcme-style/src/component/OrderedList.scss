@@ -1,0 +1,16 @@
+@mixin DcmeOrderedList($name: 'OrderedList') {
+    .#{$name} {
+        padding-left: 2rem;
+
+        &-margin {
+            margin-bottom: 3rem;
+        }
+
+        &_item {
+            margin-bottom: 1rem;
+            list-style-type: decimal;
+        }
+
+        @content;
+    }
+}

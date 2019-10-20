@@ -1,0 +1,24 @@
+@import './Prism';
+
+@mixin DcmeTerminal($name: 'Terminal') {
+
+    @include DcmePrism($name);
+
+    .#{$name} {
+        background-color: color('primaryBackground');
+        padding: 1rem;
+        font-family: font('monospace');
+        font-size: .8rem;
+        line-height: 1.4rem;
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-font-smoothing: auto;
+
+        &-inverted {
+            color: color('invertedCopy');
+            background-color: color('invertedBackground');
+        }
+
+        @content;
+    }
+}

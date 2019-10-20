@@ -1,0 +1,15 @@
+@mixin DcmeImageThumbnail($name: 'ImageThumbnail') {
+    .#{$name} {
+        width: 100%;
+        background-size: contain;
+        background-color: #000;
+        background-repeat: no-repeat;
+        background-position: center 0;
+
+        &-16-9 {
+            padding-bottom: 56.25%;
+        }
+
+        @content;
+    }
+}

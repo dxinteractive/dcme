@@ -1,0 +1,15 @@
+@mixin DcmeNavigationList($name: 'NavigationList') {
+    .#{$name} {
+        font-family: font('monospace');
+        font-size: .9rem;
+        padding: 0 1rem 1rem .5rem;
+
+        &_item {
+            &-section {
+                margin-top: 1rem;
+            }
+        }
+
+        @content;
+    }
+}

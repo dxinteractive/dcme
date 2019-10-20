@@ -1,0 +1,24 @@
+@mixin DcmeTable($name: 'Table') {
+    .#{$name} {
+        font-family: font('monospace');
+        font-size: .8rem;
+        border-collapse: separate;
+        text-align: left;
+        line-height: 1.2rem;
+        width: 100%;
+
+        &_cell {
+            border-top: 1px solid grey(90);
+            vertical-align: middle;
+            padding: .5rem;
+        }
+
+        &_headCell {
+            vertical-align: middle;
+            padding: .5rem;
+            font-weight: 700;
+        }
+
+        @content;
+    }
+}

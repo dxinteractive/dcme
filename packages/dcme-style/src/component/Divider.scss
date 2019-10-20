@@ -1,0 +1,10 @@
+@mixin DcmeDivider($name: 'Divider') {
+    .#{$name} {
+         border: 0;
+         height: 0;
+         border-top: 1px solid #CCC;
+         margin: 5rem 0 4rem;
+
+        @content;
+    }
+}

@@ -1,0 +1,93 @@
+@mixin DcmePrism($name: 'Prism') {
+    .#{$name} {
+
+         &-prism-cpp {
+            .token.keyword {
+                color: color('terminalPrimary');
+            }
+
+            .token.tag {
+                color: color('terminalSecondary');
+            }
+
+            .token.string,
+            .token.number,
+            .token.boolean {
+                color: color('terminalPrimary');
+
+                &.#{$name}-inverted {
+                    color: color('terminalTertiary');
+                }
+            }
+
+            .token.comment {
+                color: color('terminalComment');
+            }
+        }
+
+        &-prism-jsx {
+            .token.keyword {
+                color: color('terminalSecondary');
+            }
+
+            .token.tag {
+                color: color('terminalPrimary');
+            }
+
+            .token.string,
+            .token.number,
+            .token.boolean {
+                color: color('terminalPrimary');
+
+                &.#{$name}-inverted {
+                    color: color('terminalTertiary');
+                }
+            }
+
+            .token.comment {
+                color: color('terminalComment');
+            }
+
+            .token.script {
+                color: color('copy')
+            }
+
+            .token.script-punctuation {
+                color: color('terminalPrimary')
+            }
+        }
+
+        &-prism-flow {
+            .token.keyword,
+            .token.function {
+                color: color('terminalSecondary');
+            }
+
+            .token.tag {
+                color: color('terminalPrimary');
+            }
+
+            .token.string,
+            .token.number,
+            .token.boolean {
+                color: color('terminalPrimary');
+
+                &.#{$name}-inverted {
+                    color: color('terminalTertiary');
+                }
+            }
+
+            .token.comment {
+                color: color('terminalComment');
+            }
+        }
+
+        &-prism-bash {
+            .token.comment {
+                color: color('terminalComment');
+            }
+        }
+
+        @content;
+    }
+}

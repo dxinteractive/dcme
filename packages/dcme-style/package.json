@@ -1,0 +1,57 @@
+{
+  "name": "dcme-style",
+  "version": "1.1.2",
+  "description": "Styles",
+  "license": "UNLICENSED",
+  "author": "Damien Clarke",
+  "files": [
+    "src",
+    "affordance.js",
+    "core.js",
+    "index.js",
+    "layout.js",
+    "theme.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dxinteractive/dcme-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dxinteractive/dcme-kit/issues"
+  },
+  "private": false,
+  "scripts": {
+    "flow": "blueflag-test flow",
+    "lint": "blueflag-test lint",
+    "test": "blueflag-test test",
+    "coverage": "blueflag-test coverage --min-coverage=75",
+    "test-all": "yarn flow && yarn lint && yarn coverage",
+    "view-coverage": "yarn run coverage; open ./coverage/lcov-report/index.html"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.0",
+    "babel-preset-blueflag": "^0.6.0",
+    "blueflag-test": "^0.18.1",
+    "dotenv": "^2.0.0",
+    "proto-babel-plugin-extract-flow-types": "git+ssh://git@github.com/blueflag/proto-babel-plugin-extract-flow-types.git#v0.1.1"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.20",
+    "prismjs": "1.15.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "dependencies": {
+    "prismjs": "1.15.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-goose": "^0.6.1",
+    "react-select": "^1.0.0-rc.4",
+    "react-spruce": "^0.1.0",
+    "stampy": "^0.43.3",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.1.1",
+    "unmutable": "^0.29.2"
+  }
+}

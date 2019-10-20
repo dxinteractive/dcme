@@ -1,0 +1,32 @@
+@mixin DcmeInput($name: 'Input') {
+    ::-webkit-input-placeholder,
+    ::-moz-placeholder,
+    :-ms-input-placeholder,
+    :-moz-placeholder {
+        color: grey(80);
+    }
+
+    .#{$name} {
+        background-color: transparent;
+        border: 1px solid color('line');
+        color: currentColor;
+        font-family: font('monospace');
+        font-size: .9rem;
+        line-height: 1.2;
+        padding: .5rem;
+        width: 100%;
+
+
+        &:focus,
+        &:active {
+            border-color: color('primary');
+            outline: 0;
+        }
+
+        @content;
+    }
+}
+
+
+
+

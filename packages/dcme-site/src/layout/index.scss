@@ -1,0 +1,77 @@
+@import '~bruce/bruce';
+@include BruceReset;
+@include BruceBoxSizing;
+@import '~dcme-style/src/all';
+
+$bruce-zindex: (
+    'Select',
+    'Dropdown',
+    'Overlay'
+);
+
+$primary: #ff0048;
+$secondary: #527fd7;
+
+@include DcmeConfig;
+@include DcmeBase;
+
+html, body {
+    background-color: #0e151b;
+}
+
+html.defaultBackground, body.defaultBackground {
+    background-color: #ffffff;
+}
+
+@include DcmeAppFrame;
+@include DcmeBox;
+@include DcmeBulletList;
+@include DcmeButton;
+@include DcmeCenteredLanding;
+@include DcmeContentNav;
+@include DcmeDivider;
+@include DcmeDocsHeader;
+@include DcmeGrid;
+@include DcmeImage {
+    &-icon {
+        max-height: 12rem;
+        @include BruceBreakpoint('large') {
+            max-height: 999rem;
+        }
+    }
+}
+@include DcmeImageThumbnail;
+@include DcmeInput;
+@include DcmeLink;
+@include DcmeLabel;
+@include DcmeLoader;
+@include DcmeMessage;
+@include DcmeNavigationList;
+@include DcmeOrderedList;
+@include DcmeResponsiveBox;
+@include DcmeTable;
+@include DcmeTerminal;
+@include DcmeText {
+    &-superDuper {
+        text-shadow: -3px 3px 0px #2f529b, -6px 6px 0px #11273f;
+    }
+
+    @include BruceBreakpoint('small') {
+        &-superDuper {
+            text-shadow: -6px 6px 0px #2f529b, -12px 12px 0px #11273f;
+        }
+    }
+}
+@include DcmeTypography;
+@include DcmeWrapper;
+
+// #d75252
+
+.Thumbnail {
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-size: contain;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}

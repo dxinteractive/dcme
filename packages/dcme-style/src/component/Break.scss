@@ -1,0 +1,10 @@
+@mixin DcmeBreak($name: 'Break') {
+    .#{$name} {
+         border: 0;
+         height: 0;
+         border-top: 1px solid transparent;
+         margin: 3rem 0;
+
+        @content;
+    }
+}

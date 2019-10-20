@@ -1,0 +1,41 @@
+@mixin DcmeLink($name: 'Link') {
+    .#{$name} {
+        color: color('link');
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+
+        &-copy {
+            color: color('copy');
+        }
+
+        &-invertedCopy {
+            color: color('invertedCopy');
+        }
+
+        &-monospace {
+            font-family: font('monospace');
+        }
+
+        &-primary {
+            color: color('primary');
+        }
+
+        &-secondary {
+            color: color('secondary');
+        }
+
+        &-weightMilli {
+            color: lighten(color('link'), 10);
+        }
+
+        &-active {
+            color: color('secondary');
+        }
+
+        @content;
+    }
+}

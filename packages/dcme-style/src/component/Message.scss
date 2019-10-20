@@ -1,0 +1,11 @@
+@mixin DcmeMessage($name: 'Message') {
+    .#{$name} {
+        padding: 1rem 2rem;
+        font-family: font('monospace');
+        font-size: .8rem;
+        background-color: color('primaryBackgroundDarker');
+        border-left: 4px solid color('primaryBackgroundLine');
+
+        @content;
+    }
+}

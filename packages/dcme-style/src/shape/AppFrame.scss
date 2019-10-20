@@ -1,0 +1,92 @@
+@mixin DcmeAppFrame($name: 'AppFrame') {
+    .#{$name} {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 3rem 0 0;
+        height: 100%;
+
+        &_nav {
+            display: none;
+            background: color('invertedBackgroundLighter');
+            top: 0;
+            left: 0;
+            position: fixed;
+            max-width: 25rem;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: zindex('Overlay');
+            overscroll-behavior: contain;
+            padding: 4rem 1rem 0;
+
+            &-inverted {
+                background: color('invertedBackground');
+            }
+
+            &-open {
+                display: block;
+            }
+        }
+
+        &_content {
+            flex: 1 auto;
+        }
+
+        &_pageNav {
+            display: none;
+            background: color('invertedBackgroundLighter');
+            top: 0;
+            left: 0;
+            position: fixed;
+            max-width: 25rem;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: zindex('Overlay');
+            overscroll-behavior: contain;
+            padding: 4rem 1rem 0;
+
+            &-inverted {
+                background: color('invertedBackground');
+            }
+
+            &-open {
+                display: block;
+            }
+        }
+
+        &_header {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            background-color: color('invertedBackground');
+            z-index: zindex('Overlay');
+            @include BruceClearfix;
+        }
+
+        &_header_nav {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        &_header_pageNav {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        &_header_title {
+            text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-family: font('monospace');
+            font-size: .9rem;
+            line-height: 1.2;
+            color: color('invertedCopy');
+        }
+
+        @content;
+    }
+}
