@@ -40,7 +40,7 @@ jobs:
             git config --global user.name "dxinteractive"
       - add_ssh_keys:
           fingerprints:
-              - "e0:98:fd:88:6b:33:2a:68:b9:a9:9a:62:f8:33:c5:54"
+              - "21:e7:14:cf:54:79:45:21:bb:bb:4d:08:42:6d:6c:ae"
       - run:
           name: "Deploy to gh-pages"
           command: yarn deploy
