@@ -25,7 +25,6 @@
     "lint": "blueflag-test lint",
     "test": "blueflag-test test",
     "coverage": "blueflag-test coverage --min-coverage=75",
-    "test-all": "yarn flow && yarn lint && yarn coverage",
     "view-coverage": "yarn run coverage; open ./coverage/lcov-report/index.html"
   },
   "devDependencies": {

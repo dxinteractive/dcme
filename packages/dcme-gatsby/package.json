@@ -16,8 +16,7 @@
   "scripts": {
     "flow": "blueflag-test flow",
     "flow-coverage": "blueflag-test flow-coverage",
-    "lint": "blueflag-test lint",
-    "test-all": "yarn flow && yarn lint && yarn flow-coverage"
+    "lint": "blueflag-test lint"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.0",
