@@ -9,7 +9,7 @@ export default () => <DeadEndPage
     title={() => <Text element="h1" modifier="sizeTera center">Almost there</Text>}
     content={() => <Box>
         <Text element="p" modifier="monospace center margin">
-            This page has moved <Link to="/#Old-Flash-Games">here</Link>.
+            This page has moved <Link to="/#old-flash-games">here</Link>.
         </Text>
     </Box>}
 />;

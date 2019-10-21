@@ -17,22 +17,22 @@ const nav = () => <NavigationList>
     </NavigationListItem>
     <NavigationListItem modifier="section">Stuff</NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Javascript-libraries">Javascript libraries</Link>
+        <Link href="/#javascript-libraries">Javascript libraries</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Effects-pedals">Effects pedals</Link>
+        <Link href="/#effects-pedals">Effects pedals</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Music">Music</Link>
+        <Link href="/#music">Music</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Arduino-libraries">Arduino libraries</Link>
+        <Link href="/#arduino-libraries">Arduino libraries</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Animation">Animation</Link>
+        <Link href="/#animation">Animation</Link>
     </NavigationListItem>
     <NavigationListItem>
-        <Link href="/#Old-Flash-Games">Old Flash games</Link>
+        <Link href="/#old-flash-games">Old Flash games</Link>
     </NavigationListItem>
     {/*<NavigationListItem modifier="section">Effects Pedals</NavigationListItem>
     <NavigationListItem>
