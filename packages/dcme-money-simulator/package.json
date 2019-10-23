@@ -19,6 +19,7 @@
     "lint": "blueflag-test lint"
   },
   "dependencies": {
-    "dcme-style": "file:../dcme-style"
+    "react": "^16.8.6",
+    "dcme-style": "1.1.3"
   }
 }

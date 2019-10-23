@@ -1,4 +1,5 @@
 //@flow
 import React from 'react';
+import {Box} from 'dcme-style/layout';
 
-export default () => <span>dollars</span>
+export default () => <Box p={5}>dollars</Box>
