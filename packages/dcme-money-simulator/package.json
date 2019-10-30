@@ -19,7 +19,10 @@
     "lint": "blueflag-test lint"
   },
   "dependencies": {
+    "blueflag-record": "^0.4.5",
+    "dcme-style": "1.1.3",
     "react": "^16.8.6",
-    "dcme-style": "1.1.3"
+    "react-dataparcels": "^1.0.1",
+    "react-dataparcels-drag": "^1.0.1"
   }
 }
