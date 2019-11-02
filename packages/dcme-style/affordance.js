@@ -1,5 +1,4 @@
 // @flow
-export {Card} from './src/affordance/Card';
 export {Clickable} from './src/affordance/Clickable';
 export {Code} from './src/affordance/Code';
 export {Divider} from './src/affordance/Divider';

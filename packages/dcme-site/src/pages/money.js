@@ -3,4 +3,9 @@ import React from 'react';
 import MoneySimulator from 'dcme-money-simulator';
 import Page from 'component/Page';
 
-export default () => <Page title="Money Simulator" theme="light"><MoneySimulator /></Page>;
+const themeParams = {
+    bg: '#f4f4f4',
+    card: '#ffffff'
+};
+
+export default () => <Page title="Money Simulator" theme="light" themeParams={themeParams}><MoneySimulator /></Page>;

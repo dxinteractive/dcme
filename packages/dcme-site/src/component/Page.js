@@ -14,24 +14,28 @@ import {MDXProvider} from '@mdx-js/react';
 type Props = {
     children: *,
     title: string,
-    theme?: string
+    theme?: string,
+    themeParams?: any
 };
 
-const themes = {
-    light: LightTheme({}),
-    dark: DarkTheme({})
-};
+export default ({children, title, theme = 'dark', themeParams = {}}: Props): Node => {
 
-export default ({children, title, theme = 'dark'}: Props): Node => <Box height="100%">
-    <Helmet>
-        <meta charSet="utf-8" />
-        <title>{title}</title>
-        <meta name="description" content="mosfez" />
-    </Helmet>
-    <Head />
-    <MDXProvider components={mdxComponents}>
-        <Theme theme={themes[theme]}>
-            {children}
-        </Theme>
-    </MDXProvider>
-</Box>;
+    const themes = {
+        light: LightTheme(themeParams),
+        dark: DarkTheme(themeParams)
+    };
+
+    return <Box height="100%">
+        <Helmet>
+            <meta charSet="utf-8" />
+            <title>{title}</title>
+            <meta name="description" content="mosfez" />
+        </Helmet>
+        <Head />
+        <MDXProvider components={mdxComponents}>
+            <Theme theme={themes[theme]}>
+                {children}
+            </Theme>
+        </MDXProvider>
+    </Box>;
+};
