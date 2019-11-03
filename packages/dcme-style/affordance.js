@@ -3,6 +3,7 @@ export {Clickable} from './src/affordance/Clickable';
 export {Code} from './src/affordance/Code';
 export {Divider} from './src/affordance/Divider';
 export {DividerVertical} from './src/affordance/Divider';
+export {Icon} from './src/affordance/Icon';
 export {Image} from './src/affordance/Image';
 export {Input} from './src/affordance/Input';
 export {Link} from './src/affordance/Link';

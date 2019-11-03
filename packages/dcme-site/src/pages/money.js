@@ -8,4 +8,4 @@ const themeParams = {
     card: '#ffffff'
 };
 
-export default () => <Page title="Money Simulator" theme="light" themeParams={themeParams}><MoneySimulator /></Page>;
+export default () => <Page title="Dollarydoo Simulator" theme="light" themeParams={themeParams}><MoneySimulator /></Page>;

@@ -1,6 +1,10 @@
 // @flow
 import {createGlobalStyle} from 'styled-components';
 
+import IcoMoonWoff2 from '../fonts/IcoMoon-Free.woff2';
+import IcoMoonWoff from '../fonts/IcoMoon-Free.woff';
+import IcoMoonTtf from '../fonts/IcoMoon-Free.ttf';
+
 export const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -49,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: ${_ => _.theme.fonts.copy};
+        font-family: ${props => props.theme.fonts.copy};
         height: 100%;
         line-height: 1.5em;
         position: relative;
@@ -63,9 +67,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: ${_ => _.theme.colors.bg};
-        color: ${_ => _.theme.colors.copy};
-        font-family: ${_ => _.theme.fonts.copy};
+        background-color: ${props => props.theme.colors.bg};
+        color: ${props => props.theme.colors.copy};
+        font-family: ${props => props.theme.fonts.copy};
         font-weight: 400;
         height: 100%;
         line-height: 1.5em;
@@ -80,5 +84,12 @@ export const GlobalStyle = createGlobalStyle`
     #___gatsby,
     #___gatsby > div {
         height: 100%;
+    }
+
+    @font-face {
+        font-family: 'IcoMoon';
+        src: url('${IcoMoonWoff2}') format('woff2'),
+            url('${IcoMoonWoff}') format('woff'),
+            url('${IcoMoonTtf}') format('truetype')
     }
 `;

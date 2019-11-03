@@ -7,6 +7,7 @@ import {GlobalStyle} from '../core/GlobalStyle';
 function makeTheme(colors: any): any {
     let monospace = `'Roboto Mono', monospace`;
     let copy = `'Merriweather', serif`;
+    let icomoon = `IcoMoon`;
 
     let fontSizes = {
         h1: `3rem`,
@@ -21,7 +22,8 @@ function makeTheme(colors: any): any {
         fonts: {
             heading: monospace,
             copy,
-            monospace
+            monospace,
+            icomoon
         },
         fontSizes,
         textStyles: {
@@ -71,6 +73,9 @@ function makeTheme(colors: any): any {
                 fontFamily: monospace,
                 fontSize: fontSizes.s,
                 lineHeight: '1em'
+            },
+            icon: {
+                fontFamily: icomoon
             }
         }
     };

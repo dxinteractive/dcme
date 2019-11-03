@@ -3,6 +3,7 @@ import React from 'react';
 import {Box} from 'dcme-style/layout';
 import {Flex} from 'dcme-style/layout';
 import {Paper} from 'dcme-style';
+import {Icon} from 'dcme-style/affordance';
 
 const DEFAULT_SCENARIO = {
     name: 'Scenario A',
@@ -21,33 +22,50 @@ const DEFAULT_DATA = {
 
 
 export default () => {
-    return <Box display={['block','block','flex']} flexDirection="column" height="100%">
-        <Flex p={2}>
-            <Box mr="auto">simulate dollarydoos</Box>
-            <Box>github</Box>
+    return <Paper display={['block','block','flex']} flexDirection="column" height="100%" overflow="auto" textStyle="monospace">
+        <Flex px={3} py={2}>
+            <Box mr="auto"><Icon icon="coin-dollar" /> dollarydoo simulator</Box>
+            <Box><Icon icon="github" /> github</Box>
         </Flex>
-        <Flex p={1} flexDirection={['column','column','row-reverse']} flexGrow="1">
-            <Paper width={[null,null,'50%']} bg="card" m={1} height="20rem">
-                chart
-            </Paper>
+        <Flex p={1} flexDirection={['column','column','row-reverse']} flexGrow="1" overflow="hidden">
             <Flex width={[null,null,'50%']} flexDirection="column">
-                <Paper bg="card" m={1} p={1}>
-                    scenarios
+                <Paper bg="card" m={1} px={2} py={1}>
+                    <Icon icon="circle-down" /> chart options
                 </Paper>
-                <Flex flexGrow="1" style={{overflow: 'auto'}} m={[0,0,1]}>
-                    <Flex flexGrow="1" flexDirection={['column','column','row']}>
-                        <Paper bg="card" width={[null,null,'20rem']} m={[1,1,0]} p={1} mr={[1,1,2]}>
-                            scenario A
+                <Flex overflow="auto" flexDirection="column" m={[0,0,1]}>
+                    <Flex flexGrow="1" flexDirection="column">
+                        <Paper bg="card" px={2} py={1} m={[1,1,0]} mb={[1,1,2]} height="20rem">
+                            chart #1
                         </Paper>
-                        <Paper bg="card" width={[null,null,'20rem']} m={[1,1,0]} p={1}>
-                            scenario B
+                        <Paper bg="card" px={2} py={1} m={[1,1,0]} height="20rem">
+                            chart #2
                         </Paper>
                     </Flex>
                 </Flex>
+                <Paper bg="card" m={1} px={2} py={1} height="20rem">
+                    <Icon icon="circle-up" /> details
+                </Paper>
+            </Flex>
+            <Flex width={[null,null,'50%']} flexDirection="column">
+                <Paper bg="card" m={1} px={2} py={1}>
+                    <Icon icon="circle-down" /> scenarios
+                </Paper>
+                <Flex flexGrow="1" overflow="auto" m={[0,0,1]}>
+                    <Box width="100%">
+                        <Flex flexDirection={['column','column','row']} alignItems={['stretch','stretch','flex-start']}>
+                            <Paper bg="card" minWidth={[null,null,'20rem']} width={[null,null,'45%']} m={[1,1,0]} px={2} py={1} mr={[1,1,2]}>
+                                <Icon icon="circle-left" /> scenario A
+                            </Paper>
+                            <Paper bg="card" minWidth={[null,null,'20rem']} width={[null,null,'45%']} m={[1,1,0]} px={2} py={1}>
+                                <Icon icon="circle-left" /> scenario B
+                            </Paper>
+                        </Flex>
+                    </Box>
+                </Flex>
             </Flex>
         </Flex>
-        <Flex p={2}>
+        <Flex px={3} py={2}>
             <Box mr="auto">made with stuff</Box>
         </Flex>
-    </Box>;
+    </Paper>;
 };
