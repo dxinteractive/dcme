@@ -10,7 +10,7 @@ export const Input = styled((props) => <input
     onChange={(e) => props.onChange(e.currentTarget.value)}
 />)`
     border: 1px solid ${props => props.theme.colors.outline};
-    background-color: ${props => props.theme.colors.bg};
+    background-color: ${props => props.theme.colors.bgInput};
     color: currentColor;
     font-family: ${props => props.theme.fonts.monospace};
     font-size: .9rem;
