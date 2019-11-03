@@ -1,16 +1,24 @@
 /* eslint-disable */
+var path = require('path');
 
-export const onCreateWebpackConfig = ({loaders, actions}) => {
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.txt$/,
-          use: [
-            'raw-loader'
+module.exports = {
+    onCreateWebpackConfig: ({dirname}) => ({loaders, actions}) => {
+      actions.setWebpackConfig({
+        module: {
+          rules: [
+            {
+              test: /\.txt$/,
+              use: [
+                'raw-loader'
+              ]
+            }
           ]
+        },
+        resolve: {
+          alias: {
+            react: path.resolve(dirname, './node_modules/react')
+          }
         }
-      ]
+      });
     }
-  });
-}
+};
