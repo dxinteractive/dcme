@@ -13,4 +13,5 @@ export {Loader} from './src/affordance/Loader';
 export {Select} from './src/affordance/Select';
 export {Text} from './src/affordance/Text';
 export {Toggle} from './src/affordance/Toggle';
+export {Touch} from './src/affordance/Touch';
 export {Unselectable} from './src/affordance/Unselectable';

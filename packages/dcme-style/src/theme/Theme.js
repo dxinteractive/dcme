@@ -8,11 +8,14 @@ function makeTheme(colors: any): any {
     let monospace = `'Roboto Mono', monospace`;
     let copy = `'Merriweather', serif`;
     let icomoon = `IcoMoon`;
+    let icomoonCustom = `IcoMoonCustom`;
 
     let fontSizes = {
         h1: `3rem`,
         h2: `2.2rem`,
         h3: `1.9rem`,
+        h4: `1.5rem`,
+        h5: `1.1rem`,
         p: `1rem`,
         s: `.8rem`
     };
@@ -23,7 +26,8 @@ function makeTheme(colors: any): any {
             heading: monospace,
             copy,
             monospace,
-            icomoon
+            icomoon,
+            icomoonCustom
         },
         fontSizes,
         textStyles: {
@@ -51,6 +55,22 @@ function makeTheme(colors: any): any {
                 fontSize: fontSizes.h3,
                 fontWeight: `700`,
                 letterSpacing: `-.02em`,
+                overflowWrap: `break-word`,
+                lineHeight: '1.2em'
+            },
+            h4: {
+                color: colors.heading,
+                fontFamily: monospace,
+                fontSize: fontSizes.h4,
+                fontWeight: `700`,
+                overflowWrap: `break-word`,
+                lineHeight: '1.2em'
+            },
+            h5: {
+                color: colors.heading,
+                fontFamily: monospace,
+                fontSize: fontSizes.h5,
+                fontWeight: `700`,
                 overflowWrap: `break-word`,
                 lineHeight: '1.2em'
             },
@@ -89,6 +109,8 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     line: '#EEEEEE',
     outline: '#DDDDDD',
     link: '#527fd7',
+    touch: '#a0a0a0',
+    touchHover: '#b4b4b4',
     bgInput: '#ffffff',
     primary: '#527fd7',
     primaryMuted: '#9db7e9',

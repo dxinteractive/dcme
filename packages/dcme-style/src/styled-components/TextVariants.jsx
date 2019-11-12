@@ -19,3 +19,9 @@ H3.defaultProps = {
     as: 'h3',
     textStyle: 'h3'
 };
+
+export const H4 = styled(Text)``;
+H4.defaultProps = {
+    as: 'h4',
+    textStyle: 'h4'
+};

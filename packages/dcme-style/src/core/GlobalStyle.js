@@ -5,6 +5,9 @@ import IcoMoonWoff2 from '../fonts/IcoMoon-Free.woff2';
 import IcoMoonWoff from '../fonts/IcoMoon-Free.woff';
 import IcoMoonTtf from '../fonts/IcoMoon-Free.ttf';
 
+import IcoMoonCustomWoff from '../fonts/custom/fonts/icomoon.woff';
+import IcoMoonCustomTtf from '../fonts/custom/fonts/icomoon.ttf';
+
 export const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -91,5 +94,11 @@ export const GlobalStyle = createGlobalStyle`
         src: url('${IcoMoonWoff2}') format('woff2'),
             url('${IcoMoonWoff}') format('woff'),
             url('${IcoMoonTtf}') format('truetype')
+    }
+
+    @font-face {
+        font-family: 'IcoMoonCustom';
+        src: url('${IcoMoonCustomWoff}') format('woff'),
+            url('${IcoMoonCustomTtf}') format('truetype')
     }
 `;

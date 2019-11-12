@@ -2,6 +2,12 @@
 import styled from 'styled-components';
 import {textStyle, space} from 'styled-system';
 
+const customIconMap = {
+    'options': "\\e188",
+    'chevron-up': "\\e601",
+    'chevron-down': "\\e602"
+};
+
 const iconMap = {
     'home': "\\e900",
     'home2': "\\e901",
@@ -273,6 +279,7 @@ const iconMap = {
     'minus': "\\ea0b",
     'info': "\\ea0c",
     'cancel-circle': "\\ea0d",
+    'add-circle': "\\ea0d",
     'blocked': "\\ea0e",
     'cross': "\\ea0f",
     'checkmark': "\\ea10",
@@ -493,7 +500,8 @@ const iconMap = {
     'git': "\\eae7",
     'codepen': "\\eae8",
     'svg': "\\eae9",
-    'IcoMoon': "\\eaea"
+    'IcoMoon': "\\eaea",
+    ...customIconMap
 };
 
 const iconNudge = {
@@ -512,6 +520,9 @@ const iconNudge = {
     // link: {
     //     top: .1
     // }
+    'add-circle': {
+        transform: 'rotate(45deg)'
+    }
 };
 
 const getNudge = (param) => (props) => ({
@@ -525,9 +536,13 @@ export const Icon = styled.span`
     ${space}
     &:before {
         content: "${props => iconMap[props.icon]}";
-        font-family: 'IcoMoon';
+        font-family: '${props => customIconMap[props.icon] ? 'IcoMoonCustom' : 'IcoMoon'}';
         position: relative;
         top: ${getNudge('top')}em;
         left: ${getNudge('left')}em;
+        ${props => iconNudge[props.icon] && iconNudge[props.icon].transform && `
+            transform: ${iconNudge[props.icon].transform};
+            display: inline-block;
+        `}
     }
 `;
