@@ -1,6 +1,6 @@
 {
   "name": "dcme-gatsby",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A gatsby setup for my websites",
   "main": "src/index.js",
   "license": "MIT",
