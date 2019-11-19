@@ -14,7 +14,7 @@ export const Input = styled((props) => <input
     color: currentColor;
     font-family: ${props => props.theme.fonts.monospace};
     font-size: .9rem;
-    padding: .3rem .8rem;
+    padding: .3rem .9rem;
     width: 100%;
 
     &:focus,
@@ -25,5 +25,9 @@ export const Input = styled((props) => <input
 
     &::-moz-focus-inner {
         border: 0;
+    }
+
+    &::placeholder {
+        color: ${props => props.theme.colors.placeholder};
     }
 `;

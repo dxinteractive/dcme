@@ -17,7 +17,7 @@ function makeTheme(colors: any): any {
         h4: `1.5rem`,
         h5: `1.1rem`,
         p: `1rem`,
-        s: `.8rem`
+        s: `.9rem`
     };
 
     return {
@@ -108,9 +108,11 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     copyInvert: '#ffffff',
     line: '#EEEEEE',
     outline: '#DDDDDD',
+    placeholder: '#CCCCCC',
     link: '#527fd7',
     touch: '#a0a0a0',
     touchHover: '#b4b4b4',
+    touchFocus: '#527fd7',
     bgInput: '#ffffff',
     primary: '#527fd7',
     primaryMuted: '#9db7e9',

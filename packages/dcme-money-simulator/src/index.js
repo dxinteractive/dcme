@@ -18,7 +18,7 @@ import ParcelDrag from 'react-dataparcels-drag';
 
 const DEFAULT_TRANSACTION = {
     name: '',
-    amount: 0,
+    amount: undefined,
     date: '2019-01-02',
     repeat: 'NONE',
     repeatFrequency: 'WEEKLY'
@@ -87,7 +87,9 @@ export default () => {
                 <AnalysisSection />
             </Flex>
             <Flex width={resp(null,'50%')} flexDirection="column">
-                <ControlSection parcel={parcel}/>
+                <ParcelBoundary parcel={parcel.get('scenarios')}>
+                    {(scenariosParcel) => <ScenariosEditor scenariosParcel={scenariosParcel}/>}
+                </ParcelBoundary>
             </Flex>
         </Flex>
         <Flex px={3} py={2}>
@@ -96,33 +98,182 @@ export default () => {
     </Paper>;
 };
 
-const ControlSection = (props) => {
-    let {parcel} = props;
-    return <ParcelBoundary parcel={parcel.get('scenarios')}>
-        {(scenariosParcel) => {
-            let singleScenario = scenariosParcel.size() === 1;
+const ScenariosEditor = (props) => {
+    let {scenariosParcel} = props;
+    let singleScenario = scenariosParcel.size() === 1;
 
-            return <Flex flexGrow="1" overflow="auto" m={resp(0,1)}>
-                <Box width="100%">
-                    <Flex flexDirection={resp('column','row')} alignItems={resp('stretch','flex-start')}>
-                        {scenariosParcel.toArray((scenarioParcel) => {
-                            return <Card
-                                key={scenarioParcel.key}
-                                minWidth={resp(null,'25rem')}
-                                width={resp(null, singleScenario ? '100%' : '45%')}
-                                m={resp(1,0)}
-                                mr={resp(1, singleScenario ? 0 : 2)}
-                                px={3}
-                            >
-                                <ScenarioEditor scenarioParcel={scenarioParcel} />
-                            </Card>;
-                        })}
-                    </Flex>
+    return <Flex flexGrow="1" overflow="auto" m={resp(0,1)}>
+        <Box width="100%">
+            <Flex flexDirection={resp('column','row')} alignItems={resp('stretch','flex-start')}>
+                {scenariosParcel.toArray((scenarioParcel) => {
+                    return <Card
+                        key={scenarioParcel.key}
+                        minWidth={resp(null,'25rem')}
+                        width={resp(null, singleScenario ? '100%' : '45%')}
+                        m={resp(1,0)}
+                        mr={resp(1, singleScenario ? 0 : 2)}
+                        px={3}
+                    >
+                        <ScenarioEditor scenarioParcel={scenarioParcel} />
+                    </Card>;
+                })}
+            </Flex>
+        </Box>
+    </Flex>;
+};
+
+const ScenarioEditor = (props) => {
+    let {scenarioParcel} = props;
+    let drop = <Box>? hello ?</Box>;
+
+    return <>
+        <Flex mb={3} mt={2} alignItems="center">
+            <Box mr="auto">
+                <Text textStyle="h5">{scenarioParcel.value.name}</Text>
+            </Box>
+            <Box>
+                <Touch>
+                    <Icon icon="options" />
+                </Touch>
+            </Box>
+        </Flex>
+        <Box mb={3}>
+            <ParcelBoundary parcel={scenarioParcel.get('startDate')}>
+                {(startDateParcel) => <Flex mb={1}>
+                    <Box mr="auto">start date</Box>
+                    <Box width="8rem">
+                        <Input type="text" {...startDateParcel.spread()} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+            <ParcelBoundary parcel={scenarioParcel.get('endDate')}>
+                {(endDateParcel) => <Flex>
+                    <Box mr="auto">end date</Box>
+                    <Box width="8rem">
+                        <Input type="text" {...endDateParcel.spread()} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+        </Box>
+        <Divider />
+        <ParcelBoundary parcel={scenarioParcel.get('accounts')}>
+            {(accountsParcel) => {
+                return accountsParcel.toArray((accountParcel) => {
+                    return <>
+                        <ParcelBoundary parcel={accountParcel}>
+                            {(accountParcel) => <AccountEditor accountParcel={accountParcel} />}
+                        </ParcelBoundary>
+                        {!accountParcel.isLast() && <Divider />}
+                    </>;
+                });
+            }}
+        </ParcelBoundary>
+    </>;
+};
+
+const AccountEditor = (props) => {
+    let {accountParcel} = props;
+
+    return <>
+        {!(accountParcel.isFirst() && accountParcel.isLast()) && <Flex mb={3} mt={2} alignItems="center">
+            <Box mr="auto">
+                <Text textStyle="h5">{accountParcel.value.name}</Text>
+            </Box>
+            <Box>
+                <Touch>
+                    <Icon icon="options" />
+                </Touch>
+            </Box>
+        </Flex>}
+        <Box mt={3} mb={3}>
+            <Box mb={3}>
+                <Text textStyle="strong">Transactions</Text>
+            </Box>
+            <Box mb={3}>
+                <ParcelBoundary parcel={accountParcel.get('transactions')}>
+                    {(transactionsParcel) => <TransactionsEditor transactionsParcel={transactionsParcel} />}
+                </ParcelBoundary>
+            </Box>
+            <Box mb={3}>
+                <Touch onClick={() => accountParcel.get('transactions').push(DEFAULT_TRANSACTION)}>
+                    <Icon icon="add-circle" /> Add transaction
+                </Touch>
+            </Box>
+        </Box>
+        <Divider />
+        <Box mt={3} mb={3}>
+            <Box mb={3}>
+                <Text textStyle="strong">Loans</Text>
+            </Box>
+            <Box mb={3}>
+                <ParcelBoundary parcel={accountParcel.get('loans')}>
+                    {(loansParcel) => <LoansEditor loansParcel={loansParcel} />}
+                </ParcelBoundary>
+            </Box>
+            <Box mb={3}>
+                <Touch onClick={() => accountParcel.get('loans').push(DEFAULT_TRANSACTION)}>
+                    <Icon icon="add-circle" /> Add loan
+                </Touch>
+            </Box>
+        </Box>
+    </>;
+};
+
+const TransactionsEditor = (props) => {
+    let {transactionsParcel} = props;
+
+    return <ParcelDrag parcel={transactionsParcel} distance={3}>
+        {(transactionParcel) => <Paper drag bg="card" textStyle="monospace" mb={2}>
+            <Flex mb={1}>
+                <Box mr={2}>
+                    <ParcelBoundary parcel={transactionParcel.get('name')}>
+                        {(parcel) => <Input type="text" placeholder="unnamed" {...parcel.spread()} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box mr={3} maxWidth="11rem">
+                    <ParcelBoundary parcel={transactionParcel.get('amount')}>
+                        {(parcel) => <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box ml="auto">
+                    <Touch onClick={() => transactionParcel.delete()}>
+                        <Icon icon="options" />
+                    </Touch>
                 </Box>
             </Flex>
-        }}
-    </ParcelBoundary>;
+            <Box pl={3}>
+                <Text fontSize="s"><Link>Weekly</Link> from <Link>{transactionParcel.value.date}</Link></Text>
+            </Box>
+        </Paper>}
+    </ParcelDrag>;
 };
+
+const LoansEditor = (props) => {
+    let {loansParcel} = props;
+
+    return <ParcelDrag parcel={loansParcel} distance={3}>
+        {(loanParcel) => <Paper drag bg="card" textStyle="monospace" mb={3}>
+            <Flex mb={1} alignItems="center">
+                <Box mr={2}>
+                    <ParcelBoundary parcel={loanParcel.get('name')}>
+                        {(parcel) => <Input type="text" {...parcel.spread()} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box mr={2}>
+                    <ParcelBoundary parcel={loanParcel.get('amount')}>
+                        {(parcel) => <Input type="text" inputmode="numeric" {...parcel.spread()} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box ml="auto">
+                    <Touch onClick={() => loanParcel.delete()}>
+                        <Icon icon="options" />
+                    </Touch>
+                </Box>
+            </Flex>
+        </Paper>}
+    </ParcelDrag>;
+};
+
 
 const AnalysisSection = (props) => {
     return <>
@@ -140,129 +291,3 @@ const AnalysisSection = (props) => {
         </Panel>
     </>;
 };
-
-const ScenarioEditor = (props) => {
-    let {scenarioParcel} = props;
-    return <>
-        <Flex mb={3} mt={2} alignItems="center">
-            <Box mr="auto">
-                <Text textStyle="h5">{scenarioParcel.value.name}</Text>
-            </Box>
-            <Box>
-                <Touch>
-                    <Icon icon="options" />
-                </Touch>
-            </Box>
-        </Flex>
-        <Box mb={3}>
-            <Flex mb={1}>
-                <Box mr="auto">start date</Box>
-                <Box width="8rem">
-                    <ParcelBoundary parcel={scenarioParcel.get('startDate')}>
-                        {(startDateParcel) => <>
-                            <Input type="text" {...startDateParcel.spread()} />
-                        </>}
-                    </ParcelBoundary>
-                </Box>
-            </Flex>
-            <Flex>
-                <Box mr="auto">end date</Box>
-                <Box width="8rem">
-                    <ParcelBoundary parcel={scenarioParcel.get('endDate')}>
-                        {(endDateParcel) => <>
-                            <Input type="text" {...endDateParcel.spread()} />
-                        </>}
-                    </ParcelBoundary>
-                </Box>
-            </Flex>
-        </Box>
-        <Divider />
-        {/*<Box mt={3} mb={3}>
-            <Box mb={3}>
-                <Text textStyle="strong">Transactions</Text>
-            </Box>
-            <Box mb={3}>
-                <TransactionsEditor transactionsParcel={scenarioParcel.get('transactions')} />
-            </Box>
-            <Box mb={3}>
-                <Touch onClick={() => scenarioParcel.get('transactions').push(DEFAULT_TRANSACTION)}>
-                    <Icon icon="add-circle" /> Add transaction
-                </Touch>
-            </Box>
-        </Box>
-        <Divider />
-        <Box mt={3} mb={3}>
-            <Box mb={3}>
-                <Text textStyle="strong">Loans</Text>
-            </Box>
-            <Box mb={3}>
-                <ParcelDrag parcel={scenarioParcel.get('loans')} distance={3}>
-                    {(loanParcel) => <Paper drag bg="card" textStyle="monospace" mb={3}>
-                        <Flex mb={1} alignItems="center">
-                            <Box mr={2}>
-                                <ParcelBoundary parcel={loanParcel.get('name')}>
-                                    {(parcel) => <Input type="text" {...parcel.spread()} />}
-                                </ParcelBoundary>
-                            </Box>
-                            <Box mr={2}>
-                                <ParcelBoundary parcel={loanParcel.get('amount')}>
-                                    {(parcel) => <Input type="text" inputmode="numeric" {...parcel.spread()} />}
-                                </ParcelBoundary>
-                            </Box>
-                            <Box ml="auto">
-                                <Touch onClick={() => loanParcel.delete()}>
-                                    <Icon icon="options" />
-                                </Touch>
-                            </Box>
-                        </Flex>
-                        <Box>
-                            <Link>Weekly</Link> from <Link>{loanParcel.value.date}</Link>
-                        </Box>
-                    </Paper>}
-                </ParcelDrag>
-            </Box>
-            <Box mb={3}>
-                <Touch onClick={() => scenarioParcel.get('loans').push(DEFAULT_TRANSACTION)}>
-                    <Icon icon="add-circle" /> Add loan
-                </Touch>
-            </Box>
-        </Box>*/}
-    </>;
-};
-
-const TransactionsEditor = (props) => {
-    let {transactionsParcel} = props;
-
-    return <ParcelDrag parcel={transactionsParcel} distance={3}>
-        {(transactionParcel) => <Paper drag bg="card" textStyle="monospace" mb={3}>
-            <Flex mb={1} alignItems="center">
-                <Box mr={2}>
-                    <ParcelBoundary parcel={transactionParcel.get('name')}>
-                        {(parcel) => <Input type="text" {...parcel.spread()} />}
-                    </ParcelBoundary>
-                </Box>
-                <Box mr={2}>
-                    <ParcelBoundary parcel={transactionParcel.get('amount')}>
-                        {(parcel) => <Input type="text" inputmode="numeric" {...parcel.spread()} />}
-                    </ParcelBoundary>
-                </Box>
-                <Box ml="auto">
-                    <Touch onClick={() => transactionParcel.delete()}>
-                        <Icon icon="options" />
-                    </Touch>
-                </Box>
-            </Flex>
-            <Box>
-                <Link>Weekly</Link> from <Link>{transactionParcel.value.date}</Link>
-            </Box>
-        </Paper>}
-    </ParcelDrag>;
-};
-
-// const ScenarioListEditor = (props) => {
-//     let {scenariosParcel} = props;
-//     return <Box>
-
-//         <Touch onClick={() => scenariosParcel.push(DEFAULT_SCENARIO)}>New scenario</Touch>
-//     </Box>
-// };
