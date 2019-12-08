@@ -21,7 +21,7 @@ export default ({children, title = "", modifier}: Props): Node => {
     return <div>
         <Helmet>
             <title>{title}</title>
-            <meta name="description" content="Software engineer from Melbourne, Australia" />
+            <meta name="description" content="Software engineer living in Hobart, Australia" />
             <script src="//damienclarkeme.disqus.com/embed.js" data-timestamp={new Date()} />
         </Helmet>
         <Head />
