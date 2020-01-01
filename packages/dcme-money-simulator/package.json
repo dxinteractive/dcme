@@ -24,6 +24,7 @@
     "react": "^16.8.6",
     "react-dataparcels": "^1.0.1",
     "react-dataparcels-drag": "^1.0.1",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-floatybox": "^0.0.7"
   }
 }

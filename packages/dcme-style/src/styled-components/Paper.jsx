@@ -1,12 +1,17 @@
 // @flow
 import {Box} from '../layout/Layout.jsx';
 import styled from 'styled-components';
-import {textStyle} from 'styled-system';
+import {textStyle, typography} from 'styled-system';
 
 export const Paper = styled(Box)`
     ${textStyle}
+    ${typography}
     ${props => props.bg && `
         background-color: ${props.theme.colors[props.bg]}
+    `}
+    ${props => props.invert && `
+        background-color: ${props.theme.colors.bgInvert}
+        color: ${props.theme.colors.copyInvert}
     `}
     ${props => props.drag && `
         cursor: move;

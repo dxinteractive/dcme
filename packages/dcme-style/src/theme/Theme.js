@@ -127,6 +127,9 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     terminalSecondary: '#ce4133',
     terminalTertiary: '#fee380',
     terminalComment: '#bfadcc',
+    buttonBg: '#f4f4f4',
+    buttonBgHover: '#ffffff',
+    buttonTextFocus: '#527fd7',
     ...extendColors
 });
 
@@ -152,6 +155,8 @@ export const DarkTheme = (extendColors = {}) => makeTheme({
     terminalSecondary: '#ce4133',
     terminalTertiary: '#fee380',
     terminalComment: '#bfadcc',
+    buttonBg: '#f4f4f4',
+    buttonBgHover: '#f9f9f9',
     ...extendColors
 });
 

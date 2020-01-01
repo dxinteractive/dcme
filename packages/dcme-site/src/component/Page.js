@@ -29,7 +29,6 @@ export default ({children, title, theme = 'dark', themeParams = {}}: Props): Nod
         <Helmet>
             <meta charSet="utf-8" />
             <title>{title}</title>
-            <meta name="description" content="mosfez" />
         </Helmet>
         <Head />
         <MDXProvider components={mdxComponents}>
