@@ -112,7 +112,7 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     link: '#527fd7',
     touch: '#a0a0a0',
     touchHover: '#b4b4b4',
-    touchFocus: '#527fd7',
+    focus: '#527fd7',
     bgInput: '#ffffff',
     primary: '#527fd7',
     primaryMuted: '#9db7e9',

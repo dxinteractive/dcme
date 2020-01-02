@@ -13,6 +13,7 @@ import {Icon} from 'dcme-style/affordance';
 import {Input} from 'dcme-style/affordance';
 import {Link} from 'dcme-style/affordance';
 import {Text} from 'dcme-style/affordance';
+import {Select} from 'dcme-style/affordance';
 import styled from 'dcme-style/core';
 
 import useParcelState from 'react-dataparcels/useParcelState';
@@ -26,16 +27,59 @@ import Point from 'react-floatybox/Point';
 // DEFAULTS
 //
 
+const FREQUENCY_UNITS = [
+    {
+        value: 'ONCE',
+        label: 'once',
+        labelPlural: 'once'
+    },
+    {
+        value: 'DAY',
+        label: 'day',
+        labelPlural: 'days'
+    },
+    {
+        value: 'WEEK',
+        label: 'week',
+        labelPlural: 'weeks'
+    },
+    {
+        value: 'MONTH',
+        label: 'month',
+        labelPlural: 'months'
+    },
+    {
+        value: 'YEAR',
+        label: 'year',
+        labelPlural: 'years'
+    }
+];
+
 const DEFAULT_TRANSACTION = {
     name: '',
     amount: undefined,
     date: '2019-01-02',
-    repeat: 'NONE',
-    repeatFrequency: 'WEEKLY'
+    dateUntil: '',
+    frequency: {
+        unit: 'ONCE',
+        unitAmount: 1,
+        maxTimes: 0
+    }
 };
 
 const DEFAULT_LOAN = {
-    name: ''
+    name: '',
+    interestRate: 5,
+    interestCalculationFrequency: {
+        unit: 'DAY',
+        unitAmount: 1,
+        maxTimes: 0
+    },
+    interestRepaymentFrequency: {
+        unit: 'MONTH',
+        unitAmount: 1,
+        maxTimes: 0
+    }
 };
 
 const DEFAULT_ACCOUNT = {
@@ -98,7 +142,7 @@ const OptionsDropdown = (props) => {
             };
             return <Button key={key} block onClick={handleClick}>{label}</Button>;
         })}
-        <Point {...props.tailProps} color="#f4f4f4" />
+        <Point {...props.tailProps} color="#e5e7ec" />
     </Paper>;
 };
 
@@ -125,7 +169,7 @@ const StandardModal = (props) => {
         contentLabel={title}
         appElement={document.getElementById('___gatsby')}
     >
-        <Paper bg="card" textStyle="monospace" p={3} m={3} minWidth="50vw">
+        <Paper bg="card" textStyle="monospace" p={3} m={3} minWidth="50vw" maxWidth="650px">
             <Flex mb={3}>
                 <Box flexGrow="1">
                     <Text textStyle="h5">{title}</Text>
@@ -179,6 +223,21 @@ export default () => {
 
 const ScenariosEditor = (props) => {
     let {scenariosParcel} = props;
+
+    // generate unique names for new scenarios that dont have names yet
+    // by changing the data as it passes up the parcel chain
+    scenariosParcel = scenariosParcel.modifyUp((scenarios) => {
+        return scenarios.map((scenario) => {
+            let {name} = scenario;
+            if(name === undefined) {
+                let index = scenarios.length - 1;
+                do {
+                    name = `Scenario ${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[index++ % 26]}`;
+                } while(scenarios.some(scenario => scenario.name === name));
+            }
+            return {...scenario, name};
+        });
+    });
 
     let [manageScenarios, setManageScenarios] = useState(false);
 
@@ -237,7 +296,7 @@ const ScenarioManagementModal = (props) => {
                         <Box ml="auto">
                             <Options
                                 options={[
-                                    ['Duplicate', () => scenarioParcel.insertAfter(scenarioParcel.value)],
+                                    ['Duplicate', () => scenarioParcel.insertAfter({...scenarioParcel.value, name: undefined})],
                                     ['Delete', () => scenarioParcel.delete()]
                                 ]}
                             />
@@ -247,7 +306,7 @@ const ScenarioManagementModal = (props) => {
             </ParcelDrag>
         </Box>
         <Box mb={3}>
-            <Touch onClick={() => scenariosParcel.push(DEFAULT_SCENARIO)}>
+            <Touch onClick={() => scenariosParcel.push({...DEFAULT_SCENARIO, name: undefined})}>
                 <Icon icon="add-circle" /> Add scenario
             </Touch>
         </Box>
@@ -318,6 +377,22 @@ const ScenarioEditor = (props) => {
 
 const AccountManagementModal = (props) => {
     let {isOpen, onRequestClose, accountsParcel} = props;
+
+    // generate unique names for new accounts that dont have names yet
+    // by changing the data as it passes up the parcel chain
+    accountsParcel = accountsParcel.modifyUp((accounts) => {
+        return accounts.map((account) => {
+            let {name} = account;
+            if(name === undefined) {
+                let index = accounts.length;
+                do {
+                    name = `Account ${index++}`;
+                } while(accounts.some(account => account.name === name));
+            }
+            return {...account, name};
+        });
+    });
+
     return <StandardModal isOpen={isOpen} onRequestClose={onRequestClose} title="Manage Accounts">
         <Box mb={3}>
             It's possible to add more than one account per scenario, in case you want to model more than one bank account.
@@ -334,7 +409,7 @@ const AccountManagementModal = (props) => {
                         <Box ml="auto">
                             <Options
                                 options={[
-                                    ['Duplicate', () => accountParcel.insertAfter(accountParcel.value)],
+                                    ['Duplicate', () => accountParcel.insertAfter({...accountParcel.value, name: undefined})],
                                     ['Delete', () => accountParcel.delete()]
                                 ]}
                             />
@@ -344,7 +419,7 @@ const AccountManagementModal = (props) => {
             </ParcelDrag>
         </Box>
         <Box mb={3}>
-            <Touch onClick={() => accountsParcel.push(DEFAULT_ACCOUNT)}>
+            <Touch onClick={() => accountsParcel.push({...DEFAULT_ACCOUNT, name: undefined})}>
                 <Icon icon="add-circle" /> Add account
             </Touch>
         </Box>
@@ -353,12 +428,13 @@ const AccountManagementModal = (props) => {
 
 const AccountEditor = (props) => {
     let {accountParcel, onManageAccounts} = props;
+    let multipleAccounts = !(accountParcel.isFirst() && accountParcel.isLast());
 
     return <>
-        {!(accountParcel.isFirst() && accountParcel.isLast()) &&
+        {multipleAccounts &&
             <Flex mb={3} mt={4} alignItems="center">
                 <Box mr="auto">
-                    <Text textStyle="h5">- {accountParcel.value.name}</Text>
+                    <Text textStyle="h5">{accountParcel.value.name}</Text>
                 </Box>
                 <Box>
                     <Options
@@ -369,35 +445,37 @@ const AccountEditor = (props) => {
                 </Box>
             </Flex>
         }
-        <Box mt={3} mb={3}>
-            <Box mb={3}>
-                <Text textStyle="strong">Transactions</Text>
+        <Box ml={multipleAccounts ? resp(2,3) : 0}>
+            <Box mt={3} mb={3}>
+                <Box mb={3}>
+                    <Text textStyle="strong">Transactions</Text>
+                </Box>
+                <Box mb={3}>
+                    <ParcelBoundary parcel={accountParcel.get('transactions')}>
+                        {(transactionsParcel) => <TransactionsEditor transactionsParcel={transactionsParcel} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box mb={3}>
+                    <Touch onClick={() => accountParcel.get('transactions').push(DEFAULT_TRANSACTION)}>
+                        <Icon icon="add-circle" /> Add transaction
+                    </Touch>
+                </Box>
             </Box>
-            <Box mb={3}>
-                <ParcelBoundary parcel={accountParcel.get('transactions')}>
-                    {(transactionsParcel) => <TransactionsEditor transactionsParcel={transactionsParcel} />}
-                </ParcelBoundary>
-            </Box>
-            <Box mb={3}>
-                <Touch onClick={() => accountParcel.get('transactions').push(DEFAULT_TRANSACTION)}>
-                    <Icon icon="add-circle" /> Add transaction
-                </Touch>
-            </Box>
-        </Box>
-        <Divider />
-        <Box mt={3} mb={3}>
-            <Box mb={3}>
-                <Text textStyle="strong">Loans</Text>
-            </Box>
-            <Box mb={3}>
-                <ParcelBoundary parcel={accountParcel.get('loans')}>
-                    {(loansParcel) => <LoansEditor loansParcel={loansParcel} />}
-                </ParcelBoundary>
-            </Box>
-            <Box mb={3}>
-                <Touch onClick={() => accountParcel.get('loans').push(DEFAULT_LOAN)}>
-                    <Icon icon="add-circle" /> Add loan
-                </Touch>
+            <Divider />
+            <Box mt={3} mb={3}>
+                <Box mb={3}>
+                    <Text textStyle="strong">Loans</Text>
+                </Box>
+                <Box mb={3}>
+                    <ParcelBoundary parcel={accountParcel.get('loans')}>
+                        {(loansParcel) => <LoansEditor loansParcel={loansParcel} />}
+                    </ParcelBoundary>
+                </Box>
+                <Box mb={3}>
+                    <Touch onClick={() => accountParcel.get('loans').push(DEFAULT_LOAN)}>
+                        <Icon icon="add-circle" /> Add loan
+                    </Touch>
+                </Box>
             </Box>
         </Box>
     </>;
@@ -407,33 +485,133 @@ const TransactionsEditor = (props) => {
     let {transactionsParcel} = props;
 
     return <ParcelDrag parcel={transactionsParcel} distance={3}>
-        {(transactionParcel) => <Paper drag bg="card" textStyle="monospace" mb={2}>
-            <Flex mb={1}>
-                <Box mr={2}>
-                    <ParcelBoundary parcel={transactionParcel.get('name')}>
-                        {(parcel) => <Input type="text" placeholder="unnamed" {...parcel.spread()} />}
-                    </ParcelBoundary>
+        {(transactionParcel) => {
+            let [showModal, setShowModal] = useState(false);
+
+            let {frequency, dateUntil} = transactionParcel.value;
+            let unit = FREQUENCY_UNITS.find(unit => unit.value === frequency.unit);
+
+            let amount = frequency.unitAmount !== '1' && frequency.unitAmount;
+
+            let frequencyWords = frequency.unit === 'ONCE'
+                ? ['once']
+                : ['every', amount, unit && (amount ? unit.labelPlural : unit.label), dateUntil && `until ${dateUntil}`];
+
+            let frequencyText = frequencyWords.filter(Boolean).join(' ');
+
+            return <Paper drag bg="card" textStyle="monospace" mb={2}>
+                <Flex mb={1}>
+                    <Box mr={2}>
+                        <ParcelBoundary parcel={transactionParcel.get('name')}>
+                            {(parcel) => <Input type="text" placeholder="unnamed" {...parcel.spread()} />}
+                        </ParcelBoundary>
+                    </Box>
+                    <Box mr={3} maxWidth="11rem">
+                        <ParcelBoundary parcel={transactionParcel.get('amount')}>
+                            {(parcel) => <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />}
+                        </ParcelBoundary>
+                    </Box>
+                    <Box ml="auto">
+                        <Options
+                            options={[
+                                ['More Settings', () => setShowModal(true)],
+                                ['Duplicate', () => transactionParcel.insertAfter(transactionParcel.value)],
+                                ['Delete', () => transactionParcel.delete()]
+                            ]}
+                        />
+                    </Box>
+                </Flex>
+                <Box pl={3}>
+                    <Text fontSize="s">Occurs <Link onClick={() => setShowModal(true)}>{frequencyText}</Link></Text>
                 </Box>
-                <Box mr={3} maxWidth="11rem">
-                    <ParcelBoundary parcel={transactionParcel.get('amount')}>
-                        {(parcel) => <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />}
-                    </ParcelBoundary>
-                </Box>
-                <Box ml="auto">
-                    <Options
-                        options={[
-                            ['More Settings', () => {}],
-                            ['Duplicate', () => transactionParcel.insertAfter(transactionParcel.value)],
-                            ['Delete', () => transactionParcel.delete()]
-                        ]}
-                    />
-                </Box>
-            </Flex>
-            <Box pl={3}>
-                <Text fontSize="s"><Link>Weekly</Link> from <Link>{transactionParcel.value.date}</Link></Text>
-            </Box>
-        </Paper>}
+                <TransactionModal
+                    transactionParcel={transactionParcel}
+                    isOpen={showModal}
+                    onRequestClose={() => setShowModal(false)}
+                />
+            </Paper>;
+        }}
     </ParcelDrag>;
+};
+
+const TransactionModal = (props) => {
+    let {isOpen, onRequestClose, transactionParcel} = props;
+
+    return <StandardModal isOpen={isOpen} onRequestClose={onRequestClose} title={transactionParcel.value.name || 'Unnamed transaction'}>
+        <Box mt={3} mb={3}>
+            <ParcelBoundary parcel={transactionParcel.get('name')}>
+                {(nameParcel) => <Flex mb={1} alignItems="center">
+                    <Box width="8rem">name</Box>
+                    <Box flexGrow="1">
+                        <Input type="text" placeholder="unnamed" {...nameParcel.spread()} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+            <ParcelBoundary parcel={transactionParcel.get('amount')}>
+                {(amountParcel) => <Flex mb={1} alignItems="center">
+                    <Box width="8rem">amount</Box>
+                    <Box flexGrow="1">
+                        <Input type="text" placeholder="$ 0" inputmode="numeric" {...amountParcel.spread()} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+            <ParcelBoundary parcel={transactionParcel.get('date')}>
+                {(dateParcel) => <Flex mb={1} alignItems="center">
+                    <Box width="8rem">date</Box>
+                    <Box flexGrow="1">
+                        <Input type="text" {...dateParcel.spread()} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+            <ParcelBoundary parcel={transactionParcel.get('frequency')}>
+                {(frequencyParcel) => <Flex mb={1} alignItems="center">
+                    <Box width="8rem">frequency</Box>
+                    <Box flexGrow="1">
+                        <FrequencyEditor frequencyParcel={frequencyParcel} />
+                    </Box>
+                </Flex>}
+            </ParcelBoundary>
+            {transactionParcel.value.frequency.unit !== 'ONCE' &&
+                <ParcelBoundary parcel={transactionParcel.get('dateUntil')}>
+                    {(dateUntilParcel) => <Flex mb={1}>
+                        <Box width="8rem">until</Box>
+                        <Box flexGrow="1">
+                            <Input type="text" placeholder="forever" {...dateUntilParcel.spread()} />
+                        </Box>
+                    </Flex>}
+                </ParcelBoundary>
+            }
+        </Box>
+    </StandardModal>;
+};
+
+const FrequencyEditor = (props) => {
+    let {frequencyParcel} = props;
+
+    let unit = FREQUENCY_UNITS.find(unit => unit.value === frequencyParcel.value.unit);
+    let useAmount = unit.value !== 'ONCE';
+
+    let options = (frequencyParcel.value.unitAmount !== '1' || !useAmount)
+        ? FREQUENCY_UNITS.map(unit => ({...unit, label: unit.labelPlural}))
+        : FREQUENCY_UNITS;
+
+    return <Flex alignItems="center">
+        {useAmount &&
+            <>
+                <Box mr={2}>every</Box>
+                <Box mr={2} width="4rem">
+                    <ParcelBoundary parcel={frequencyParcel.get('unitAmount')}>
+                        {(parcel) => <Input type="number" {...parcel.spread()} />}
+                    </ParcelBoundary>
+                </Box>
+            </>
+        }
+        <Box>
+            <ParcelBoundary parcel={frequencyParcel.get('unit')} forceUpdate={[options]}>
+                {(parcel) => <Select {...parcel.spread()} options={options} />}
+            </ParcelBoundary>
+        </Box>
+    </Flex>;
 };
 
 const LoansEditor = (props) => {

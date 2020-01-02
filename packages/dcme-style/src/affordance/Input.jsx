@@ -19,7 +19,7 @@ export const Input = styled((props) => <input
 
     &:focus,
     &:active {
-        border-color: ${props => props.theme.colors.primaryMuted};
+        border-color: ${props => props.theme.colors.focus};
         outline: 0;
     }
 

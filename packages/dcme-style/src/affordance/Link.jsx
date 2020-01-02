@@ -6,9 +6,16 @@ export const Link = styled(Clickable)`
     color: ${props => props.theme.colors.link};
     text-decoration: none;
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: ${props => props.theme.colors.link};
         text-decoration: underline;
+    }
+
+    &:focus {
+        color: ${props => props.theme.colors.focus};
+    }
+
+    &:active {
+        color: ${props => props.theme.colors.active};
     }
 `;

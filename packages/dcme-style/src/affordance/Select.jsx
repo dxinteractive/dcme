@@ -11,4 +11,5 @@ export const Select = styled((props) => <select
     font-family: ${props => props.theme.fonts.monospace};
     padding: 2px;
     color: currentColor;
+    font-size: .9rem;
 `;
