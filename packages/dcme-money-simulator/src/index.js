@@ -17,6 +17,7 @@ import {Select} from 'dcme-style/affordance';
 import styled from 'dcme-style/core';
 
 import useParcelState from 'react-dataparcels/useParcelState';
+import asNode from 'dataparcels/asNode';
 import ParcelBoundary from 'react-dataparcels/ParcelBoundary';
 import ParcelDrag from 'react-dataparcels-drag';
 
@@ -110,6 +111,54 @@ const DEFAULT_DATA = {
 const resp = (small, big) => [small, small, big];
 
 //
+// DATA TRANSFORMERS
+//
+
+const integerToString = (parcel) => parcel
+    .modifyDown(number => `${number}`)
+    .modifyUp(string => Number(string.replace(/[^\d]/g, '')));
+
+const numberToString = (parcel) => parcel
+    .modifyDown(asNode(node => {
+        if('_valueStringFrom' in node.meta && Object.is(node.meta._valueStringFrom, node.value)) {
+            return node;
+        }
+        let valueString = node.value === undefined ? '' : `${node.value}`;
+        return node.setMeta({
+            _valueStringFrom: node.value,
+            valueString
+        });
+    }))
+    .modifyUp(asNode(node => {
+        let newValue = Number(node.meta.valueString);
+        if(isNaN(newValue)) {
+            return node.setMeta({
+                invalid: 'Please enter a valid number'
+            });
+        }
+        return node
+            .update(() => newValue)
+            .setMeta({
+                invalid: undefined
+            });
+    }))
+    .metaAsParcel('valueString');
+
+const stringToDollars = (parcel) => parcel
+    // .modifyDown(value => value === '' ? '' : `$ ${value}`)
+    // .modifyUp(string => {
+    //     string = string.replace(/[^\d.]/g, '');
+    //     if(string === '') {
+    //         return '';
+    //     }
+    //     let dotIndex = string.indexOf('.');
+    //     if(dotIndex !== -1) {
+    //         string = string.substr(0, dotIndex + 3);
+    //     }
+    //     return string;
+    // });
+
+//
 // REUSABLE COMPONENTS
 //
 
@@ -183,6 +232,12 @@ const StandardModal = (props) => {
             {children}
         </Paper>
     </Modal>;
+};
+
+const ValidationWarning = (props) => {
+    console.log('props', props);
+    let {invalid} = props.parcel.meta;
+    return invalid ? <Box mt={2}><Text color="negative">{invalid}</Text></Box> : null;
 };
 
 //
@@ -355,7 +410,7 @@ const ScenarioEditor = (props) => {
         <ParcelBoundary parcel={scenarioParcel.get('accounts')}>
             {(accountsParcel) => {
                 return accountsParcel.toArray((accountParcel) => {
-                    return <>
+                    return <Box key={accountParcel.key}>
                         <ParcelBoundary parcel={accountParcel}>
                             {(accountParcel) => <AccountEditor
                                 accountParcel={accountParcel}
@@ -363,7 +418,7 @@ const ScenarioEditor = (props) => {
                             />}
                         </ParcelBoundary>
                         {!accountParcel.isLast() && <Divider />}
-                    </>;
+                    </Box>;
                 });
             }}
         </ParcelBoundary>
@@ -491,11 +546,16 @@ const TransactionsEditor = (props) => {
             let {frequency, dateUntil} = transactionParcel.value;
             let unit = FREQUENCY_UNITS.find(unit => unit.value === frequency.unit);
 
-            let amount = frequency.unitAmount !== '1' && frequency.unitAmount;
+            let amount = frequency.unitAmount !== 1 && frequency.unitAmount;
 
             let frequencyWords = frequency.unit === 'ONCE'
                 ? ['once']
-                : ['every', amount, unit && (amount ? unit.labelPlural : unit.label), dateUntil && `until ${dateUntil}`];
+                : [
+                    'every',
+                    amount,
+                    unit && (amount ? unit.labelPlural : unit.label),
+                    dateUntil && `until ${dateUntil}`
+                ];
 
             let frequencyText = frequencyWords.filter(Boolean).join(' ');
 
@@ -507,8 +567,11 @@ const TransactionsEditor = (props) => {
                         </ParcelBoundary>
                     </Box>
                     <Box mr={3} maxWidth="11rem">
-                        <ParcelBoundary parcel={transactionParcel.get('amount')}>
-                            {(parcel) => <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />}
+                        <ParcelBoundary parcel={transactionParcel.get('amount').pipe(numberToString, stringToDollars)}>
+                            {(parcel) => <>
+                                <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />
+                                <ValidationWarning parcel={parcel} />
+                            </>}
                         </ParcelBoundary>
                     </Box>
                     <Box ml="auto">
@@ -547,11 +610,12 @@ const TransactionModal = (props) => {
                     </Box>
                 </Flex>}
             </ParcelBoundary>
-            <ParcelBoundary parcel={transactionParcel.get('amount')}>
+            <ParcelBoundary parcel={transactionParcel.get('amount').pipe(numberToString, stringToDollars)}>
                 {(amountParcel) => <Flex mb={1} alignItems="center">
                     <Box width="8rem">amount</Box>
                     <Box flexGrow="1">
                         <Input type="text" placeholder="$ 0" inputmode="numeric" {...amountParcel.spread()} />
+                        <ValidationWarning parcel={amountParcel} />
                     </Box>
                 </Flex>}
             </ParcelBoundary>
@@ -591,7 +655,7 @@ const FrequencyEditor = (props) => {
     let unit = FREQUENCY_UNITS.find(unit => unit.value === frequencyParcel.value.unit);
     let useAmount = unit.value !== 'ONCE';
 
-    let options = (frequencyParcel.value.unitAmount !== '1' || !useAmount)
+    let options = (frequencyParcel.value.unitAmount !== 1 || !useAmount)
         ? FREQUENCY_UNITS.map(unit => ({...unit, label: unit.labelPlural}))
         : FREQUENCY_UNITS;
 
@@ -600,8 +664,8 @@ const FrequencyEditor = (props) => {
             <>
                 <Box mr={2}>every</Box>
                 <Box mr={2} width="4rem">
-                    <ParcelBoundary parcel={frequencyParcel.get('unitAmount')}>
-                        {(parcel) => <Input type="number" {...parcel.spread()} />}
+                    <ParcelBoundary parcel={frequencyParcel.get('unitAmount').pipe(integerToString)}>
+                        {(parcel) => <Input type="number" min="1" {...parcel.spread()} />}
                     </ParcelBoundary>
                 </Box>
             </>

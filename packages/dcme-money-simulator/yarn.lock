@@ -263,9 +263,9 @@ css-to-react-native@^2.2.2:
     css-color-keywords "^1.0.0"
     postcss-value-parser "^3.3.0"
 
-dataparcels@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/dataparcels/-/dataparcels-1.0.1.tgz#e0061772dffaca43c26bf6fd1c63d8341c05eeb7"
+dataparcels@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/dataparcels/-/dataparcels-1.0.2.tgz#49f78792c4b251f048c8ac89ab99e750c5d7e1b1"
   dependencies:
     "@babel/runtime" "^7.1.5"
     unmutable "^0.46.1"
@@ -417,12 +417,12 @@ react-dataparcels-drag@^1.0.1:
     react-sortable-hoc "1.4.0"
     unmutable "^0.46.1"
 
-react-dataparcels@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-dataparcels/-/react-dataparcels-1.0.1.tgz#60ace16033eae1e21322d2447de107157bbcdcf1"
+react-dataparcels@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-dataparcels/-/react-dataparcels-1.0.2.tgz#4f866c91bebdf661d97889fb74cbccc53bcfe464"
   dependencies:
     "@babel/runtime" "^7.1.5"
-    dataparcels "^1.0.1"
+    dataparcels "^1.0.2"
     is-promise "^2.1.0"
     unmutable "^0.46.1"
     use-debounce "^1.1.3"

@@ -7,6 +7,8 @@ export const Input = styled((props) => <input
     placeholder={props.placeholder}
     className={props.className}
     value={props.value}
+    min={props.min}
+    max={props.max}
     onChange={(e) => props.onChange(e.currentTarget.value)}
 />)`
     border: 1px solid ${props => props.theme.colors.outline};
