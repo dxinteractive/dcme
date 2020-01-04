@@ -145,18 +145,18 @@ const numberToString = (parcel) => parcel
     .metaAsParcel('valueString');
 
 const stringToDollars = (parcel) => parcel
-    // .modifyDown(value => value === '' ? '' : `$ ${value}`)
-    // .modifyUp(string => {
-    //     string = string.replace(/[^\d.]/g, '');
-    //     if(string === '') {
-    //         return '';
-    //     }
-    //     let dotIndex = string.indexOf('.');
-    //     if(dotIndex !== -1) {
-    //         string = string.substr(0, dotIndex + 3);
-    //     }
-    //     return string;
-    // });
+    .modifyDown(value => value === '' ? '' : `$ ${value}`)
+    .modifyUp(string => {
+        string = string.replace(/[^\d.]/g, '');
+        if(string === '') {
+            return '';
+        }
+        let dotIndex = string.indexOf('.');
+        if(dotIndex !== -1) {
+            string = string.substr(0, dotIndex + 3);
+        }
+        return string;
+    });
 
 //
 // REUSABLE COMPONENTS
@@ -235,7 +235,6 @@ const StandardModal = (props) => {
 };
 
 const ValidationWarning = (props) => {
-    console.log('props', props);
     let {invalid} = props.parcel.meta;
     return invalid ? <Box mt={2}><Text color="negative">{invalid}</Text></Box> : null;
 };
