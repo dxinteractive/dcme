@@ -11,7 +11,7 @@ export const Input = styled((props) => <input
     max={props.max}
     onChange={(e) => props.onChange(e.currentTarget.value)}
 />)`
-    border: 1px solid ${props => props.theme.colors.outline};
+    border: 1px solid ${props => props.theme.colors[props.error ? 'negative' : 'outline']};
     background-color: ${props => props.theme.colors.bgInput};
     color: currentColor;
     font-family: ${props => props.theme.fonts.monospace};

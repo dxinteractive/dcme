@@ -17,7 +17,8 @@ import {Select} from 'dcme-style/affordance';
 import styled from 'dcme-style/core';
 
 import useParcelState from 'react-dataparcels/useParcelState';
-import asNode from 'dataparcels/asNode';
+import asNode from 'react-dataparcels/asNode';
+import translate from 'react-dataparcels/translate';
 import ParcelBoundary from 'react-dataparcels/ParcelBoundary';
 import ParcelDrag from 'react-dataparcels-drag';
 
@@ -114,49 +115,28 @@ const resp = (small, big) => [small, small, big];
 // DATA TRANSFORMERS
 //
 
-const integerToString = (parcel) => parcel
-    .modifyDown(number => `${number}`)
-    .modifyUp(string => Number(string.replace(/[^\d]/g, '')));
+const integerToString = translate({
+    down: number => `${number}`,
+    up: string => Number(string.replace(/[^\d]/g, ''))
+});
 
-const numberToString = (parcel) => parcel
-    .modifyDown(asNode(node => {
-        if('_valueStringFrom' in node.meta && Object.is(node.meta._valueStringFrom, node.value)) {
-            return node;
-        }
-        let valueString = node.value === undefined ? '' : `${node.value}`;
-        return node.setMeta({
-            _valueStringFrom: node.value,
-            valueString
-        });
-    }))
-    .modifyUp(asNode(node => {
-        let newValue = Number(node.meta.valueString);
-        if(isNaN(newValue)) {
-            return node.setMeta({
-                invalid: 'Please enter a valid number'
-            });
-        }
-        return node
-            .update(() => newValue)
-            .setMeta({
-                invalid: undefined
-            });
-    }))
-    .metaAsParcel('valueString');
+// const validateNumber = (parcel) => parcel
+//     .modifyUp(asNode(node => {
+//         return node.setMeta({
+//             invalid: isNaN(node.value) ? 'Please enter a valid number' : undefined
+//         });
+//     }));
 
-const stringToDollars = (parcel) => parcel
-    .modifyDown(value => value === '' ? '' : `$ ${value}`)
-    .modifyUp(string => {
-        string = string.replace(/[^\d.]/g, '');
-        if(string === '') {
-            return '';
-        }
-        let dotIndex = string.indexOf('.');
-        if(dotIndex !== -1) {
-            string = string.substr(0, dotIndex + 3);
-        }
-        return string;
-    });
+const numberToString = translate({
+    down: number => number === undefined ? '' : `${number}`,
+    up: string => Number(string),
+    preserveInput: true
+});
+
+const stringToDollars = translate({
+    down: value => value === '' ? '' : `$ ${value}`,
+    up: string => string.replace(/[^\d.-]/g, '')
+});
 
 //
 // REUSABLE COMPONENTS
@@ -234,9 +214,25 @@ const StandardModal = (props) => {
     </Modal>;
 };
 
-const ValidationWarning = (props) => {
-    let {invalid} = props.parcel.meta;
-    return invalid ? <Box mt={2}><Text color="negative">{invalid}</Text></Box> : null;
+const ValidationTooltip = (props) => {
+    let {message} = props;
+    return <Box>
+        <Text>{message}</Text>
+        <Point {...props.tailProps} color="#e5e7ec" />
+    </Box>;
+};
+
+const ValidationMessage = (props) => {
+    let {message, children} = props;
+    // return <FloatyBox
+    //     isOpen={true}
+    //     bubble={ValidationTooltip}
+    //     align="bc"
+    //     tailSize={16}
+    //     children={children}
+    //     message={message}
+    // />;
+    return <>{children}</>;
 };
 
 //
@@ -567,10 +563,9 @@ const TransactionsEditor = (props) => {
                     </Box>
                     <Box mr={3} maxWidth="11rem">
                         <ParcelBoundary parcel={transactionParcel.get('amount').pipe(numberToString, stringToDollars)}>
-                            {(parcel) => <>
-                                <Input type="text" placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />
-                                <ValidationWarning parcel={parcel} />
-                            </>}
+                            {(parcel) => <ValidationMessage message={parcel.meta.invalid}>
+                                <Input type="text" error={parcel.meta.invalid} placeholder="$ 0" inputmode="numeric" {...parcel.spread()} />
+                            </ValidationMessage>}
                         </ParcelBoundary>
                     </Box>
                     <Box ml="auto">
@@ -613,8 +608,9 @@ const TransactionModal = (props) => {
                 {(amountParcel) => <Flex mb={1} alignItems="center">
                     <Box width="8rem">amount</Box>
                     <Box flexGrow="1">
-                        <Input type="text" placeholder="$ 0" inputmode="numeric" {...amountParcel.spread()} />
-                        <ValidationWarning parcel={amountParcel} />
+                        <ValidationMessage message={amountParcel.meta.invalid}>
+                            <Input type="text" error={amountParcel.meta.invalid} placeholder="$ 0" inputmode="numeric" {...amountParcel.spread()} />
+                        </ValidationMessage>
                     </Box>
                 </Flex>}
             </ParcelBoundary>
