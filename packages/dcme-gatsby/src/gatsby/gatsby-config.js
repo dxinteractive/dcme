@@ -1,7 +1,14 @@
-// @flow
+/* eslint-disable */
 module.exports = {
-    gatsbyConfig: {
+    gatsbyConfig: ({compileModules}) => ({
         plugins: [
+            {
+                resolve: `gatsby-plugin-compile-es6-packages`,
+                options: {
+                    modules: compileModules,
+                    test: /\.jsx?$/
+                }
+            },
             'gatsby-plugin-resolve-src',
             `gatsby-plugin-styled-components`,
             `gatsby-plugin-flow`,
@@ -27,7 +34,7 @@ module.exports = {
                             {
                                 content: {
                                     type: 'text',
-                                    value: '(opens in a new window)'
+                                    value: '' // TODO make this open in new window
                                 }
                             }
                         ]
@@ -38,5 +45,5 @@ module.exports = {
                 }
             }
         ]
-    }
+    })
 };

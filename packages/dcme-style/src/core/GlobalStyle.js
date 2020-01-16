@@ -58,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-family: ${props => props.theme.fonts.copy};
         height: 100%;
-        line-height: 1.5em;
+        line-height: 1.8em;
         position: relative;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -75,7 +75,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${props => props.theme.fonts.copy};
         font-weight: 400;
         height: 100%;
-        line-height: 1.5em;
+        line-height: 1.8em;
         overflow-x: hidden;
         text-rendering: optimizelegibility;
 

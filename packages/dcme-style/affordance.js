@@ -11,6 +11,7 @@ export {Link} from './src/affordance/Link';
 export {List} from './src/affordance/List';
 export {ListItem} from './src/affordance/List';
 export {Loader} from './src/affordance/Loader';
+export {NavigationList} from './src/affordance/NavigationList';
 export {Select} from './src/affordance/Select';
 export {Text} from './src/affordance/Text';
 export {Toggle} from './src/affordance/Toggle';
