@@ -10,6 +10,8 @@ function makeTheme(colors: any): any {
     let icomoon = `IcoMoon`;
     let icomoonCustom = `IcoMoonCustom`;
 
+    let breakpoints: any = ['575px', '720px', '55rem', '75rem'];
+
     let fontSizes = {
         h1: `3rem`,
         h2: `2.2rem`,
@@ -21,6 +23,7 @@ function makeTheme(colors: any): any {
     };
 
     return {
+        breakpoints,
         colors,
         fonts: {
             heading: monospace,
@@ -77,6 +80,9 @@ function makeTheme(colors: any): any {
             strong: {
                 fontWeight: `700`
             },
+            weak: {
+                opacity: .7
+            },
             monospace: {
                 fontFamily: monospace
             },
@@ -130,6 +136,9 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     buttonBg: '#f4f4f4',
     buttonBgHover: '#ffffff',
     buttonTextFocus: '#527fd7',
+    buttonBgInvert: '#0e151b',
+    buttonBgHoverInvert: '#333333',
+    buttonTextFocusInvert: '#527fd7',
     ...extendColors
 });
 

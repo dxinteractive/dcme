@@ -10,13 +10,14 @@ export const Button = styled(Clickable)`
     font-size: .9rem;
     width: 100%;
     text-align: left;
-    background-color: ${props => props.theme.colors.buttonBg};
+    color: ${props => props.invert ? props.theme.colors.copyInvert : props.theme.colors.copy};
+    background-color: ${props => props.invert ? props.theme.colors.buttonBgInvert : props.theme.colors.buttonBg};
 
     &:hover {
-        background-color: ${props => props.theme.colors.buttonBgHover};
+        background-color: ${props => props.invert ? props.theme.colors.buttonBgHoverInvert : props.theme.colors.buttonBgHover};
     }
 
     &:focus {
-        color: ${props => props.theme.colors.buttonTextFocus};
+        color: ${props => props.invert ? props.theme.colors.buttonTextFocusInvert : props.theme.colors.buttonTextFocus};
     }
 `;

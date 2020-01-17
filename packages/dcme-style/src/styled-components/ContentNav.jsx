@@ -7,14 +7,12 @@ import React from 'react';
 import {useState} from 'react';
 import styled from 'styled-components';
 
+import {Box} from '../layout/Layout.jsx';
 import {Link} from '../affordance/Link.jsx';
-import {Touch} from '../affordance/Touch.jsx';
+import {Button} from '../affordance/Button.jsx';
 import {NavigationList} from '../affordance/NavigationList.jsx';
 import {NavigationListItem} from '../affordance/NavigationList.jsx';
 import {Text} from '../affordance/Text.jsx';
-
-// import styled from 'styled-components';
-// import {textStyle, typography} from 'styled-system';
 
 export const toAnchor = (label: string) => `${label.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-()&]/g, '')}`;
 export const toLabel = (label: string) => label.replace('()','');
@@ -22,8 +20,7 @@ export const toLabel = (label: string) => label.replace('()','');
 type Props = {
     nav?: Element<any>,
     pageNav?: Element<any>|string[],
-    children?: Element<any>,
-    modifier?: string
+    children?: Element<any>
 };
 
 export const ContentNav = (props: Props): Node => {
@@ -33,8 +30,7 @@ export const ContentNav = (props: Props): Node => {
     let {
         nav,
         pageNav,
-        children,
-        modifier = ""
+        children
     } = props;
 
     let close = () => setOpen('');
@@ -44,14 +40,11 @@ export const ContentNav = (props: Props): Node => {
     if(Array.isArray(pageNav)) {
         pageNav = <NavigationList>
             {pageNav.map((label: string): Node => {
-                let isHeading = label.startsWith('# ');
-                let listItemModifier = isHeading ? 'section' : '';
-                let copyModifier = modifier.indexOf('inverted') !== -1 ? 'invertedCopy' : 'copy';
-                let linkModifier = isHeading ? copyModifier : '';
-                if(isHeading) {
+                if(label.startsWith('# ')) {
                     label = label.slice(2);
+                    return <NavigationListItem key={label}><Text textStyle="weak">{toLabel(label)}</Text></NavigationListItem>;
                 }
-                return <NavigationListItem key={label} modifier={listItemModifier}><Link modifier={linkModifier} href={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
+                return <NavigationListItem key={label}><Link href={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
             })}
         </NavigationList>;
 
@@ -65,18 +58,18 @@ export const ContentNav = (props: Props): Node => {
         {pageNav &&
             <PageNav open={open === 'pageNav'}>
                 <NavigationList>
-                    <NavigationListItem><Text modifier="weightMilli margin">On this page</Text></NavigationListItem>
+                    <NavigationListItem><Text textStyle="weak">On this page</Text></NavigationListItem>
                 </NavigationList>
                 {pageNav}
             </PageNav>
         }
         <MobileHeader>
-            {nav &&
-                <Touch onClick={() => open ? close() : openNav()}>{open === 'nav' ? '[x]' : '[<<]'}</Touch>
-            }
-            {pageNav &&
-                <Touch onClick={() => open ? close() : openPageNav()}>{open === 'pageNav' ? '[x]' : '...'}</Touch>
-            }
+            <Box mr="auto">
+                {nav && <Button invert onClick={() => open ? close() : openNav()}>{open === 'nav' ? '[x]' : '[<<]'}</Button>}
+            </Box>
+            <Box>
+                {pageNav && <Button invert onClick={() => open ? close() : openPageNav()}>{open === 'pageNav' ? '[x]' : '...'}</Button>}
+            </Box>
         </MobileHeader>
     </Wrapper>;
 };
@@ -84,14 +77,14 @@ export const ContentNav = (props: Props): Node => {
 const Wrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
-    max-width: ${props => props.hasNav ? '85rem' : '65rem'};
+    max-width: ${props => console.log('props.theme.breakpoints[2]', props.theme.breakpoints[2]) || props.hasNav ? props.theme.breakpoints[3] : props.theme.breakpoints[2]};
     display: flex;
     flex-flow: row nowrap;
-    padding: 3rem 0;
 `;
 
 const Nav = styled.nav`
     background: ${props => props.theme.colors.bg};
+    font-family: ${props => props.theme.fonts.monospace};
     top: 0;
     left: 0;
     position: fixed;
@@ -104,7 +97,7 @@ const Nav = styled.nav`
 
     ${props => props.open ? 'display: block;' : 'display: none;'}
 
-    @media (min-width: 65rem) {
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
         display: block;
         flex: 0 0 18rem;
         position: sticky;
@@ -115,13 +108,14 @@ const Nav = styled.nav`
 
 const Content = styled.div`
     flex: 1 auto;
-    max-width: 50rem;
+    max-width: ${props => Number(props.theme.breakpoints[2].replace('rem','')) - 18}rem;
     min-width: 0;
     padding: 0 1rem;
 `;
 
 const PageNav = styled.div`
     background: ${props => props.theme.colors.bg};
+    font-family: ${props => props.theme.fonts.monospace};
     top: 0;
     left: 0;
     position: fixed;
@@ -134,7 +128,7 @@ const PageNav = styled.div`
 
     ${props => props.open ? 'display: block;' : 'display: none;'}
 
-    @media (min-width: 65rem) {
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
         display: block;
         flex: 0 0 18rem;
         position: sticky;
@@ -152,8 +146,9 @@ const MobileHeader = styled.div`
     display: flex;
     background-color: ${props => props.theme.colors.bgInvert};
     z-index: 200;
+    font-family: ${props => props.theme.fonts.monospace};
 
-    @media (min-width: 65rem) {
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
         display: none;
     }
 `;

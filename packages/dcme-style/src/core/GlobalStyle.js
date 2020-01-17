@@ -84,6 +84,34 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    button {
+        -webkit-appearance: none;
+        background-color: transparent;
+        font-family: inherit;
+        outline: none;
+        border: none;
+        font-size: inherit;
+        color: inherit;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul, ol {
+        list-style-type: none;
+    }
+
     #___gatsby,
     #___gatsby > div {
         height: 100%;
