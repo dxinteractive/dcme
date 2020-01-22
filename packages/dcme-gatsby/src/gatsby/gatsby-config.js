@@ -1,7 +1,10 @@
 /* eslint-disable */
+
+let passThrough = ii => ii;
+
 module.exports = {
-    gatsbyConfig: ({compileModules}) => ({
-        plugins: [
+    gatsbyConfig: ({compileModules, updatePlugins = passThrough}) => ({
+        plugins: updatePlugins([
             {
                 resolve: `gatsby-plugin-compile-es6-packages`,
                 options: {
@@ -44,6 +47,6 @@ module.exports = {
                     ]
                 }
             }
-        ]
+        ])
     })
 };
