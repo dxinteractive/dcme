@@ -1,7 +1,7 @@
 {
   "name": "dcme-site",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Website time",
   "author": "Damien Clarke",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "blueflag-test": "^0.22.0",
     "bruce": "^5.0.2",
-    "dcme-gatsby": "^1.0.7",
+    "dcme-gatsby": "^1.0.8",
     "dcme-money-simulator": "^0.0.3",
     "dcme-style": "^1.1.6",
     "gatsby": "^2.16.5",
