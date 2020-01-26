@@ -16,7 +16,8 @@ module.exports = {
         },
         resolve: {
           alias: {
-            react: path.resolve(dirname, './node_modules/react')
+            react: path.resolve(dirname, './node_modules/react'),
+            'styled-components': path.resolve(dirname, './node_modules/styled-components')
           }
         }
       });
