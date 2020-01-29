@@ -6,17 +6,10 @@ export const List = styled.ul`
     ${space}
     padding-left: 1.8em;
     position: relative;
+    list-style: disc;
 `;
 
 export const ListItem = styled.li`
-    ul > & {
-        &:before {
-            content: '*';
-            position: absolute;
-            left: .6em;
-        }
-    }
-
     ol > & {
         list-style-type: decimal;
     }

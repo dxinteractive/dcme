@@ -1,23 +1,14 @@
 // @flow
-import React from 'react';
 import styled from 'styled-components';
 
-export const Input = styled((props) => <input
-    type={props.type}
-    placeholder={props.placeholder}
-    className={props.className}
-    value={props.value}
-    min={props.min}
-    max={props.max}
-    onChange={(e) => props.onChange(e.currentTarget.value)}
-/>)`
+export const Input = styled.input`
     border: 1px solid ${props => props.theme.colors[props.error ? 'negative' : 'outline']};
     background-color: ${props => props.theme.colors.bgInput};
     color: currentColor;
     font-family: ${props => props.theme.fonts.monospace};
     font-size: .9rem;
     padding: .3rem .9rem;
-    width: 100%;
+    width: ${props => props.width || 'auto'};
 
     &:focus,
     &:active {

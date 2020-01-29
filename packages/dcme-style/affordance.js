@@ -1,5 +1,6 @@
 // @flow
 export {Button} from './src/affordance/Button';
+export {Checkbox} from './src/affordance/Checkbox';
 export {Clickable} from './src/affordance/Clickable';
 export {Code} from './src/affordance/Code';
 export {Divider} from './src/affordance/Divider';

@@ -15,11 +15,12 @@ function makeTheme(colors: any): any {
     let fontSizes = {
         h1: `3rem`,
         h2: `2.2rem`,
-        h3: `1.9rem`,
-        h4: `1.5rem`,
-        h5: `1.1rem`,
+        h3: `1.5rem`,
+        h4: `1rem`,
+        h5: `1rem`,
         p: `1rem`,
-        s: `.9rem`
+        s: `.9rem`,
+        xs: `.9rem`
     };
 
     return {
@@ -73,7 +74,6 @@ function makeTheme(colors: any): any {
                 color: colors.heading,
                 fontFamily: monospace,
                 fontSize: fontSizes.h5,
-                fontWeight: `700`,
                 overflowWrap: `break-word`,
                 lineHeight: '1.2em'
             },
@@ -83,17 +83,26 @@ function makeTheme(colors: any): any {
             weak: {
                 opacity: .7
             },
+            em: {
+                fontStyle: `italic`
+            },
             monospace: {
                 fontFamily: monospace
+            },
+            label: {
+                fontFamily: monospace,
+                fontSize: fontSizes.xs,
+                lineHeight: '1em'
             },
             copy: {
                 fontFamily: copy
             },
             code: {
                 fontFamily: monospace,
-                fontSize: fontSizes.s,
-                backgroundColor: '#eff3fb',
-                padding: '.125rem'
+                fontSize: fontSizes.xs,
+                backgroundColor: colors.bgAlt,
+                padding: '.25rem',
+                borderRadius: '3px'
             },
             codeLabel: {
                 fontFamily: monospace,
@@ -109,6 +118,7 @@ function makeTheme(colors: any): any {
 
 export const LightTheme = (extendColors = {}) => makeTheme({
     bg: '#ffffff',
+    bgAlt: '#edf7fb',
     copy: '#233544',
     bgInvert: '#0e151b',
     copyInvert: '#ffffff',
@@ -144,6 +154,7 @@ export const LightTheme = (extendColors = {}) => makeTheme({
 
 export const DarkTheme = (extendColors = {}) => makeTheme({
     bg: '#0e151b',
+    bgAlt: '#0e151b',
     copy: '#ffffff',
     bgInvert: '#ffffff',
     copyInvert: '#233544',
