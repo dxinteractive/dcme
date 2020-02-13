@@ -1,8 +1,8 @@
 // @flow
 import type {Node} from 'react';
 
-import styled from 'styled-components';
 import React from 'react';
+// $FlowFixMe
 import {useMemo} from 'react';
 import Prism from 'prismjs';
 import {Prism as PrismStyle} from '../affordance/Prism';
@@ -18,7 +18,7 @@ type Props = {
 export const CodeHighlight = (props: Props): Node => {
     let {children, language} = props;
 
-    return useMemo(() => {
+    return useMemo((): Node => {
         let prismLanguage = Prism.languages[language];
 
         let __html = prismLanguage
@@ -26,7 +26,7 @@ export const CodeHighlight = (props: Props): Node => {
             : children;
 
         return <PrismStyle className={`language-${language}`}>
-            <span dangerouslySetInnerHTML={{__html}} />
+            <div dangerouslySetInnerHTML={{__html}} />
         </PrismStyle>;
     }, [children, language]);
 };
