@@ -3,11 +3,10 @@
   "scripts": {
     "prep": "yarn && yarn lerna bootstrap",
     "build": "yarn lerna run build",
+    "build-static": "yarn lerna run build-static",
     "bump": "yarn lerna publish -m \"build: add tags\"",
-    "reinstall": "rm -rf node_modules && yarn prep",
     "test-all": "yarn lerna run test-all",
     "watch": "yarn lerna run watch --parallel",
-    "deploy": "yarn lerna run deploy",
     "reinstall": "rm -rf node_modules && rm -rf packages/*/node_modules && yarn prep"
   },
   "dependencies": {
