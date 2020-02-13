@@ -24,3 +24,7 @@ export const Input = styled.input`
         color: ${props => props.theme.colors.placeholder};
     }
 `;
+
+Input.defaultProps = {
+    type: 'text'
+};

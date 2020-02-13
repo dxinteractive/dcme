@@ -10,7 +10,7 @@ function makeTheme(colors: any): any {
     let icomoon = `IcoMoon`;
     let icomoonCustom = `IcoMoonCustom`;
 
-    let breakpoints: any = ['575px', '720px', '55rem', '75rem'];
+    let breakpoints: any = ['575px', '720px', '65rem', '75rem'];
 
     let fontSizes = {
         h1: `3rem`,
@@ -20,12 +20,18 @@ function makeTheme(colors: any): any {
         h5: `1rem`,
         p: `1rem`,
         s: `.9rem`,
-        xs: `.9rem`
+        xs: `.8rem`
+    };
+
+    let widths = {
+        nav: '15rem',
+        textWrapper: '650px'
     };
 
     return {
         breakpoints,
         colors,
+        widths,
         fonts: {
             heading: monospace,
             copy,
@@ -77,11 +83,34 @@ function makeTheme(colors: any): any {
                 overflowWrap: `break-word`,
                 lineHeight: '1.2em'
             },
+            p: {
+                lineHeight: '1.8em'
+            },
+            small: {
+                fontSize: fontSizes.s,
+                lineHeight: '1.2em'
+            },
+            disclaimer: {
+                fontSize: fontSizes.xs,
+                lineHeight: '1em',
+                fontStyle: 'italic',
+                color: colors.copyLighter
+            },
+            s1: {
+                fontFamily: monospace,
+                fontStyle: 'italic',
+                color: colors.copyLight
+            },
+            s2: {
+                fontFamily: monospace,
+                fontStyle: 'italic',
+                color: colors.copyLighter
+            },
             strong: {
                 fontWeight: `700`
             },
             weak: {
-                opacity: .7
+                color: colors.copyLight
             },
             em: {
                 fontStyle: `italic`
@@ -120,6 +149,8 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     bg: '#ffffff',
     bgAlt: '#edf7fb',
     copy: '#233544',
+    copyLight: '#9faaaf',
+    copyLighter: '#c1cbd0',
     bgInvert: '#0e151b',
     copyInvert: '#ffffff',
     line: '#EEEEEE',
@@ -142,7 +173,7 @@ export const LightTheme = (extendColors = {}) => makeTheme({
     terminalPrimary: '#319dcd',
     terminalSecondary: '#ce4133',
     terminalTertiary: '#fee380',
-    terminalComment: '#bfadcc',
+    terminalComment: '#9480a2',
     buttonBg: '#f4f4f4',
     buttonBgHover: '#ffffff',
     buttonTextFocus: '#527fd7',
@@ -174,7 +205,7 @@ export const DarkTheme = (extendColors = {}) => makeTheme({
     terminalPrimary: '#319dcd',
     terminalSecondary: '#ce4133',
     terminalTertiary: '#fee380',
-    terminalComment: '#bfadcc',
+    terminalComment: '#9480a2',
     buttonBg: '#f4f4f4',
     buttonBgHover: '#f9f9f9',
     ...extendColors

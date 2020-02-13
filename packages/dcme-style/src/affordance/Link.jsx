@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import {Clickable} from './Clickable';
 
 export const Link = styled(Clickable)`
-    color: ${props => props.theme.colors.link};
+    color: ${props => props.theme.colors[props.color || 'link']};
     text-decoration: none;
 
     &:hover {
-        color: ${props => props.theme.colors.link};
+        color: ${props => props.theme.colors[props.color || 'link']};
         text-decoration: underline;
     }
 

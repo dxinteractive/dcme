@@ -1,6 +1,5 @@
 // @flow
 import type {Node} from 'react';
-import type {Element} from 'react';
 
 import React from 'react';
 // $FlowFixMe
@@ -8,6 +7,7 @@ import {useState} from 'react';
 import styled from 'styled-components';
 
 import {Box} from '../layout/Layout.jsx';
+import {Flex} from '../layout/Layout.jsx';
 import {Link} from '../affordance/Link.jsx';
 import {Button} from '../affordance/Button.jsx';
 import {NavigationList} from '../affordance/NavigationList.jsx';
@@ -18,9 +18,9 @@ export const toAnchor = (label: string) => `${label.toLowerCase().replace(/ /g, 
 export const toLabel = (label: string) => label.replace('()','');
 
 type Props = {
-    nav?: Element<any>,
-    pageNav?: Element<any>|string[],
-    children?: Element<any>
+    nav?: Node|boolean,
+    pageNav?: Node|string[]|boolean,
+    children?: Node
 };
 
 export const ContentNav = (props: Props): Node => {
@@ -30,7 +30,8 @@ export const ContentNav = (props: Props): Node => {
     let {
         nav,
         pageNav,
-        children
+        children,
+        ...rest
     } = props;
 
     let close = () => setOpen('');
@@ -50,37 +51,29 @@ export const ContentNav = (props: Props): Node => {
 
     }
 
-    return <Wrapper hasNav={!!nav}>
-        {nav &&
-            <Nav open={open === 'nav'}>{nav}</Nav>
-        }
-        <Content>{children}</Content>
-        {pageNav &&
-            <PageNav open={open === 'pageNav'}>
+    return <Flex display={['block', 'block', 'flex']} alignItems="start" justifyContent="space-between" {...rest}>
+        <Nav open={open === 'nav'}>{nav && typeof nav !== 'boolean' && nav}</Nav>
+        <Wrapper>{children}</Wrapper>
+        <PageNav open={open === 'pageNav'}>
+            {pageNav && typeof nav !== 'boolean' &&
                 <NavigationList>
                     <NavigationListItem><Text textStyle="weak">On this page</Text></NavigationListItem>
                 </NavigationList>
-                {pageNav}
-            </PageNav>
+            }
+            {typeof nav !== 'boolean' && pageNav}
+        </PageNav>
+        {(nav && typeof nav !== 'boolean') || (pageNav && typeof pageNav !== 'boolean') &&
+            <MobileHeader>
+                <Box mr="auto">
+                    {nav && <Button onClick={() => open ? close() : openNav()}>{open === 'nav' ? '[x]' : '[<<]'}</Button>}
+                </Box>
+                <Box>
+                    {pageNav && <Button onClick={() => open ? close() : openPageNav()}>{open === 'pageNav' ? '[x]' : '...'}</Button>}
+                </Box>
+            </MobileHeader>
         }
-        <MobileHeader>
-            <Box mr="auto">
-                {nav && <Button invert onClick={() => open ? close() : openNav()}>{open === 'nav' ? '[x]' : '[<<]'}</Button>}
-            </Box>
-            <Box>
-                {pageNav && <Button invert onClick={() => open ? close() : openPageNav()}>{open === 'pageNav' ? '[x]' : '...'}</Button>}
-            </Box>
-        </MobileHeader>
-    </Wrapper>;
+    </Flex>;
 };
-
-const Wrapper = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    max-width: ${props => console.log('props.theme.breakpoints[2]', props.theme.breakpoints[2]) || props.hasNav ? props.theme.breakpoints[3] : props.theme.breakpoints[2]};
-    display: flex;
-    flex-flow: row nowrap;
-`;
 
 const Nav = styled.nav`
     background: ${props => props.theme.colors.bg};
@@ -99,18 +92,25 @@ const Nav = styled.nav`
 
     @media (min-width: ${props => props.theme.breakpoints[2]}) {
         display: block;
-        flex: 0 0 18rem;
         position: sticky;
-        width: auto;
-        padding: 1rem 1rem 0;
+        width: ${props => props.theme.widths.nav};
+        padding: 0;
+        height: auto;
+        top: .5rem;
     }
 `;
 
-const Content = styled.div`
-    flex: 1 auto;
-    max-width: ${props => Number(props.theme.breakpoints[2].replace('rem','')) - 18}rem;
-    min-width: 0;
+const Wrapper = styled.div`
+    width: 100%;
     padding: 0 1rem;
+
+    @media (min-width: ${props => props.theme.breakpoints[1]}) {
+        width: calc(100% - ${props => props.theme.widths.nav});
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
+        width: calc(100% - ${props => props.theme.widths.nav} - ${props => props.theme.widths.nav});
+    }
 `;
 
 const PageNav = styled.div`
@@ -128,13 +128,13 @@ const PageNav = styled.div`
 
     ${props => props.open ? 'display: block;' : 'display: none;'}
 
-    @media (min-width: ${props => props.theme.breakpoints[2]}) {
+    @media (min-width: ${props => props.theme.breakpoints[1]}) {
         display: block;
-        flex: 0 0 18rem;
         position: sticky;
-        width: auto;
-        align-self: flex-start;
-        padding: 1rem 1rem 0;
+        width: ${props => props.theme.widths.nav};
+        padding: 0;
+        height: auto;
+        top: .5rem;
     }
 `;
 
@@ -144,7 +144,7 @@ const MobileHeader = styled.div`
     position: fixed;
     width: 100%;
     display: flex;
-    background-color: ${props => props.theme.colors.bgInvert};
+    background-color: ${props => props.theme.colors.buttonBg};
     z-index: 200;
     font-family: ${props => props.theme.fonts.monospace};
 

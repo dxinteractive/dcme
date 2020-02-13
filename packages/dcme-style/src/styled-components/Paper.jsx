@@ -32,4 +32,25 @@ export const Paper = styled(Box)`
             width: 1rem;
         }
     `}
+    ${props => props.bordered && `
+        border: ${props.theme.colors.line} solid 1px;
+    `}
+    ${props => props.fadeUp && `
+        animation: .3s ease-out onShow;
+        position: relative;
+
+        opacity: 1;
+        top: 0;
+
+        @keyframes onShow {
+            0% {
+                opacity: 0;
+                top: .25rem;
+            }
+            100% {
+                opacity: 1;
+                top: 0;
+            }
+        }
+    `}
 `;
