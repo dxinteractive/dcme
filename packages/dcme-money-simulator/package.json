@@ -1,6 +1,6 @@
 {
   "name": "dcme-money-simulator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Money simulator",
   "main": "src/index.js",
   "license": "MIT",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "blueflag-record": "^0.4.5",
-    "dcme-style": "^1.1.8",
+    "dcme-style": "^1.1.9",
     "react": "^16.8.6",
     "react-dataparcels": "^1.0.2",
     "react-dataparcels-drag": "^1.0.1",
