@@ -28,10 +28,11 @@ type Props = {
     link?: string,
     name: string,
     npm?: string,
-    to?: string
+    to?: string,
+    smaller?: boolean
 };
 
-export default ({alt, bandcamp, description, docs, github, href, image, link, name, npm, to}: Props): Node => {
+export default ({alt, bandcamp, description, docs, github, href, image, link, name, npm, to, smaller}: Props): Node => {
 
     let ThisLink = (props) => {
         if(href) {
@@ -45,7 +46,7 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
 
     let links = pipeWith(
         [
-            <ThisLink key="1"><Text modifier="sizeMega">{name}</Text></ThisLink>,
+            <ThisLink key="1"><Text modifier={smaller ? 'sizeKilo' : 'sizeMega'}>{name}</Text></ThisLink>,
             link && <ThisLink key="2" modifier="secondary">{link}</ThisLink>,
             github && <HtmlLink key="3" modifier="secondary" href={`https://github.com/${github}`}>github</HtmlLink>,
             docs && <HtmlLink key="4" modifier="secondary" href={docs}>docs</HtmlLink>,
@@ -93,6 +94,9 @@ export default ({alt, bandcamp, description, docs, github, href, image, link, na
                     {description && <Text element="div" modifier="margin monospace">{description}</Text>}
                 </Box>
             </GridItem>
+            {!image &&
+                <GridItem modifier="3 padding" />
+            }
         </Grid>
     </Box>;
 };

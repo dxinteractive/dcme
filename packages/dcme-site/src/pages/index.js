@@ -13,7 +13,6 @@ import Link from '../component/Link';
 import Layout from '../layout/Layout';
 import DataparcelsThumbnail from '../content/dataparcels-thumbnail.gif';
 import UnmutableThumbnail from '../content/unmutable-thumbnail.gif';
-import ReactCoolStorageThumbnail from '../content/react-cool-storage-thumbnail.gif';
 
 import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
 import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
@@ -48,21 +47,37 @@ export default () => {
         />
         <FeatureItem
             name="unmutable"
-            href="https://unmutable.blueflag.codes/"
-            docs="https://unmutable.blueflag.codes/"
-            github="blueflag/unmutable"
+            href="https://92green.github.io/unmutable"
+            docs="https://92green.github.io/unmutable"
+            github="92green/unmutable"
             npm="unmutable"
             description="An immutable, point-free, functional data collection library for plain old Javascript."
             image={UnmutableThumbnail}
         />
         <FeatureItem
+            name="react-floatybox"
+            href="https://github.com/92green/react-floatybox"
+            docs="https://92green.github.io/react-floatybox"
+            github="92green/react-floatybox"
+            npm="react-floatybox"
+            description="React portal based positional components for building tooltips, select menus and dropdown. Avoids screen edges!"
+            smaller
+        />
+        <FeatureItem
             name="react-cool-storage"
-            href="https://react-cool-storage.blueflag.codes/"
-            docs="https://react-cool-storage.blueflag.codes/"
-            github="blueflag/react-cool-storage"
+            href="https://github.com/92green/react-cool-storage"
+            github="92green/react-cool-storage"
             npm="react-cool-storage"
             description="React hooks and hocs with a common API for storing state outside of React. Query string, local storage etc."
-            image={ReactCoolStorageThumbnail}
+            smaller
+        />
+        <FeatureItem
+            name="react-micromount"
+            href="https://github.com/92green/react-micromount"
+            github="92green/react-micromount"
+            npm="unmutable"
+            description="Mount React instances inside each other like they're components."
+            smaller
         />
     </Box>;
 
@@ -292,7 +307,7 @@ export default () => {
         <DocsHeader
             height="heightThird"
             title={() => <Text element="h1" modifier="sizeTera superDuper margin">damienclarke.me</Text>}
-            description={() => "Software engineer + musician + effects pedal builder + animator living in Hobart, Australia."}
+            description={() => <Text>Software engineer + musician + effects pedal builder + animator living in Hobart, Australia. Part of <a className="Link Link-secondary" href="https://github.com/92green">92green</a>.</Text>}
             links={() => <Text><a className="Link Link-secondary" href="https://github.com/dxinteractive">github</a> | <a className="Link Link-secondary" href="mailto:dxinteractive@gmail.com">dxinteractive@gmail.com</a></Text>}
         />
         <ContentNav
@@ -309,7 +324,9 @@ export default () => {
                 '# Javascript libraries',
                 'dataparcels',
                 'unmutable',
+                'react-floatybox',
                 'react-cool-storage',
+                'react-micromount',
                 '# Effects pedals',
                 'Blend2',
                 'Shoosh',
