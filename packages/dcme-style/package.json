@@ -32,8 +32,7 @@
     "babel-core": "^6.23.0",
     "babel-preset-blueflag": "^0.6.0",
     "blueflag-test": "^0.18.1",
-    "dotenv": "^2.0.0",
-    "proto-babel-plugin-extract-flow-types": "git+ssh://git@github.com/blueflag/proto-babel-plugin-extract-flow-types.git#v0.1.1"
+    "dotenv": "^2.0.0"
   },
   "peerDependencies": {
     "gatsby": "^2.13.20",
