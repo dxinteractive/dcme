@@ -130,6 +130,7 @@ const Nav = styled.nav`
         position: sticky;
         width: ${props => props.theme.widths.nav};
         padding: 0;
+        padding-left: 1rem;
         height: auto;
         top: .5rem;
     }
