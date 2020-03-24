@@ -92,6 +92,7 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         font-size: inherit;
         color: inherit;
+        padding: 0;
     }
 
     a {

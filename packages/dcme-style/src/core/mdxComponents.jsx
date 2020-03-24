@@ -11,11 +11,11 @@ import {Box} from '../layout/Layout';
 
 export const mdxComponents = {
     a: Link,
-    h1: (props) => <Text as="h1" textStyle="h1" my={4} {...props} />,
-    h2: (props) => <Text as="h2" textStyle="h2" mt={5} mb={4} {...props} />,
-    h3: (props) => <Text as="h3" textStyle="h3" my={4} {...props} />,
-    h4: (props) => <Text as="h4" textStyle="h4" my={4} {...props} />,
-    h5: (props) => <Text as="h5" textStyle="h5" my={4} {...props} />,
+    h1: (props) => <Text as="h1" textStyle="h1" pt={4} mb={4} {...props} />,
+    h2: (props) => <Text as="h2" textStyle="h2" pt={5} mb={4} {...props} />,
+    h3: (props) => <Text as="h3" textStyle="h3" pt={4} mb={4} {...props} />,
+    h4: (props) => <Text as="h4" textStyle="h4" pt={4} mb={4} {...props} />,
+    h5: (props) => <Text as="h5" textStyle="h5" pt={4} mb={4} {...props} />,
     //img: (props) => <Image maxWidth="100%" {...props} />,
     inlineCode: ({children}) => <Text as="code" textStyle="code">{children}</Text>,
     code: Prism,

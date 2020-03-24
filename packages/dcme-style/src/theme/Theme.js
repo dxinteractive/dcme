@@ -112,6 +112,9 @@ function makeTheme(colors: any): any {
             weak: {
                 color: colors.copyLight
             },
+            weaker: {
+                color: colors.copyLighter
+            },
             em: {
                 fontStyle: `italic`
             },
@@ -137,6 +140,12 @@ function makeTheme(colors: any): any {
                 fontFamily: monospace,
                 fontSize: fontSizes.s,
                 lineHeight: '1em'
+            },
+            codeType: {
+                fontFamily: monospace,
+                fontSize: fontSizes.s,
+                lineHeight: '1em',
+                color: colors.primary
             },
             icon: {
                 fontFamily: icomoon
