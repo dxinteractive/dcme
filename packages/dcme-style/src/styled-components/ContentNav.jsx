@@ -53,7 +53,7 @@ export const ContentNav = styled((props: Props): Node => {
                     label = label.slice(2);
                     return <NavigationListItemTop mt={index > 0} key={index}>{toLabel(label)}</NavigationListItemTop>;
                 }
-                return <NavigationListItem key={index}><Link href={to} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
+                return <NavigationListItem key={index}><Link to={to} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
             })}
         </NavigationList>;
 
@@ -64,9 +64,9 @@ export const ContentNav = styled((props: Props): Node => {
             {pageNav.map((label: string, index: any): Node => {
                 if(label.startsWith('# ')) {
                     label = label.slice(2);
-                    return <NavigationListItemTop mt={index > 0} key={index}><Link color="weak" href={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItemTop>;
+                    return <NavigationListItemTop mt={index > 0} key={index}><Link color="weak" to={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItemTop>;
                 }
-                return <NavigationListItem key={index}><Link href={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
+                return <NavigationListItem key={index}><Link to={`#${toAnchor(label)}`} onClick={close}>{toLabel(label)}</Link></NavigationListItem>;
             })}
         </NavigationList>;
 
