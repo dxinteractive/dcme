@@ -16,6 +16,7 @@ function makeTheme(colors: any): any {
         h1: `3rem`,
         h2: `2.2rem`,
         h3: `1.5rem`,
+        quote: `1.2rem`,
         h4: `1rem`,
         h5: `1rem`,
         p: `1rem`,
@@ -80,6 +81,12 @@ function makeTheme(colors: any): any {
                 color: colors.heading,
                 fontFamily: monospace,
                 fontSize: fontSizes.h5,
+                overflowWrap: `break-word`,
+                lineHeight: '1.2em'
+            },
+            quote: {
+                fontFamily: monospace,
+                fontSize: fontSizes.quote,
                 overflowWrap: `break-word`,
                 lineHeight: '1.2em'
             },
