@@ -17,8 +17,8 @@ type Props = {
 };
 
 export const Clickable = styled((props: Props): Node => {
-    const {children, className, onClick, to, href, target, block} = props;
-    const childProps = {children, className, onClick};
+    const {children, className, onClick, to, href, target, block, style} = props;
+    const childProps = {children, className, onClick, style};
 
     if(to) {
         return <Link to={to} {...childProps} />;

@@ -33,7 +33,7 @@ export const Paper = styled(Box)`
         }
     `}
     ${props => props.bordered && `
-        border: ${props.theme.colors.line} solid 1px;
+        border: ${props.theme.colors[props.invert ? 'lineInvert' : 'line']} solid 1px;
     `}
     ${props => props.fadeUp && `
         animation: .3s ease-out onShow;
@@ -51,6 +51,15 @@ export const Paper = styled(Box)`
                 opacity: 1;
                 top: 0;
             }
+        }
+    `}
+    ${props => props.input && `
+        border: ${props.theme.colors[props.invert ? 'outlineInvert' : 'outline']} solid 1px;
+        &:focus,
+        &:focus-within,
+        &:active {
+            border-color: ${props.theme.colors[props.invert ? 'focusInvert' : 'focus']};
+            outline: 0;
         }
     `}
 `;

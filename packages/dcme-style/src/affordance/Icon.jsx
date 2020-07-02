@@ -532,9 +532,9 @@ const getNudge = (param) => (props) => ({
 })[param];
 
 export const Icon = styled.span`
-    ${textStyle}
     ${space}
     &:before {
+        ${textStyle}
         content: "${props => iconMap[props.icon]}";
         font-family: '${props => customIconMap[props.icon] ? 'IcoMoonCustom' : 'IcoMoon'}';
         position: relative;

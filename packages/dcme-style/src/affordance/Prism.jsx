@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Prism = styled.code`
     font-family: ${props => props.theme.fonts.monospace};
+    color: ${props => props.theme.colors.copyInvert};
 
     &.language-cpp {
         .token.keyword {
@@ -44,7 +45,7 @@ export const Prism = styled.code`
         }
 
         .token.script {
-            color: ${props => props.theme.colors.copy};
+            color: ${props => props.theme.colors.copyInvert};
         }
 
         .token.script-punctuation {
@@ -77,5 +78,29 @@ export const Prism = styled.code`
         .token.comment {
             color: ${props => props.theme.colors.terminalComment};
         }
+    }
+
+    .line-highlight {
+        animation: .2s ease-out onShow;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: inherit 0;
+        margin-top: 1rem;
+        background: rgba(255,255,255,0.1);
+        pointer-events: none;
+        line-height: inherit;
+        white-space: pre;
+
+        @keyframes onShow {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
     }
 `;
