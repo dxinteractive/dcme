@@ -28,7 +28,14 @@ html.defaultBackground, body.defaultBackground {
 @include DcmeBulletList;
 @include DcmeButton;
 @include DcmeCenteredLanding;
-@include DcmeContentNav;
+@include DcmeContentNav {
+    &_pageNav {
+        @include BruceBreakpoint('large') {
+            position: static;
+            height: auto;
+        }
+    }
+}
 @include DcmeDivider;
 @include DcmeDocsHeader;
 @include DcmeGrid;
@@ -42,7 +49,11 @@ html.defaultBackground, body.defaultBackground {
 }
 @include DcmeImageThumbnail;
 @include DcmeInput;
-@include DcmeLink;
+@include DcmeLink {
+    &-secondary {
+        color: #527fd7 !important;
+    }
+}
 @include DcmeLabel;
 @include DcmeLoader;
 @include DcmeMessage;

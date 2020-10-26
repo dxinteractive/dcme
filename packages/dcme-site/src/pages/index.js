@@ -37,15 +37,17 @@ export default () => {
         <Anchor name="Javascript libraries" />
         <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
         <FeatureItem
-            name="dataparcels"
-            href="https://dataparcels.blueflag.codes/"
-            docs="https://dataparcels.blueflag.codes/"
-            github="blueflag/dataparcels"
-            npm="react-dataparcels"
-            description="A library for editing data structures that works really well with React."
-            image={DataparcelsThumbnail}
+            alt
+            name="mobx-fog-of-war"
+            href="https://92green.github.io/mobx-fog-of-war"
+            docs="https://92green.github.io/mobx-fog-of-war"
+            github="92green/mobx-fog-of-war"
+            npm="mobx-fog-of-war"
+            description="A simple, lazy front-end request coordinator and cache for React and mobx. Load your data by simply trying to view it, and build up a picture of your server's data over time."
+            image="https://user-images.githubusercontent.com/345320/91411571-ddf2da80-e88b-11ea-8de7-c0f3462991f4.gif"
         />
         <FeatureItem
+            alt
             name="unmutable"
             href="https://92green.github.io/unmutable"
             docs="https://92green.github.io/unmutable"
@@ -55,29 +57,21 @@ export default () => {
             image={UnmutableThumbnail}
         />
         <FeatureItem
+            alt
             name="react-floatybox"
-            href="https://github.com/92green/react-floatybox"
+            href="https://92green.github.io/react-floatybox"
             docs="https://92green.github.io/react-floatybox"
             github="92green/react-floatybox"
             npm="react-floatybox"
             description="React portal based positional components for building tooltips, select menus and dropdown. Avoids screen edges!"
-            smaller
         />
         <FeatureItem
-            name="react-cool-storage"
-            href="https://github.com/92green/react-cool-storage"
-            github="92green/react-cool-storage"
-            npm="react-cool-storage"
-            description="React hooks and hocs with a common API for storing state outside of React. Query string, local storage etc."
-            smaller
-        />
-        <FeatureItem
+            alt
             name="react-micromount"
             href="https://github.com/92green/react-micromount"
             github="92green/react-micromount"
             npm="unmutable"
             description="Mount React instances inside each other like they're components."
-            smaller
         />
     </Box>;
 
@@ -268,8 +262,8 @@ export default () => {
         <Text element="h2" modifier="sizeKilo marginKilo">Old Flash games that probably don't work anymore</Text>
         <FeatureItem
             name="Bloxorz"
-            href="https://www.albinoblacksheep.com/games/bloxorz"
-            link="albinoblacksheep.com"
+            href="https://www.coolmathgames.com/0-bloxorz"
+            link="coolmathgames.com"
             description={<Box>
                 <Text element="p" modifier="margin">Bloxorz is a brain twisting puzzle game of rolling blocks and switching bridges. You'll be rolling round in circles over the course of the 33 levels.</Text>
                 <Text element="p">This was the first video game to use this gameplay concept and was one of the top Flash games of 2007, reaching over 1/4 billion confirmed plays.</Text>
@@ -322,10 +316,9 @@ export default () => {
             </>}
             pageNav={[
                 '# Javascript libraries',
-                'dataparcels',
+                'mobx-fog-of-war',
                 'unmutable',
                 'react-floatybox',
-                'react-cool-storage',
                 'react-micromount',
                 '# Effects pedals',
                 'Blend2',

@@ -29,11 +29,11 @@ const ThumbnailLink = ({imageLink}: any): Node => {
     </Fragment>;
 
     if(link) {
-        return <a href={link}>{content}</a>;
+        return <HtmlLink modifier="secondary" href={link}>{content}</HtmlLink>;
     }
 
     if(to) {
-        return <Link to={to}>{content}</Link>;
+        return <Link className="Link Link-secondary" to={to}>{content}</Link>;
     }
 
     return content;
