@@ -36,12 +36,12 @@
   },
   "peerDependencies": {
     "gatsby": "^2.13.20",
-    "prismjs": "1.15.0",
+    "prismjs": "1.21.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "prismjs": "1.15.0",
+    "prismjs": "1.21.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-goose": "^0.6.1",
