@@ -11,14 +11,15 @@ import FeatureItem from '../component/FeatureItem';
 import FeatureStrip from '../component/FeatureStrip';
 import Link from '../component/Link';
 import Layout from '../layout/Layout';
-import DataparcelsThumbnail from '../content/dataparcels-thumbnail.gif';
-import UnmutableThumbnail from '../content/unmutable-thumbnail.gif';
 
 import BazzFuzzFaceThumbnail from '../content/bazz-fuzz-face-thumbnail.jpg';
+import CtrlThumbnail from '../content/ctrl-thumbnail.jpg';
 import Blend2Thumbnail from '../content/blend2-thumbnail.jpg';
 import DxlfoThumbnail from '../content/dxlfo-thumbnail.jpg';
 import ShooshThumbnail from '../content/shoosh-thumbnail.jpg';
 
+import DendriformThumbnail from '../content/logo-dendriform.png';
+import XenpaperThumbnail from '../content/logo-xenpaper.png';
 import ResponsiveAnalogReadThumbnail from '../content/responsive-analog-read-thumbnail.jpg';
 import AnalogMultiButtonThumbnail from '../content/analog-multi-button-thumbnail.jpg';
 import ArduinoTapTempoThumbnail from '../content/arduino-tap-tempo-thumbnail.jpg';
@@ -33,9 +34,32 @@ import Electricman2Thumbnail from '../content/electricman-2-thumbnail.jpg';
 
 export default () => {
 
+    let current = <Box modifier="paddingBottomTera">
+        <Anchor name="Current projects" />
+        <Text element="h2" modifier="sizeKilo marginKilo">Current projects</Text>
+        <FeatureItem
+            alt
+            name="xenpaper"
+            href="https://xenpaper.com"
+            github="dxinteractive/xenpaper"
+            description="Text-based microtonal sequencer. Write down musical ideas and share the link around."
+            image={XenpaperThumbnail}
+        />
+        <FeatureItem
+            alt
+            name="dendriform"
+            href="https://92green.github.io/dendriform"
+            docs="https://92green.github.io/dendriform"
+            github="92green/dendriform"
+            npm="dendriform"
+            description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
+            image={DendriformThumbnail}
+        />
+    </Box>;
+
     let javascriptLibraries = <Box modifier="paddingBottomTera">
-        <Anchor name="Javascript libraries" />
-        <Text element="h2" modifier="sizeKilo marginKilo">Javascript libraries</Text>
+        <Anchor name="JS libraries" />
+        <Text element="h2" modifier="sizeKilo marginKilo">JS libraries</Text>
         <FeatureItem
             alt
             name="mobx-fog-of-war"
@@ -48,13 +72,22 @@ export default () => {
         />
         <FeatureItem
             alt
+            name="dendriform"
+            href="https://92green.github.io/dendriform"
+            docs="https://92green.github.io/dendriform"
+            github="92green/dendriform"
+            npm="dendriform"
+            description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
+            image={DendriformThumbnail}
+        />
+        <FeatureItem
+            alt
             name="unmutable"
             href="https://92green.github.io/unmutable"
             docs="https://92green.github.io/unmutable"
             github="92green/unmutable"
             npm="unmutable"
-            description="An immutable, point-free, functional data collection library for plain old Javascript."
-            image={UnmutableThumbnail}
+            description="An immutable, point-free, functional data collection library for plain old JavaScript."
         />
         <FeatureItem
             alt
@@ -78,6 +111,14 @@ export default () => {
     let effectsPedals = <Box modifier="paddingBottomTera">
         <Anchor name="Effects pedals" />
         <Text element="h2" modifier="sizeKilo marginKilo">Effects pedals</Text>
+        <FeatureItem
+            name="CTRL"
+            href="https://www.instagram.com/stories/highlights/17926446430092793/"
+            link="more info"
+            description="A CV generator, pitch analyzer, tuner and timekeeper. Physically built, currenly coding."
+            image={CtrlThumbnail}
+            alt
+        />
         <FeatureItem
             name="Blend2"
             to="/effects-pedals/blend2"
@@ -154,7 +195,6 @@ export default () => {
             github="dxinteractive/ResponsiveAnalogRead"
             description={<Box>
                 <Text element="p" modifier="margin">Arduino library for eliminating noise in analogRead inputs without decreasing responsiveness.</Text>
-                <Text element="p" modifier="emphasis primary">Version 2 is almost ready!</Text>
             </Box>}
             image={ResponsiveAnalogReadThumbnail}
             alt
@@ -307,6 +347,7 @@ export default () => {
         <ContentNav
             modifier="inverted"
             content={() => <>
+                {current}
                 {javascriptLibraries}
                 {effectsPedals}
                 {music}
@@ -315,12 +356,17 @@ export default () => {
                 {flashGames}
             </>}
             pageNav={[
-                '# Javascript libraries',
+                '# Current projects',
+                'xenpaper',
+                'dendriform',
+                '# JS libraries',
                 'mobx-fog-of-war',
+                'dendriform',
                 'unmutable',
                 'react-floatybox',
                 'react-micromount',
                 '# Effects pedals',
+                'CTRL',
                 'Blend2',
                 'Shoosh',
                 'Bazz Fuzz Face',

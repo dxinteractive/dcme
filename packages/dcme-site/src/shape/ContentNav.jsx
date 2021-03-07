@@ -17,7 +17,10 @@ const nav = () => <NavigationList>
     </NavigationListItem>
     <NavigationListItem modifier="section">Stuff</NavigationListItem>
     <NavigationListItem>
-        <Link href="/#javascript-libraries">Javascript libraries</Link>
+        <Link href="/#current-projects">Current projects</Link>
+    </NavigationListItem>
+    <NavigationListItem>
+        <Link href="/#js-libraries">JS libraries</Link>
     </NavigationListItem>
     <NavigationListItem>
         <Link href="/#effects-pedals">Effects pedals</Link>
