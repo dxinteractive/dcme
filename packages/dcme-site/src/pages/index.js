@@ -48,8 +48,7 @@ export default () => {
         <FeatureItem
             alt
             name="dendriform"
-            href="https://92green.github.io/dendriform"
-            docs="https://92green.github.io/dendriform"
+            href="https://github.com/92green/dendriform"
             github="92green/dendriform"
             npm="dendriform"
             description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
@@ -73,8 +72,7 @@ export default () => {
         <FeatureItem
             alt
             name="dendriform"
-            href="https://92green.github.io/dendriform"
-            docs="https://92green.github.io/dendriform"
+            href="https://github.com/92green/dendriform"
             github="92green/dendriform"
             npm="dendriform"
             description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
