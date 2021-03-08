@@ -113,7 +113,7 @@ export default () => {
             name="CTRL"
             href="https://www.instagram.com/stories/highlights/17926446430092793/"
             link="more info"
-            description="A CV generator, pitch analyzer, tuner and timekeeper. Physically built, currenly coding."
+            description="A CV generator, pitch analyzer, tuner and timekeeper. Original design, physically built, currenly coding."
             image={CtrlThumbnail}
             alt
         />
