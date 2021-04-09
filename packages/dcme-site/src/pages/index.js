@@ -48,7 +48,7 @@ export default () => {
         <FeatureItem
             alt
             name="dendriform"
-            href="https://github.com/92green/dendriform"
+            href="https://dendriform.xyz"
             github="92green/dendriform"
             npm="dendriform"
             description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
@@ -72,7 +72,7 @@ export default () => {
         <FeatureItem
             alt
             name="dendriform"
-            href="https://github.com/92green/dendriform"
+            href="https://dendriform.xyz"
             github="92green/dendriform"
             npm="dendriform"
             description="Build feature-rich data-editing React UIs with great performance and not much code. Work in progress."
@@ -113,7 +113,7 @@ export default () => {
             name="CTRL"
             href="https://www.instagram.com/stories/highlights/17926446430092793/"
             link="more info"
-            description="A CV generator, pitch analyzer, tuner and timekeeper. Original design, physically built, currenly coding."
+            description="A CV generator, pitch analyzer, tuner and timekeeper. Original design, physically built, currently coding."
             image={CtrlThumbnail}
             alt
         />
